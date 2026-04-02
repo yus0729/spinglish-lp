@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Spinglish - AI英会話練習アプリ</title>
+  <link rel="icon" type="image/png" href="favicon.png">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #0a0a0a;
+      color: #f0ede6;
+      line-height: 1.7;
+    }
+    a { color: #c8a84e; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .hero {
+      text-align: center;
+      padding: 100px 24px 60px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .hero-logo {
+      font-family: 'Times New Roman', Georgia, serif;
+      font-size: 56px;
+      font-weight: 700;
+      font-style: italic;
+      color: #c8a84e;
+      margin-bottom: 8px;
+    }
+    .hero-tagline {
+      font-size: 12px;
+      color: #8a8578;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 32px;
+    }
+    .hero-headline {
+      font-size: 32px;
+      font-weight: 700;
+      margin-bottom: 16px;
+      line-height: 1.4;
+    }
+    .hero-sub {
+      font-size: 18px;
+      color: #8a8578;
+      margin-bottom: 48px;
+    }
+    .hero-cta {
+      display: inline-block;
+      background: #c8a84e;
+      color: #0a0a0a;
+      font-size: 16px;
+      font-weight: 700;
+      padding: 16px 40px;
+      border-radius: 12px;
+      transition: opacity 0.2s;
+    }
+    .hero-cta:hover { opacity: 0.85; text-decoration: none; }
+
+    .features {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 60px 24px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 24px;
+    }
+    .feature-card {
+      background: #141414;
+      border: 1px solid #2a2a2a;
+      border-radius: 16px;
+      padding: 32px;
+    }
+    .feature-icon {
+      font-size: 32px;
+      margin-bottom: 16px;
+    }
+    .feature-title {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .feature-desc {
+      font-size: 14px;
+      color: #8a8578;
+      line-height: 1.6;
+    }
+
+    .plans {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 60px 24px;
+      text-align: center;
+    }
+    .plans h2 {
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 40px;
+    }
+    .plans-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+    .plan-card {
+      background: #141414;
+      border: 1px solid #2a2a2a;
+      border-radius: 16px;
+      padding: 32px;
+      text-align: left;
+    }
+    .plan-card.popular { border-color: #c8a84e; }
+    .plan-name {
+      font-family: 'Times New Roman', Georgia, serif;
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .plan-price {
+      font-size: 32px;
+      font-weight: 700;
+      color: #c8a84e;
+      margin-bottom: 4px;
+    }
+    .plan-period {
+      font-size: 14px;
+      color: #8a8578;
+      margin-bottom: 20px;
+    }
+    .plan-features {
+      list-style: none;
+    }
+    .plan-features li {
+      font-size: 14px;
+      color: #f0ede6;
+      padding: 6px 0;
+    }
+    .plan-features li::before {
+      content: '✓ ';
+      color: #c8a84e;
+    }
+
+    .footer {
+      text-align: center;
+      padding: 60px 24px;
+      border-top: 1px solid #2a2a2a;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 32px;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+    }
+    .footer-links a {
+      font-size: 14px;
+      color: #8a8578;
+    }
+    .footer-copy {
+      font-size: 12px;
+      color: #8a8578;
+    }
+
+    @media (max-width: 600px) {
+      .hero { padding: 60px 20px 40px; }
+      .hero-logo { font-size: 40px; }
+      .hero-headline { font-size: 24px; }
+      .hero-sub { font-size: 16px; }
+    }
+  </style>
+</head>
+<body>
+  <section class="hero">
+    <div class="hero-logo">Spinglish</div>
+    <div class="hero-tagline">Curated Linguistic Mastery</div>
+    <h1 class="hero-headline">AIと一緒に、<br>英語で話す力を磨こう</h1>
+    <p class="hero-sub">日本語を英語に翻訳する音声練習アプリ。<br>AIがあなたの発音・文法・自然さをリアルタイム採点。</p>
+    <a href="https://apps.apple.com/app/spinglish/id6761403115" class="hero-cta">App Storeでダウンロード</a>
+  </section>
+
+  <section class="features">
+    <div class="feature-card">
+      <div class="feature-icon">🗣</div>
+      <div class="feature-title">音声で練習</div>
+      <div class="feature-desc">マイクに向かって英語を話すだけ。音声認識であなたの英語をテキスト化し、AIが即座に採点します。</div>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">📝</div>
+      <div class="feature-title">AI添削</div>
+      <div class="feature-desc">発音・文法・自然さの3軸で100点満点の採点。具体的な添削と、ネイティブが使う自然な表現を提案。</div>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">📚</div>
+      <div class="feature-title">5カテゴリ × 5レベル</div>
+      <div class="feature-desc">日常会話・旅行・ビジネス・技術・ニュース社会の5カテゴリ、超初級からネイティブ級まで。2,500問収録。</div>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">❤️</div>
+      <div class="feature-title">お気に入り復習</div>
+      <div class="feature-desc">間違えた問題をお気に入りに保存して、いつでも復習。カテゴリ別に管理できます。</div>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🎯</div>
+      <div class="feature-title">セッション分析</div>
+      <div class="feature-desc">5問1セッション完了後、AIがあなたの弱点を分析して具体的なアドバイスを提供。</div>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🔔</div>
+      <div class="feature-title">練習リマインダー</div>
+      <div class="feature-desc">毎日の練習を忘れない。好きな時間に通知でリマインド。継続が力になります。</div>
+    </div>
+  </section>
+
+  <section class="plans">
+    <h2>プラン</h2>
+    <div class="plans-grid">
+      <div class="plan-card">
+        <div class="plan-name">Free</div>
+        <div class="plan-price">無料</div>
+        <div class="plan-period">&nbsp;</div>
+        <ul class="plan-features">
+          <li>1日1セッション</li>
+          <li>全カテゴリ・全レベル</li>
+          <li>お気に入り保存</li>
+          <li>AI採点・添削</li>
+        </ul>
+      </div>
+      <div class="plan-card popular">
+        <div class="plan-name">Standard</div>
+        <div class="plan-price">¥700<span style="font-size:14px;color:#8a8578">/月</span></div>
+        <div class="plan-period">週額 ¥200</div>
+        <ul class="plan-features">
+          <li>1日5セッション</li>
+          <li>全カテゴリ・全レベル</li>
+          <li>お気に入り保存</li>
+          <li>AI採点・添削</li>
+          <li>AIセッションアドバイス</li>
+        </ul>
+      </div>
+      <div class="plan-card">
+        <div class="plan-name">Advanced</div>
+        <div class="plan-price">¥1,000<span style="font-size:14px;color:#8a8578">/月</span></div>
+        <div class="plan-period">週額 ¥300</div>
+        <ul class="plan-features">
+          <li>1日10セッション</li>
+          <li>全カテゴリ・全レベル</li>
+          <li>お気に入り保存</li>
+          <li>AI採点・添削</li>
+          <li>AIセッションアドバイス</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-links">
+      <a href="privacy.html">プライバシーポリシー</a>
+      <a href="terms.html">利用規約</a>
+      <a href="mailto:support@spinglish.app">お問い合わせ</a>
+    </div>
+    <div class="footer-copy">&copy; 2026 Spinglish. All rights reserved.</div>
+  </footer>
+</body>
+</html>
