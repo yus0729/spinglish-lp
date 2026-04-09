@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Spinglish - AI英会話練習アプリ</title>
+  <link rel="icon" type="image/png" href="favicon.png">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #0a0a0a;
+      color: #f0ede6;
+      line-height: 1.8;
+    }
+    a { color: #c8a84e; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    img { max-width: 100%; }
+
+    /* Hero */
+    .hero {
+      position: relative;
+      min-height: 90vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 80px 24px;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background: url('https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=1400&q=80') center/cover;
+      filter: brightness(0.25);
+    }
+    .hero-content {
+      position: relative;
+      max-width: 700px;
+    }
+    .hero-logo {
+      font-family: 'Times New Roman', Georgia, serif;
+      font-size: 56px;
+      font-weight: 700;
+      font-style: italic;
+      color: #c8a84e;
+      margin-bottom: 24px;
+    }
+    .hero-headline {
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 20px;
+      line-height: 1.5;
+    }
+    .hero-sub {
+      font-size: 16px;
+      color: #bbb;
+      margin-bottom: 40px;
+      line-height: 1.8;
+    }
+    .hero-cta {
+      display: inline-block;
+      transition: opacity 0.2s;
+    }
+    .hero-cta:hover { opacity: 0.85; }
+    .hero-cta img {
+      height: 48px;
+      width: auto;
+    }
+
+    /* Story */
+    .story {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 80px 24px;
+    }
+    .story-section {
+      margin-bottom: 48px;
+    }
+    .story-section p {
+      font-size: 16px;
+      color: #ccc;
+      margin-bottom: 16px;
+    }
+    .story-highlight {
+      font-size: 20px;
+      font-weight: 700;
+      color: #f0ede6;
+      border-left: 3px solid #c8a84e;
+      padding-left: 20px;
+      margin: 32px 0;
+      line-height: 1.6;
+    }
+    .story-question {
+      text-align: center;
+      font-size: 22px;
+      font-weight: 700;
+      color: #c8a84e;
+      margin: 48px 0;
+    }
+
+    /* Pain image section */
+    .pain-visual {
+      position: relative;
+      margin: 48px 0;
+      border-radius: 16px;
+      overflow: hidden;
+    }
+    .pain-visual img {
+      width: 100%;
+      display: block;
+      filter: brightness(0.5);
+    }
+    .pain-visual-text {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+    .pain-visual-text p {
+      font-size: 24px;
+      font-weight: 700;
+      color: #fff;
+      text-align: center;
+      line-height: 1.6;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.5);
+    }
+
+    /* Solution */
+    .solution {
+      background: #141414;
+      padding: 80px 24px;
+    }
+    .solution-inner {
+      max-width: 720px;
+      margin: 0 auto;
+    }
+    .solution h2 {
+      font-size: 28px;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 16px;
+    }
+    .solution-sub {
+      text-align: center;
+      font-size: 16px;
+      color: #8a8578;
+      margin-bottom: 48px;
+    }
+
+    /* Features */
+    .features {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 80px 24px;
+    }
+    .features h2 {
+      font-size: 28px;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 48px;
+    }
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 24px;
+    }
+    .feature-card {
+      background: #141414;
+      border: 1px solid #2a2a2a;
+      border-radius: 16px;
+      padding: 32px;
+    }
+    .feature-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      background: #1e1e1e;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 16px;
+    }
+    .feature-icon svg {
+      width: 24px;
+      height: 24px;
+      stroke: #c8a84e;
+      fill: none;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    .feature-title {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .feature-desc {
+      font-size: 14px;
+      color: #8a8578;
+      line-height: 1.7;
+    }
+
+    /* How it works */
+    .how {
+      background: #141414;
+      padding: 80px 24px;
+    }
+    .how-inner {
+      max-width: 720px;
+      margin: 0 auto;
+    }
+    .how h2 {
+      font-size: 28px;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 48px;
+    }
+    .how-step {
+      display: flex;
+      gap: 20px;
+      margin-bottom: 32px;
+      align-items: flex-start;
+    }
+    .how-num {
+      width: 40px;
+      height: 40px;
+      border-radius: 20px;
+      background: #c8a84e;
+      color: #0a0a0a;
+      font-size: 18px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .how-text h3 {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+    .how-text p {
+      font-size: 14px;
+      color: #8a8578;
+    }
+
+    /* Plans */
+    .plans {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 80px 24px;
+      text-align: center;
+    }
+    .plans h2 {
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+    .plans-sub {
+      font-size: 16px;
+      color: #8a8578;
+      margin-bottom: 40px;
+    }
+    .plans-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+    .plan-card {
+      background: #141414;
+      border: 1px solid #2a2a2a;
+      border-radius: 16px;
+      padding: 32px;
+      text-align: left;
+    }
+    .plan-card.popular { border-color: #c8a84e; position: relative; }
+    .plan-badge {
+      position: absolute;
+      top: -10px;
+      right: 20px;
+      background: #c8a84e;
+      color: #0a0a0a;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 6px;
+    }
+    .plan-name {
+      font-family: 'Times New Roman', Georgia, serif;
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .plan-price {
+      font-size: 32px;
+      font-weight: 700;
+      color: #c8a84e;
+      margin-bottom: 4px;
+    }
+    .plan-period {
+      font-size: 14px;
+      color: #8a8578;
+      margin-bottom: 20px;
+    }
+    .plan-features { list-style: none; }
+    .plan-features li {
+      font-size: 14px;
+      color: #f0ede6;
+      padding: 6px 0;
+    }
+    .plan-features li::before { content: ''; display: inline-block; width: 16px; height: 16px; margin-right: 8px; vertical-align: middle; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23c8a84e' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'%3E%3C/polyline%3E%3C/svg%3E") center/contain no-repeat; }
+
+    /* CTA */
+    .cta {
+      text-align: center;
+      padding: 80px 24px;
+      background: linear-gradient(180deg, #0a0a0a 0%, #141414 100%);
+    }
+    .cta h2 {
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+    .cta p {
+      font-size: 16px;
+      color: #8a8578;
+      margin-bottom: 32px;
+    }
+
+    /* Footer */
+    .footer {
+      text-align: center;
+      padding: 40px 24px;
+      border-top: 1px solid #2a2a2a;
+    }
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 32px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+    .footer-links a { font-size: 14px; color: #8a8578; }
+    .footer-copy { font-size: 12px; color: #8a8578; }
+
+    @media (max-width: 600px) {
+      .hero { min-height: 80vh; padding: 60px 20px; }
+      .hero-logo { font-size: 40px; }
+      .hero-headline { font-size: 22px; }
+      .pain-visual-text p { font-size: 18px; }
+      .story-highlight { font-size: 17px; }
+      .story-question { font-size: 19px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-content">
+      <div class="hero-logo">Spinglish</div>
+      <h1 class="hero-headline">「言いたいことが、英語で出てこない」<br>を、なくす。</h1>
+      <p class="hero-sub">とにかく話す。口に出す。<br>Speaking + English → Spinglish</p>
+      <a href="https://apps.apple.com/app/spinglish/id6761403115" class="hero-cta"><img src="White_lockup/SVG/Download_on_the_App_Store_Badge_JP_RGB_wht_100317.svg" alt="App Storeからダウンロード"></a>
+    </div>
+  </section>
+
+  <!-- Story -->
+  <section class="story">
+    <div class="story-section">
+      <p>海外旅行で、レストランで、ホテルのフロントで。</p>
+      <p>英語が喋れないといけない場面に出くわして、「ちゃんと勉強しよう」と思った。</p>
+      <p>帰国してオンライン英会話を始めてみた。</p>
+    </div>
+
+    <div class="story-section">
+      <p>相手が言っていることは、なんとなくわかる気がする。</p>
+      <p>でも、全部わかるわけじゃない。</p>
+      <p>そして何よりも――</p>
+    </div>
+
+    <div class="pain-visual">
+      <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=1200&q=80" alt="">
+      <div class="pain-visual-text">
+        <p>自分の言いたいことが、<br>英語で出てこない。</p>
+      </div>
+    </div>
+
+    <div class="story-section">
+      <p>会話が止まった。沈黙が続く。</p>
+      <p>オンライン英会話の講師が聞いてくる。<br>「通信状況が悪いのかな？」</p>
+      <p>そんなんじゃない。</p>
+    </div>
+
+    <div class="story-highlight">
+      「読める」と「喋れる」の間にある、大きな溝。
+    </div>
+
+    <div class="story-section">
+      <p>知識はあるのに、声が出ない。そのもどかしさを解消するために、このアプリは生まれました。</p>
+      <p>従来の英会話サービスに感じていた違和感、高額な一括払いや、デバイスを跨ぐ煩雑な手続き。<br>本質的でない機能へのコスト負担。それらすべてを「不要なノイズ」として排除しました。</p>
+    </div>
+
+    <div class="story-highlight">
+      自分に最適なサイズで、対話を。
+    </div>
+
+    <div class="story-section">
+      <p>StandardからAdvancedまで、必要な期間だけ。<br>すべてのプロセスをアプリ内で完結させる、ストレスフリーな設計。</p>
+      <p>私たちは「<strong>とにかく口に出す</strong>」という原点に立ち返り、あなたの理想的なアウトプットの場を追求し続けます。</p>
+    </div>
+  </section>
+
+  <!-- Solution -->
+  <section class="solution">
+    <div class="solution-inner">
+      <h2>Spinglishの答え</h2>
+      <p class="solution-sub">日本語を見て、英語で声に出す。それだけ。シンプルだけど、最も効果的。</p>
+
+      <div class="how-step">
+        <div class="how-num">1</div>
+        <div class="how-text">
+          <h3>日本語のお題が表示される</h3>
+          <p>5カテゴリ・5レベル、豊富な問題数であなたに合った難易度で練習。</p>
+        </div>
+      </div>
+      <div class="how-step">
+        <div class="how-num">2</div>
+        <div class="how-text">
+          <h3>英語で声に出して翻訳する</h3>
+          <p>マイクに向かって話すだけ。タイピングは不要。実際に「口に出す」ことが大切。</p>
+        </div>
+      </div>
+      <div class="how-step">
+        <div class="how-num">3</div>
+        <div class="how-text">
+          <h3>AIが即座に採点・添削</h3>
+          <p>伝わりやすさ・文法・自然さの3軸でS〜Dの5段階採点。ネイティブが使う自然な表現も提案。</p>
+        </div>
+      </div>
+      <div class="how-step">
+        <div class="how-num">4</div>
+        <div class="how-text">
+          <h3>弱点を分析してアドバイス</h3>
+          <p>5問1セッション完了後、AIがあなたの傾向を分析して具体的な改善ポイントを提示。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section class="features">
+    <h2>機能</h2>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
+        </div>
+        <div class="feature-title">音声で練習</div>
+        <div class="feature-desc">マイクに向かって英語を話すだけ。音声認識であなたの英語をテキスト化し、AIが即座に採点。</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+        </div>
+        <div class="feature-title">豊富な問題数</div>
+        <div class="feature-desc">日常会話・旅行・ビジネス・技術・ニュース社会の5カテゴリ、超初級からネイティブ級まで。</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        </div>
+        <div class="feature-title">お気に入り復習</div>
+        <div class="feature-desc">間違えた問題をお気に入りに保存して、いつでも復習。カテゴリ別に管理。</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        </div>
+        <div class="feature-title">単語タップ辞書</div>
+        <div class="feature-desc">わからない英単語をタップするだけで意味と発音を確認。学習を止めずにその場で解決。</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        </div>
+        <div class="feature-title">5問で完結</div>
+        <div class="feature-desc">1セッションたった5問。忙しい日でもスキマ時間でサクッと練習できる。</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+        </div>
+        <div class="feature-title">練習リマインダー</div>
+        <div class="feature-desc">毎日の練習を忘れない。好きな時間に通知でリマインド。継続が力になる。</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Plans -->
+  <section class="plans">
+    <h2>プラン</h2>
+    <p class="plans-sub">まずは1セッション無料でお試し。気に入ったらプランを選択。</p>
+    <div class="plans-grid">
+      <div class="plan-card popular">
+        <div class="plan-badge">人気</div>
+        <div class="plan-name">Standard</div>
+        <div class="plan-price">&#165;1,000<span style="font-size:14px;color:#8a8578">/月</span></div>
+        <div class="plan-period">週額 &#165;300</div>
+        <ul class="plan-features">
+          <li>1日5セッション</li>
+          <li>全カテゴリ・全レベル</li>
+          <li>お気に入り保存</li>
+          <li>AI採点・添削</li>
+          <li>AIセッションアドバイス</li>
+        </ul>
+      </div>
+      <div class="plan-card">
+        <div class="plan-name">Advanced</div>
+        <div class="plan-price">&#165;1,500<span style="font-size:14px;color:#8a8578">/月</span></div>
+        <div class="plan-period">週額 &#165;400</div>
+        <ul class="plan-features">
+          <li>1日10セッション</li>
+          <li>全カテゴリ・全レベル</li>
+          <li>お気に入り保存</li>
+          <li>AI採点・添削</li>
+          <li>AIセッションアドバイス</li>
+          <li>英単語練習（200語・イラスト付き）</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta">
+    <h2>英語を「口に出す」習慣を始めよう</h2>
+    <p>まずは1セッション無料でお試し。</p>
+    <a href="https://apps.apple.com/app/spinglish/id6761403115" class="hero-cta"><img src="White_lockup/SVG/Download_on_the_App_Store_Badge_JP_RGB_wht_100317.svg" alt="App Storeからダウンロード"></a>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-links">
+      <a href="privacy.html">プライバシーポリシー</a>
+      <a href="terms.html">利用規約</a>
+      <a href="tokushoho.html">特定商取引法に基づく表記</a>
+      <a href="contact.html">お問い合わせ</a>
+    </div>
+    <div class="footer-copy">&copy; 2026 Spinglish. All rights reserved.</div>
+  </footer>
+
+</body>
+</html>
