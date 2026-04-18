@@ -14,6 +14,21 @@
 
     gtag('config', 'AW-18096982916');
   </script>
+  <!-- Event snippet for 離脱クリック conversion page -->
+  <script>
+  function gtag_report_conversion(url) {
+    var callback = function () {
+      if (typeof(url) != 'undefined') {
+        window.location = url;
+      }
+    };
+    gtag('event', 'conversion', {
+        'send_to': 'AW-18096982916/DNqaCIPZn54cEISXqLVD',
+        'event_callback': callback
+    });
+    return false;
+  }
+  </script>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
@@ -690,7 +705,7 @@
   <!-- Header -->
   <header class="site-header">
     <div class="header-logo">Spinglish</div>
-    <a href="https://apps.apple.com/app/spinglish/id6761403115" class="header-cta">App Storeでダウンロード</a>
+    <a href="https://apps.apple.com/app/spinglish/id6761403115" onclick="return gtag_report_conversion('https://apps.apple.com/app/spinglish/id6761403115');" class="header-cta">App Storeでダウンロード</a>
   </header>
 
   <!-- 1. Hero -->
@@ -709,7 +724,7 @@
         <span class="hero-badge">一人で気軽に練習</span>
       </div>
       <div class="hero-cta-area">
-        <a href="https://apps.apple.com/app/spinglish/id6761403115" class="hero-app-store"><img src="White_lockup/SVG/Download_on_the_App_Store_Badge_JP_RGB_wht_100317.svg" alt="App Storeからダウンロード"></a>
+        <a href="https://apps.apple.com/app/spinglish/id6761403115" onclick="return gtag_report_conversion('https://apps.apple.com/app/spinglish/id6761403115');" class="hero-app-store"><img src="White_lockup/SVG/Download_on_the_App_Store_Badge_JP_RGB_wht_100317.svg" alt="App Storeからダウンロード"></a>
       </div>
     </div>
     <div class="hero-visual">
@@ -994,7 +1009,7 @@
           <li>1セッション（3問）体験<br><span style="font-size:11px;color:#888">※1回限り</span></li>
           <li>AI採点・フィードバック</li>
         </ul>
-        <a href="https://apps.apple.com/app/spinglish/id6761403115" class="plan-cta plan-cta-secondary">無料で始める</a>
+        <a href="https://apps.apple.com/app/spinglish/id6761403115" onclick="return gtag_report_conversion('https://apps.apple.com/app/spinglish/id6761403115');" class="plan-cta plan-cta-secondary">無料で始める</a>
       </div>
       <div class="plan-card highlight">
         <div class="plan-name">Standard</div>
@@ -1010,7 +1025,7 @@
           <li>AIセッションアドバイス</li>
           <li>シャドーイング（AI評価 2回/日）</li>
         </ul>
-        <a href="https://apps.apple.com/app/spinglish/id6761403115" class="plan-cta plan-cta-primary">Standardではじめる</a>
+        <a href="https://apps.apple.com/app/spinglish/id6761403115" onclick="return gtag_report_conversion('https://apps.apple.com/app/spinglish/id6761403115');" class="plan-cta plan-cta-primary">Standardではじめる</a>
       </div>
       <div class="plan-card">
         <div class="plan-name">Advanced</div>
@@ -1027,7 +1042,7 @@
           <li>シャドーイング（AI評価 4回/日）</li>
           <li>英単語練習（200語・イラスト付き）</li>
         </ul>
-        <a href="https://apps.apple.com/app/spinglish/id6761403115" class="plan-cta plan-cta-secondary">Advancedではじめる</a>
+        <a href="https://apps.apple.com/app/spinglish/id6761403115" onclick="return gtag_report_conversion('https://apps.apple.com/app/spinglish/id6761403115');" class="plan-cta plan-cta-secondary">Advancedではじめる</a>
       </div>
     </div>
   </section>
@@ -1079,7 +1094,7 @@
       英語を勉強してきたのに話せない人も。<br>
       まずはここから始めてみてください。
     </p>
-    <a href="https://apps.apple.com/app/spinglish/id6761403115" class="btn-primary" style="font-size:16px;padding:16px 40px;">無料でSpinglishを試す</a>
+    <a href="https://apps.apple.com/app/spinglish/id6761403115" onclick="return gtag_report_conversion('https://apps.apple.com/app/spinglish/id6761403115');" class="btn-primary" style="font-size:16px;padding:16px 40px;">無料でSpinglishを試す</a>
     <p class="closing-note">App Storeですぐに始められます。</p>
   </section>
 
