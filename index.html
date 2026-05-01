@@ -508,6 +508,60 @@
       flex-direction: column;
     }
     .plan-card.highlight { border-color: #c8a84e; }
+    .plan-card.founders {
+      border-color: #c8a84e;
+      background: linear-gradient(180deg, rgba(200,168,78,0.10) 0%, #0a0a0a 60%);
+      position: relative;
+    }
+    .plan-card.popular { position: relative; }
+    .founders-badge {
+      position: absolute;
+      top: -12px;
+      left: 24px;
+      background: #c8a84e;
+      color: #0a0a0a;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 4px 12px;
+      border-radius: 12px;
+      letter-spacing: 1.5px;
+    }
+    .popular-badge {
+      position: absolute;
+      top: -12px;
+      right: 24px;
+      background: #1e1e1e;
+      color: #c8a84e;
+      border: 1px solid #c8a84e;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 4px 12px;
+      border-radius: 12px;
+    }
+    .plan-trial {
+      display: inline-block;
+      background: rgba(200,168,78,0.12);
+      border: 1px solid rgba(200,168,78,0.3);
+      color: #c8a84e;
+      font-size: 12px;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 8px;
+      margin-bottom: 14px;
+    }
+    .plan-perpetual {
+      font-size: 12px;
+      color: #c8a84e;
+      font-weight: 600;
+      margin-bottom: 14px;
+    }
+    .plan-note {
+      font-size: 11px;
+      color: #666;
+      margin-top: 14px;
+      text-align: center;
+      line-height: 1.6;
+    }
     .plan-name {
       font-family: 'Times New Roman', Georgia, serif;
       font-size: 20px;
@@ -719,9 +773,10 @@
         AIがその場で伝わりやすさ・文法・自然さをチェックし、言い換えまでフィードバックします。
       </p>
       <div class="hero-badges">
-        <span class="hero-badge">1回5問</span>
-        <span class="hero-badge">AIが即フィードバック</span>
-        <span class="hero-badge">一人で気軽に練習</span>
+        <span class="hero-badge">瞬間英訳</span>
+        <span class="hero-badge">シャドーイング</span>
+        <span class="hero-badge">英単語練習</span>
+        <span class="hero-badge">英語日記</span>
       </div>
       <div class="hero-cta-area">
         <a href="https://apps.apple.com/app/spinglish/id6761403115" onclick="return gtag_report_conversion('https://apps.apple.com/app/spinglish/id6761403115');" class="hero-app-store"><img src="White_lockup/SVG/Download_on_the_App_Store_Badge_JP_RGB_wht_100317.svg" alt="App Storeからダウンロード"></a>
@@ -733,7 +788,69 @@
     </div>
   </section>
 
-  <!-- 2. Target Users -->
+  <!-- 2. Plans (CV-focused, near top) -->
+  <section class="plans">
+    <p class="section-label">Plans</p>
+    <h2>料金プラン</h2>
+    <p class="plans-intro">StandardとAdvancedは初回3日間無料でお試しいただけます。</p>
+    <p class="plans-flex">解約はiPhoneの「設定」→「サブスクリプション」からいつでも可能です。</p>
+    <div class="plans-grid">
+      <div class="plan-card founders">
+        <div class="founders-badge">&#9733; FOUNDERS</div>
+        <div class="plan-name">Founders</div>
+        <div class="plan-who">最初の300人だけの特別プラン<br>Advancedの全機能が永続価格で</div>
+        <div class="plan-price">&#165;700<span>/月（永続）</span></div>
+        <div class="plan-perpetual">価格は契約中ずっと&#165;700/月</div>
+        <ul class="plan-features">
+          <li>Advancedの全機能</li>
+          <li>1日10セッション</li>
+          <li>シャドーイング（AI評価 4回/日）</li>
+          <li>英単語練習（200語・イラスト付き）</li>
+          <li>英語日記（1日1回）</li>
+        </ul>
+        <a href="https://apps.apple.com/app/spinglish/id6761403115" onclick="return gtag_report_conversion('https://apps.apple.com/app/spinglish/id6761403115');" class="plan-cta plan-cta-primary">Foundersではじめる</a>
+        <p class="plan-note">※解約すると以後Foundersプランには再加入できません</p>
+      </div>
+      <div class="plan-card popular">
+        <div class="popular-badge">人気</div>
+        <div class="plan-name">Standard</div>
+        <div class="plan-who">毎日少しずつ練習して、スピーキング習慣をつけたい人向け</div>
+        <div class="plan-price">&#165;1,000<span>/月</span></div>
+        <div class="plan-sub-price">週額 &#165;300</div>
+        <div class="plan-trial">&#127873; 初回3日間無料</div>
+        <ul class="plan-features">
+          <li>1日5セッション</li>
+          <li>全カテゴリ・全レベル</li>
+          <li>お気に入り保存</li>
+          <li>AI採点・添削</li>
+          <li>AIセッションアドバイス</li>
+          <li>シャドーイング（AI評価 2回/日）</li>
+          <li>英語日記（1日1回）</li>
+        </ul>
+        <a href="https://apps.apple.com/app/spinglish/id6761403115" onclick="return gtag_report_conversion('https://apps.apple.com/app/spinglish/id6761403115');" class="plan-cta plan-cta-secondary">3日間無料で始める</a>
+      </div>
+      <div class="plan-card">
+        <div class="plan-name">Advanced</div>
+        <div class="plan-who">より多く練習して、短期間でしっかり伸ばしたい人向け</div>
+        <div class="plan-price">&#165;1,500<span>/月</span></div>
+        <div class="plan-sub-price">週額 &#165;400</div>
+        <div class="plan-trial">&#127873; 初回3日間無料</div>
+        <ul class="plan-features">
+          <li>1日10セッション</li>
+          <li>全カテゴリ・全レベル</li>
+          <li>お気に入り保存</li>
+          <li>AI採点・添削</li>
+          <li>AIセッションアドバイス</li>
+          <li>シャドーイング（AI評価 4回/日）</li>
+          <li>英単語練習（200語・イラスト付き）</li>
+          <li>英語日記（1日1回）</li>
+        </ul>
+        <a href="https://apps.apple.com/app/spinglish/id6761403115" onclick="return gtag_report_conversion('https://apps.apple.com/app/spinglish/id6761403115');" class="plan-cta plan-cta-secondary">3日間無料で始める</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. Target Users -->
   <section class="target">
     <p class="section-label" style="text-align:center">For you</p>
     <h2>こんな人に、Spinglishは向いています。</h2>
@@ -765,7 +882,7 @@
     </div>
   </section>
 
-  <!-- 3. Steps -->
+  <!-- 4. Steps -->
   <section class="steps">
     <div class="steps-inner">
       <p class="section-label" style="text-align:center">How it works</p>
@@ -788,128 +905,6 @@
         </div>
       </div>
     </div>
-  </section>
-
-  <!-- 4. Feedback Example -->
-  <section class="feedback">
-    <p class="section-label" style="text-align:center">Feedback</p>
-    <h2>話して終わりではなく、<br>毎回フィードバックが返ってきます。</h2>
-
-    <div class="fb-card">
-      <div class="fb-label">お題</div>
-      <div class="fb-text">週末は家でゆっくりしたいです。</div>
-    </div>
-
-    <div class="fb-card">
-      <div class="fb-label">あなたの回答</div>
-      <div class="fb-text fb-text-muted">"I want to relax at home in weekend."</div>
-    </div>
-
-    <div class="fb-card">
-      <div class="fb-label">AI採点</div>
-      <div class="score-row">
-        <div class="score-pill">
-          <div class="score-pill-label">伝わりやすさ</div>
-          <div class="score-pill-value score-a">A</div>
-        </div>
-        <div class="score-pill">
-          <div class="score-pill-label">文法</div>
-          <div class="score-pill-value score-b">B</div>
-        </div>
-        <div class="score-pill">
-          <div class="score-pill-label">自然さ</div>
-          <div class="score-pill-value score-b">B</div>
-        </div>
-      </div>
-      <div class="fb-correction">
-        <div class="fb-correction-label">模範解答</div>
-        <div class="fb-correction-text">I want to relax at home this weekend.</div>
-      </div>
-      <div class="fb-correction" style="margin-top:8px">
-        <div class="fb-correction-label">ネイティブならこう言う</div>
-        <div class="fb-correction-text">I just want to take it easy at home this weekend.</div>
-      </div>
-      <div class="fb-correction" style="margin-top:8px">
-        <div class="fb-correction-label">改善ポイント</div>
-        <div class="fb-correction-text">"in weekend"は不自然です。特定の週末を指す場合は"this weekend"を使いましょう。また"take it easy"はネイティブがよく使うリラックスの表現です。</div>
-      </div>
-    </div>
-
-    <p class="fb-note">
-      「どこが伝わったか」「どこが不自然か」「どう言い換えると自然か」<br>
-      毎回の発話が学びになるから、続けるほど話しやすくなります。
-    </p>
-
-  </section>
-
-  <!-- 4.5 Shadowing -->
-  <section class="feedback">
-    <p class="section-label" style="text-align:center">Shadowing</p>
-    <h2>シャドーイングで、<br>リスニングと発音も鍛えられます。</h2>
-
-    <div class="fb-card">
-      <div class="fb-label">シャドーイングとは？</div>
-      <div class="fb-text">お手本の英語音声を聴きながら、すぐ後を追って声に出すトレーニング。<br>リスニング力・発音・英語のリズム感が自然と身につきます。</div>
-    </div>
-
-    <div class="fb-card">
-      <div class="fb-label">Spinglishのシャドーイング</div>
-      <div class="score-row">
-        <div class="score-pill">
-          <div class="score-pill-label">お手本音声</div>
-          <div class="score-pill-value score-a">&#x1f50a;</div>
-        </div>
-        <div class="score-pill">
-          <div class="score-pill-label">あなたの音声</div>
-          <div class="score-pill-value score-b">&#x1f3a4;</div>
-        </div>
-        <div class="score-pill">
-          <div class="score-pill-label">AI評価</div>
-          <div class="score-pill-value score-s">AI</div>
-        </div>
-      </div>
-    </div>
-
-    <p class="fb-note">
-      お手本を聴いて声に出すだけ。AIが再現精度を評価し、<br>
-      具体的にどこが違ったか、発音のアドバイスまでフィードバックします。
-    </p>
-
-  </section>
-
-  <!-- 4.6 Vocab -->
-  <section class="feedback">
-    <p class="section-label" style="text-align:center">Vocab</p>
-    <h2>英単語は、イラストで<br>イメージのまま覚える。</h2>
-
-    <div class="fb-card">
-      <div class="fb-label">英単語練習とは？</div>
-      <div class="fb-text">日本語訳ではなく、イラストと英語例文から意味をつかむ単語学習。<br>「日本語→英語」の変換を介さず、英語のまま使える単語が増えていきます。</div>
-    </div>
-
-    <div class="fb-card">
-      <div class="fb-label">Spinglishの英単語練習</div>
-      <div class="score-row">
-        <div class="score-pill">
-          <div class="score-pill-label">収録単語</div>
-          <div class="score-pill-value score-s">200</div>
-        </div>
-        <div class="score-pill">
-          <div class="score-pill-label">学習形式</div>
-          <div class="score-pill-value score-a">&#x1f5bc;&#xfe0f;</div>
-        </div>
-        <div class="score-pill">
-          <div class="score-pill-label">使い方</div>
-          <div class="score-pill-value score-b">例文</div>
-        </div>
-      </div>
-    </div>
-
-    <p class="fb-note">
-      イラスト・例文・音声で、単語を「使える形」で習得。<br>
-      瞬間英訳とあわせて、知っている単語を実際に話せる単語に変えていきます。
-    </p>
-
   </section>
 
   <!-- 5. Comparison -->
@@ -1002,7 +997,7 @@
     </div>
   </section>
 
-  <!-- 6. Retention -->
+  <!-- 7. Retention -->
   <section class="retention">
     <div class="retention-text">
       <p class="section-label">Keep going</p>
@@ -1029,60 +1024,7 @@
     </div>
   </section>
 
-  <!-- 7. Plans -->
-  <section class="plans">
-    <p class="section-label">Plans</p>
-    <h2>まずは無料で。必要になったら、もっと深く。</h2>
-    <p class="plans-intro">自分のペースに合わせて始められます。</p>
-    <p class="plans-flex">年間契約の縛りはありません。週単位でも始められるので、<br>必要なときだけ使って、いつでも切り替えられます。</p>
-    <div class="plans-grid">
-      <div class="plan-card">
-        <div class="plan-name">Free</div>
-        <div class="plan-who">まずは試してみたい人向け</div>
-        <div class="plan-free-price">&#165;0</div>
-        <ul class="plan-features">
-          <li>1セッション（3問）体験<br><span style="font-size:11px;color:#888">※1回限り</span></li>
-          <li>AI採点・フィードバック</li>
-        </ul>
-        <a href="https://apps.apple.com/app/spinglish/id6761403115" onclick="return gtag_report_conversion('https://apps.apple.com/app/spinglish/id6761403115');" class="plan-cta plan-cta-secondary">無料で始める</a>
-      </div>
-      <div class="plan-card highlight">
-        <div class="plan-name">Standard</div>
-        <div class="plan-who">毎日少しずつ練習して、スピーキング習慣をつけたい人向け</div>
-        <div class="plan-price">&#165;1,000<span>/月</span></div>
-        <div class="plan-sub-price">週額 &#165;300</div>
-        <div class="plan-daily">1日あたり約33円</div>
-        <ul class="plan-features">
-          <li>1日5セッション</li>
-          <li>全カテゴリ・全レベル</li>
-          <li>お気に入り保存</li>
-          <li>AI採点・添削</li>
-          <li>AIセッションアドバイス</li>
-          <li>シャドーイング（AI評価 2回/日）</li>
-        </ul>
-        <a href="https://apps.apple.com/app/spinglish/id6761403115" onclick="return gtag_report_conversion('https://apps.apple.com/app/spinglish/id6761403115');" class="plan-cta plan-cta-primary">Standardではじめる</a>
-      </div>
-      <div class="plan-card">
-        <div class="plan-name">Advanced</div>
-        <div class="plan-who">より多く練習して、短期間でしっかり伸ばしたい人向け</div>
-        <div class="plan-price">&#165;1,500<span>/月</span></div>
-        <div class="plan-sub-price">週額 &#165;400</div>
-        <div class="plan-daily">1日あたり約50円</div>
-        <ul class="plan-features">
-          <li>1日10セッション</li>
-          <li>全カテゴリ・全レベル</li>
-          <li>お気に入り保存</li>
-          <li>AI採点・添削</li>
-          <li>AIセッションアドバイス</li>
-          <li>シャドーイング（AI評価 4回/日）</li>
-          <li>英単語練習（200語・イラスト付き）</li>
-        </ul>
-        <a href="https://apps.apple.com/app/spinglish/id6761403115" onclick="return gtag_report_conversion('https://apps.apple.com/app/spinglish/id6761403115');" class="plan-cta plan-cta-secondary">Advancedではじめる</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- 8. FAQ -->
+  <!-- 8. FAQ (Plans is now near top, this section number kept for consistency) -->
   <section class="faq">
     <p class="section-label" style="text-align:center">FAQ</p>
     <h2>よくある質問</h2>
@@ -1114,12 +1056,17 @@
 
     <div class="faq-item">
       <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Q. スピーキング以外の練習もできますか？</div>
-      <div class="faq-a">はい。お手本音声に続いて声に出す「シャドーイング」と、イラストで覚える「英単語練習（200語）」も用意しています。瞬間英訳とあわせて、リスニング・発音・語彙までバランスよく鍛えられます。</div>
+      <div class="faq-a">はい。お手本音声に続いて声に出す「シャドーイング」、イラストで覚える「英単語練習（200語）」、その日の出来事を英語で書く「英語日記」を用意しています。瞬間英訳とあわせて、リスニング・発音・語彙・ライティングまでバランスよく鍛えられます。</div>
     </div>
 
     <div class="faq-item">
-      <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Q. 無料でどこまで使えますか？</div>
-      <div class="faq-a">登録後すぐに1セッション（3問）を無料で体験できます。AI採点・フィードバックもすべて含まれているので、アプリの流れを十分に確認できます。</div>
+      <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Q. 無料で試せますか？</div>
+      <div class="faq-a">StandardプランとAdvancedプランは、初回3日間無料でお試しいただけます。期間中はすべての機能を利用でき、自動更新前にいつでも解約できます。</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Q. Foundersプランとは何ですか？</div>
+      <div class="faq-a">最初の300人限定の特別プランです。Advancedと同じ全機能を月¥700（永続価格）でずっとご利用いただけます。価格は契約中ずっと変わりません。なお、一度解約すると以後Foundersプランには再加入できませんのでご注意ください。</div>
     </div>
   </section>
 
@@ -1134,7 +1081,7 @@
       英語を勉強してきたのに話せない人も。<br>
       まずはここから始めてみてください。
     </p>
-    <a href="https://apps.apple.com/app/spinglish/id6761403115" onclick="return gtag_report_conversion('https://apps.apple.com/app/spinglish/id6761403115');" class="btn-primary" style="font-size:16px;padding:16px 40px;">無料でSpinglishを試す</a>
+    <a href="https://apps.apple.com/app/spinglish/id6761403115" onclick="return gtag_report_conversion('https://apps.apple.com/app/spinglish/id6761403115');" class="btn-primary" style="font-size:16px;padding:16px 40px;">3日間無料で始める</a>
     <p class="closing-note">App Storeですぐに始められます。</p>
   </section>
 
