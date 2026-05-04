@@ -110,60 +110,115 @@
 
     /* ===== 1. Hero ===== */
     .hero {
+      position: relative;
       padding: 120px 24px 80px;
       max-width: 1080px;
       margin: 0 auto;
       display: flex;
       align-items: center;
-      gap: 48px;
-    }
-    .hero-text { flex: 1; min-width: 0; }
-    .hero-visual {
-      flex: 0 0 340px;
-      display: flex;
-      gap: 12px;
-      align-items: flex-start;
-    }
-    .hero-screen {
-      width: 160px;
-      border-radius: 20px;
-      box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+      gap: 56px;
       overflow: hidden;
-      background: #0a0a0a;
     }
-    .hero-screen img {
-      width: 100%;
-      display: block;
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 60px;
+      right: -120px;
+      width: 520px;
+      height: 520px;
+      background: radial-gradient(circle, rgba(200,168,78,0.18) 0%, rgba(200,168,78,0) 65%);
+      filter: blur(20px);
+      pointer-events: none;
+      z-index: 0;
     }
-    .hero-screen-topic img {
-      margin-top: -15%;
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -160px;
+      left: -160px;
+      width: 460px;
+      height: 460px;
+      background: radial-gradient(circle, rgba(91,168,214,0.10) 0%, rgba(91,168,214,0) 65%);
+      filter: blur(20px);
+      pointer-events: none;
+      z-index: 0;
     }
-    .hero-screen-feedback img {
-      margin-top: -12%;
-      margin-bottom: -8%;
+    .hero-text { flex: 1; min-width: 0; position: relative; z-index: 1; }
+    .hero-visual {
+      flex: 0 0 360px;
+      position: relative;
+      z-index: 1;
     }
-    .hero-screen:nth-child(2) { margin-top: 32px; }
     .hero-headline {
-      font-size: 32px;
-      font-weight: 700;
-      line-height: 1.5;
-      margin-bottom: 24px;
+      font-size: 36px;
+      font-weight: 800;
+      line-height: 1.4;
+      margin-bottom: 20px;
+      letter-spacing: -0.01em;
+    }
+    .hero-headline .accent {
+      color: #c8a84e;
+      position: relative;
+      display: inline-block;
+    }
+    .hero-headline .accent::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 2px;
+      height: 8px;
+      background: rgba(200,168,78,0.18);
+      z-index: -1;
+      border-radius: 4px;
     }
     .hero-sub {
       font-size: 15px;
       color: #bbb;
       line-height: 2;
-      margin-bottom: 24px;
+      margin-bottom: 28px;
     }
+
+    /* Stat bar */
+    .hero-stats {
+      display: flex;
+      gap: 0;
+      margin-bottom: 28px;
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(200,168,78,0.18);
+      border-radius: 14px;
+      overflow: hidden;
+    }
+    .hero-stat {
+      flex: 1;
+      padding: 14px 12px;
+      text-align: center;
+      border-right: 1px solid rgba(255,255,255,0.05);
+    }
+    .hero-stat:last-child { border-right: none; }
+    .hero-stat-num {
+      font-size: 20px;
+      font-weight: 800;
+      color: #c8a84e;
+      line-height: 1.2;
+      margin-bottom: 2px;
+    }
+    .hero-stat-num span { font-size: 12px; font-weight: 600; color: #c8a84e; }
+    .hero-stat-label {
+      font-size: 10px;
+      color: #8a8578;
+      letter-spacing: 0.5px;
+    }
+
     .hero-badges {
       display: flex;
-      gap: 12px;
+      gap: 8px;
       flex-wrap: wrap;
-      margin-bottom: 32px;
+      margin-bottom: 28px;
     }
     .hero-badge {
-      background: rgba(200,168,78,0.1);
-      border: 1px solid rgba(200,168,78,0.25);
+      background: rgba(200,168,78,0.08);
+      border: 1px solid rgba(200,168,78,0.22);
       color: #c8a84e;
       font-size: 12px;
       font-weight: 600;
@@ -171,8 +226,137 @@
       border-radius: 20px;
     }
     .hero-cta-area { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
-    .hero-app-store img { height: 44px; width: auto; }
-    .hero-app-store:hover { opacity: 0.85; text-decoration: none; }
+    .hero-app-store {
+      display: inline-block;
+      transition: transform 0.2s, opacity 0.2s;
+    }
+    .hero-app-store img { height: 48px; width: auto; }
+    .hero-app-store:hover { opacity: 0.9; transform: translateY(-2px); text-decoration: none; }
+    .hero-cta-meta {
+      font-size: 12px;
+      color: #8a8578;
+      letter-spacing: 0.3px;
+    }
+    .hero-cta-meta strong { color: #c8a84e; font-weight: 700; }
+
+    /* Mock UI (replaces screenshots) */
+    .mock-card {
+      background: linear-gradient(180deg, #161616 0%, #0e0e0e 100%);
+      border: 1px solid #262626;
+      border-radius: 22px;
+      padding: 22px;
+      box-shadow: 0 24px 60px rgba(0,0,0,0.6), 0 0 0 1px rgba(200,168,78,0.06) inset;
+      position: relative;
+      transform: rotate(-1deg);
+      transition: transform 0.3s ease;
+    }
+    .mock-card:hover { transform: rotate(0deg) translateY(-4px); }
+    .mock-prompt-label {
+      font-size: 10px;
+      letter-spacing: 2px;
+      color: #8a8578;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .mock-prompt {
+      font-size: 14px;
+      color: #f0ede6;
+      font-weight: 600;
+      line-height: 1.6;
+      padding-bottom: 16px;
+      margin-bottom: 16px;
+      border-bottom: 1px dashed #262626;
+    }
+    .mock-said-label {
+      font-size: 10px;
+      letter-spacing: 2px;
+      color: #5ba8d6;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .mock-mic {
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      background: #5ba8d6;
+      border-radius: 50%;
+      box-shadow: 0 0 0 0 rgba(91,168,214,0.6);
+      animation: pulse 1.8s infinite;
+    }
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(91,168,214,0.6); }
+      70% { box-shadow: 0 0 0 8px rgba(91,168,214,0); }
+      100% { box-shadow: 0 0 0 0 rgba(91,168,214,0); }
+    }
+    .mock-said {
+      font-size: 13px;
+      color: #d8d4c6;
+      line-height: 1.7;
+      font-style: italic;
+      margin-bottom: 18px;
+    }
+    .mock-scores {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+    .mock-score {
+      flex: 1;
+      background: #0a0a0a;
+      border: 1px solid #232323;
+      border-radius: 10px;
+      padding: 10px 6px;
+      text-align: center;
+    }
+    .mock-score-label {
+      font-size: 9px;
+      color: #8a8578;
+      letter-spacing: 0.5px;
+      margin-bottom: 4px;
+    }
+    .mock-score-grade {
+      font-size: 20px;
+      font-weight: 800;
+      line-height: 1;
+    }
+    .grade-s { color: #c8a84e; }
+    .grade-a { color: #7ec88a; }
+    .grade-b { color: #5ba8d6; }
+    .mock-fix {
+      background: rgba(200,168,78,0.08);
+      border-left: 2px solid #c8a84e;
+      border-radius: 6px;
+      padding: 10px 12px;
+      font-size: 12px;
+      color: #d8d4c6;
+      line-height: 1.6;
+    }
+    .mock-fix-label {
+      font-size: 9px;
+      letter-spacing: 1.5px;
+      color: #c8a84e;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+    .mock-fix s { color: #6a6a6a; text-decoration-color: rgba(200,80,80,0.6); }
+    .mock-fix b { color: #c8a84e; font-weight: 600; }
+    .mock-floating-badge {
+      position: absolute;
+      top: -14px;
+      right: -10px;
+      background: #c8a84e;
+      color: #0a0a0a;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      box-shadow: 0 8px 20px rgba(200,168,78,0.35);
+      transform: rotate(8deg);
+    }
 
     /* ===== 2. Target Users ===== */
     .target {
@@ -729,11 +913,15 @@
         gap: 40px;
         text-align: center;
       }
-      .hero-headline { font-size: 24px; }
-      .hero-visual { flex: none; justify-content: center; }
-      .hero-screen { width: 130px; }
+      .hero-headline { font-size: 26px; line-height: 1.5; }
+      .hero-visual { flex: none; width: 100%; max-width: 360px; align-self: center; }
+      .hero-stats { gap: 0; }
+      .hero-stat { padding: 12px 8px; }
+      .hero-stat-num { font-size: 17px; }
+      .hero-stat-label { font-size: 9px; }
       .hero-badges { justify-content: center; }
-      .hero-cta-area { justify-content: center; }
+      .hero-cta-area { justify-content: center; flex-direction: column; gap: 10px; }
+      .mock-card { transform: rotate(0); }
       .steps-grid {
         grid-template-columns: 1fr;
         gap: 32px;
@@ -766,12 +954,25 @@
   <section class="hero">
     <div class="hero-text">
       <p class="section-label">AI Speaking Practice</p>
-      <h1 class="hero-headline">英語は読めるのに、<br>口から出てこない人へ。</h1>
+      <h1 class="hero-headline">英語は読めるのに、<br><span class="accent">口から出てこない</span>人へ。</h1>
       <p class="hero-sub">
-        とにかく話す。口に出す。それがいちばんの近道です。<br>
-        Spinglishは、日本語のお題を見て英語で話すだけのスピーキング練習アプリ。<br>
-        AIがその場で伝わりやすさ・文法・自然さをチェックし、言い換えまでフィードバックします。
+        日本語のお題を見て、英語で話すだけ。<br>
+        AIがその場で伝わりやすさ・文法・自然さを採点し、<br>言い換えまでフィードバックします。
       </p>
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <div class="hero-stat-num">3<span>日間</span></div>
+          <div class="hero-stat-label">無料トライアル</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-num">5<span>問</span></div>
+          <div class="hero-stat-label">1セッション数分</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-num">5<span>段階</span></div>
+          <div class="hero-stat-label">AIが即採点</div>
+        </div>
+      </div>
       <div class="hero-badges">
         <span class="hero-badge">瞬間英訳</span>
         <span class="hero-badge">シャドーイング</span>
@@ -780,11 +981,35 @@
       </div>
       <div class="hero-cta-area">
         <a href="https://apps.apple.com/app/spinglish/id6761403115" onclick="return gtag_report_conversion('https://apps.apple.com/app/spinglish/id6761403115');" class="hero-app-store"><img src="White_lockup/SVG/Download_on_the_App_Store_Badge_JP_RGB_wht_100317.svg" alt="App Storeからダウンロード"></a>
+        <span class="hero-cta-meta">いつでも解約OK&nbsp;／&nbsp;<strong>初回3日間 ¥0</strong></span>
       </div>
     </div>
     <div class="hero-visual">
-      <div class="hero-screen hero-screen-topic"><img src="screenshot/IMG_8188.PNG" alt="お題・録音画面"></div>
-      <div class="hero-screen hero-screen-feedback"><img src="screenshot/IMG_8187 2.PNG" alt="採点結果画面"></div>
+      <div class="mock-card">
+        <div class="mock-floating-badge">AI 即採点</div>
+        <div class="mock-prompt-label">お題</div>
+        <div class="mock-prompt">朝のミーティングが急に1時間早まったことを伝える</div>
+        <div class="mock-said-label"><span class="mock-mic"></span>あなたの英語</div>
+        <div class="mock-said">"The morning meeting will be one hour early today."</div>
+        <div class="mock-scores">
+          <div class="mock-score">
+            <div class="mock-score-label">伝わる</div>
+            <div class="mock-score-grade grade-s">S</div>
+          </div>
+          <div class="mock-score">
+            <div class="mock-score-label">文法</div>
+            <div class="mock-score-grade grade-a">A</div>
+          </div>
+          <div class="mock-score">
+            <div class="mock-score-label">自然さ</div>
+            <div class="mock-score-grade grade-b">B</div>
+          </div>
+        </div>
+        <div class="mock-fix">
+          <div class="mock-fix-label">&#9733; もっと自然に</div>
+          The morning meeting <s>will be one hour early</s> <b>has been moved up by an hour</b> today.
+        </div>
+      </div>
     </div>
   </section>
 
