@@ -19,3 +19,6 @@ node_modules/
 
 # Assets (storeに移譲済み)
 store-images/
+
+# Local drafts (公開しない作業用ファイル)
+design-proposal.html

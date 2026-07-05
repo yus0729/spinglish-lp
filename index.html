@@ -6,7 +6,7 @@
   <title>Spinglish - AI英会話スピーキング練習アプリ｜瞬間英訳・シャドーイング</title>
   <meta name="description" content="Spinglishは「知っている英語を、口から出す」ことに特化したiPhone向け英語学習アプリ。瞬間英訳・シャドーイング・英単語・英語日記を毎日数分のスキマ時間で続けられます。月額¥700のFoundersプラン（300人限定・永続価格）あり。">
   <meta name="keywords" content="英会話アプリ, スピーキング, 瞬間英訳, シャドーイング, AI英会話, 英語学習, iPhone, 英語日記, 英単語">
-  <meta name="theme-color" content="#0a0a0a">
+  <meta name="theme-color" content="#ffffff">
   <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large">
   <link rel="canonical" href="https://spinglish.jp/">
 
@@ -56,916 +56,564 @@
   }
   </script>
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      background: #0a0a0a;
-      color: #f0ede6;
-      line-height: 1.8;
+    /* ===== Design tokens ===== */
+    :root {
+      --paper: #ffffff;
+      --mist: #F4F2EC;          /* alternating warm-neutral surface */
+      --ink: #1C1813;           /* headings */
+      --ink-2: #574F44;         /* body */
+      --ink-3: #8C8477;         /* muted / captions */
+      --gold: #9C7C2B;          /* accent on light (text/links) */
+      --gold-bright: #C8A84E;   /* app gold — fills, glows, on dark */
+      --gold-tint: rgba(156,124,43,0.09);
+      --line: #E7E2D6;          /* hairlines */
+      --surface: #14110C;       /* dark blocks (matches app) */
+      --grade-a: #3E8E4F;
+      --grade-b: #3E7CA6;
+      --grade-c: #C2603E;
+      --serif: Georgia, 'Times New Roman', serif;
+      --mincho: 'Hiragino Mincho ProN', 'Yu Mincho', 'YuMincho', 'HGS明朝E', serif;
+      --sans: 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Yu Gothic', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     }
-    a { color: #c8a84e; text-decoration: none; }
-    a:hover { text-decoration: underline; }
-    img { max-width: 100%; }
 
-    /* ===== Header (sticky) ===== */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--sans);
+      background: var(--paper);
+      color: var(--ink-2);
+      line-height: 1.85;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+    a { color: var(--gold); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    img { max-width: 100%; display: block; }
+    ::selection { background: rgba(200,168,78,0.28); }
+
+    .wrap { max-width: 1080px; margin: 0 auto; padding-left: 24px; padding-right: 24px; }
+
+    /* ===== Eyebrow / labels ===== */
+    .eyebrow {
+      font-size: 11px;
+      letter-spacing: 3.5px;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 18px;
+    }
+    .eyebrow::before {
+      content: '';
+      width: 26px;
+      height: 1px;
+      background: var(--gold);
+      opacity: 0.5;
+    }
+    .eyebrow.center { justify-content: center; }
+
+    h2.section-title {
+      font-family: var(--mincho);
+      font-size: 32px;
+      font-weight: 600;
+      color: var(--ink);
+      line-height: 1.55;
+      letter-spacing: 0.01em;
+      text-wrap: balance;
+    }
+
+    /* ===== Buttons ===== */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      font-family: var(--sans);
+      font-weight: 700;
+      border-radius: 999px;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+      cursor: pointer;
+    }
+    .btn:hover { text-decoration: none; }
+    .btn-gold {
+      background: var(--gold-bright);
+      color: #241d10;
+      padding: 15px 34px;
+      font-size: 15px;
+      box-shadow: 0 12px 30px -8px rgba(200,168,78,0.55);
+    }
+    .btn-gold:hover { transform: translateY(-2px); box-shadow: 0 18px 38px -10px rgba(200,168,78,0.62); }
+    .btn-ghost {
+      background: transparent;
+      color: var(--ink);
+      border: 1px solid var(--line);
+      padding: 14px 30px;
+      font-size: 15px;
+    }
+    .btn-ghost:hover { border-color: var(--gold); color: var(--gold); transform: translateY(-2px); }
+
+    .appstore { display: inline-block; transition: transform 0.2s, opacity 0.2s; }
+    .appstore img { height: 52px; width: auto; }
+    .appstore:hover { transform: translateY(-2px); opacity: 0.92; text-decoration: none; }
+
+    /* ===== Device / screenshot ===== */
+    .shot { position: relative; display: inline-block; }
+    .shot::before {
+      content: '';
+      position: absolute;
+      inset: -12% -14%;
+      background: radial-gradient(55% 45% at 50% 32%, rgba(200,168,78,0.30), rgba(200,168,78,0) 70%);
+      filter: blur(34px);
+      z-index: 0;
+      pointer-events: none;
+    }
+    .device {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      border-radius: 38px;
+      background: #0a0a0a;
+      padding: 7px;
+      box-shadow: 0 44px 90px -30px rgba(28,24,19,0.42), 0 6px 18px -8px rgba(28,24,19,0.22), 0 0 0 1px rgba(28,24,19,0.05);
+    }
+    .device img {
+      width: 100%;
+      border-radius: 31px;
+      display: block;
+    }
+    .device::after {
+      /* notch */
+      content: '';
+      position: absolute;
+      top: 7px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 34%;
+      height: 22px;
+      background: #0a0a0a;
+      border-radius: 0 0 14px 14px;
+      z-index: 2;
+    }
+
+    /* ===== Header ===== */
     .site-header {
       position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
+      top: 0; left: 0; right: 0;
       z-index: 100;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 12px 24px;
-      background: rgba(10,10,10,0.92);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(255,255,255,0.06);
+      padding: 14px 24px;
+      background: rgba(255,255,255,0.82);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(28,24,19,0.06);
     }
     .header-logo {
-      font-family: 'Times New Roman', Georgia, serif;
-      font-size: 20px;
+      font-family: var(--serif);
+      font-size: 22px;
       font-weight: 700;
       font-style: italic;
-      color: #c8a84e;
-      letter-spacing: 1px;
+      color: var(--ink);
+      letter-spacing: 0.5px;
     }
     .header-cta {
-      display: inline-block;
-      background: #c8a84e;
-      color: #0a0a0a;
+      background: var(--gold-bright);
+      color: #241d10;
       font-size: 13px;
       font-weight: 700;
-      padding: 8px 20px;
-      border-radius: 8px;
-      transition: opacity 0.2s;
+      padding: 9px 20px;
+      border-radius: 999px;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 8px 20px -8px rgba(200,168,78,0.5);
     }
-    .header-cta:hover { opacity: 0.85; text-decoration: none; }
+    .header-cta:hover { transform: translateY(-1px); text-decoration: none; }
 
-    /* ===== Shared ===== */
-    .section-label {
-      font-size: 11px;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      color: #c8a84e;
-      margin-bottom: 12px;
-    }
-    .section-cta {
-      text-align: center;
-      margin-top: 48px;
-    }
-    .btn-primary {
-      display: inline-block;
-      background: #c8a84e;
-      color: #0a0a0a;
-      font-size: 15px;
-      font-weight: 700;
-      padding: 14px 36px;
-      border-radius: 12px;
-      transition: opacity 0.2s;
-    }
-    .btn-primary:hover { opacity: 0.85; text-decoration: none; }
-    .btn-sub {
-      display: block;
-      margin-top: 12px;
-      font-size: 13px;
-      color: #8a8578;
-    }
-    .btn-sub a { color: #8a8578; }
-    .btn-sub a:hover { color: #c8a84e; }
-
-    /* ===== 1. Hero ===== */
+    /* ===== Hero ===== */
     .hero {
       position: relative;
-      padding: 120px 24px 80px;
-      max-width: 1080px;
-      margin: 0 auto;
-      display: flex;
-      align-items: center;
-      gap: 56px;
+      padding: 150px 0 90px;
       overflow: hidden;
     }
     .hero::before {
       content: '';
       position: absolute;
-      top: 60px;
-      right: -120px;
-      width: 520px;
-      height: 520px;
-      background: radial-gradient(circle, rgba(200,168,78,0.18) 0%, rgba(200,168,78,0) 65%);
-      filter: blur(20px);
+      top: -120px; right: -160px;
+      width: 620px; height: 620px;
+      background: radial-gradient(circle, rgba(200,168,78,0.14) 0%, rgba(200,168,78,0) 66%);
       pointer-events: none;
-      z-index: 0;
     }
-    .hero::after {
-      content: '';
-      position: absolute;
-      bottom: -160px;
-      left: -160px;
-      width: 460px;
-      height: 460px;
-      background: radial-gradient(circle, rgba(91,168,214,0.10) 0%, rgba(91,168,214,0) 65%);
-      filter: blur(20px);
-      pointer-events: none;
-      z-index: 0;
-    }
-    .hero-text { flex: 1; min-width: 0; position: relative; z-index: 1; }
-    .hero-visual {
-      flex: 0 0 360px;
+    .hero-inner {
       position: relative;
       z-index: 1;
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      align-items: center;
+      gap: 60px;
     }
-    .hero-headline {
-      font-size: 36px;
-      font-weight: 800;
-      line-height: 1.4;
-      margin-bottom: 20px;
-      letter-spacing: -0.01em;
+    .hero h1 {
+      font-family: var(--mincho);
+      font-size: 46px;
+      font-weight: 600;
+      line-height: 1.42;
+      color: var(--ink);
+      letter-spacing: 0.01em;
+      margin-bottom: 24px;
+      text-wrap: balance;
     }
-    .hero-headline .accent {
-      color: #c8a84e;
+    .hero h1 .accent {
+      color: var(--gold);
       position: relative;
-      display: inline-block;
+      white-space: nowrap;
     }
-    .hero-headline .accent::after {
+    .hero h1 .accent::after {
       content: '';
       position: absolute;
-      left: 0;
-      right: 0;
-      bottom: 2px;
-      height: 8px;
-      background: rgba(200,168,78,0.18);
+      left: 0; right: 0; bottom: 0.06em;
+      height: 0.36em;
+      background: rgba(200,168,78,0.20);
       z-index: -1;
-      border-radius: 4px;
     }
     .hero-sub {
-      font-size: 15px;
-      color: #bbb;
-      line-height: 2;
-      margin-bottom: 28px;
+      font-size: 16px;
+      color: var(--ink-2);
+      line-height: 2.05;
+      margin-bottom: 30px;
+      max-width: 30em;
     }
-
-    /* Stat bar */
     .hero-stats {
       display: flex;
-      gap: 0;
-      margin-bottom: 28px;
-      background: rgba(255,255,255,0.02);
-      border: 1px solid rgba(200,168,78,0.18);
-      border-radius: 14px;
+      border: 1px solid var(--line);
+      border-radius: 16px;
       overflow: hidden;
+      margin-bottom: 30px;
+      background: #fff;
     }
     .hero-stat {
       flex: 1;
-      padding: 14px 12px;
+      padding: 16px 10px;
       text-align: center;
-      border-right: 1px solid rgba(255,255,255,0.05);
+      border-right: 1px solid var(--line);
     }
     .hero-stat:last-child { border-right: none; }
     .hero-stat-num {
-      font-size: 20px;
-      font-weight: 800;
-      color: #c8a84e;
-      line-height: 1.2;
-      margin-bottom: 2px;
+      font-family: var(--serif);
+      font-size: 26px;
+      font-weight: 700;
+      color: var(--ink);
+      line-height: 1.1;
+      font-variant-numeric: tabular-nums;
     }
-    .hero-stat-num span { font-size: 12px; font-weight: 600; color: #c8a84e; }
-    .hero-stat-label {
-      font-size: 10px;
-      color: #8a8578;
-      letter-spacing: 0.5px;
-    }
+    .hero-stat-num span { font-size: 13px; color: var(--gold); font-family: var(--sans); font-weight: 700; }
+    .hero-stat-label { font-size: 11px; color: var(--ink-3); letter-spacing: 0.4px; margin-top: 4px; }
+    .hero-cta-row { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
+    .hero-cta-meta { font-size: 12.5px; color: var(--ink-3); line-height: 1.6; }
+    .hero-cta-meta strong { color: var(--gold); font-weight: 700; }
+    .hero-visual { display: flex; justify-content: center; }
+    .hero-visual .shot { max-width: 300px; }
 
-    .hero-badges {
-      display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
-      margin-bottom: 28px;
-    }
-    .hero-badge {
-      background: rgba(200,168,78,0.08);
-      border: 1px solid rgba(200,168,78,0.22);
-      color: #c8a84e;
-      font-size: 12px;
+    /* Marquee-ish training pills under hero */
+    .hero-pills { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 26px; }
+    .hero-pill {
+      font-size: 12.5px;
       font-weight: 600;
+      color: var(--ink-2);
+      background: var(--gold-tint);
+      border: 1px solid rgba(156,124,43,0.18);
       padding: 6px 14px;
-      border-radius: 20px;
+      border-radius: 999px;
     }
-    .hero-cta-area { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
-    .hero-app-store {
-      display: inline-block;
-      transition: transform 0.2s, opacity 0.2s;
-    }
-    .hero-app-store img { height: 48px; width: auto; }
-    .hero-app-store:hover { opacity: 0.9; transform: translateY(-2px); text-decoration: none; }
-    .hero-cta-meta {
-      font-size: 12px;
-      color: #8a8578;
-      letter-spacing: 0.3px;
-    }
-    .hero-cta-meta strong { color: #c8a84e; font-weight: 700; }
 
-    /* Mock UI (replaces screenshots) */
-    .mock-card {
-      background: linear-gradient(180deg, #161616 0%, #0e0e0e 100%);
-      border: 1px solid #262626;
-      border-radius: 22px;
-      padding: 22px;
-      box-shadow: 0 24px 60px rgba(0,0,0,0.6), 0 0 0 1px rgba(200,168,78,0.06) inset;
-      position: relative;
-      transform: rotate(-1deg);
-      transition: transform 0.3s ease;
+    /* ===== Section base ===== */
+    section { position: relative; }
+    .band { background: var(--mist); }
+    .pad { padding: 96px 0; }
+
+    /* ===== Trainings (4) ===== */
+    .train-head { text-align: center; margin-bottom: 52px; }
+    .train-head p.lead { margin-top: 14px; font-size: 15px; color: var(--ink-2); }
+    .train-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
     }
-    .mock-card:hover { transform: rotate(0deg) translateY(-4px); }
-    .mock-prompt-label {
-      font-size: 10px;
-      letter-spacing: 2px;
-      color: #8a8578;
-      text-transform: uppercase;
-      margin-bottom: 8px;
+    .train-card {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 28px 22px;
+      transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
     }
-    .mock-prompt {
-      font-size: 14px;
-      color: #f0ede6;
-      font-weight: 600;
-      line-height: 1.6;
-      padding-bottom: 16px;
-      margin-bottom: 16px;
-      border-bottom: 1px dashed #262626;
+    .train-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 22px 44px -24px rgba(28,24,19,0.28);
+      border-color: rgba(156,124,43,0.35);
     }
-    .mock-said-label {
-      font-size: 10px;
-      letter-spacing: 2px;
-      color: #5ba8d6;
-      text-transform: uppercase;
-      margin-bottom: 8px;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-    .mock-mic {
-      display: inline-block;
-      width: 8px;
-      height: 8px;
-      background: #5ba8d6;
-      border-radius: 50%;
-      box-shadow: 0 0 0 0 rgba(91,168,214,0.6);
-      animation: pulse 1.8s infinite;
-    }
-    @keyframes pulse {
-      0% { box-shadow: 0 0 0 0 rgba(91,168,214,0.6); }
-      70% { box-shadow: 0 0 0 8px rgba(91,168,214,0); }
-      100% { box-shadow: 0 0 0 0 rgba(91,168,214,0); }
-    }
-    .mock-said {
-      font-size: 13px;
-      color: #d8d4c6;
-      line-height: 1.7;
-      font-style: italic;
+    .train-icon {
+      width: 46px; height: 46px;
+      border-radius: 13px;
+      background: var(--gold-tint);
+      display: flex; align-items: center; justify-content: center;
       margin-bottom: 18px;
     }
-    .mock-scores {
-      display: flex;
-      gap: 8px;
-      margin-bottom: 16px;
-    }
-    .mock-score {
-      flex: 1;
-      background: #0a0a0a;
-      border: 1px solid #232323;
-      border-radius: 10px;
-      padding: 10px 6px;
-      text-align: center;
-    }
-    .mock-score-label {
-      font-size: 9px;
-      color: #8a8578;
-      letter-spacing: 0.5px;
-      margin-bottom: 4px;
-    }
-    .mock-score-grade {
-      font-size: 20px;
-      font-weight: 800;
-      line-height: 1;
-    }
-    .grade-s { color: #c8a84e; }
-    .grade-a { color: #7ec88a; }
-    .grade-b { color: #5ba8d6; }
-    .mock-fix {
-      background: rgba(200,168,78,0.08);
-      border-left: 2px solid #c8a84e;
-      border-radius: 6px;
-      padding: 10px 12px;
-      font-size: 12px;
-      color: #d8d4c6;
-      line-height: 1.6;
-    }
-    .mock-fix-label {
-      font-size: 9px;
-      letter-spacing: 1.5px;
-      color: #c8a84e;
-      font-weight: 700;
-      margin-bottom: 4px;
-    }
-    .mock-fix s { color: #6a6a6a; text-decoration-color: rgba(200,80,80,0.6); }
-    .mock-fix b { color: #c8a84e; font-weight: 600; }
-    .mock-floating-badge {
-      position: absolute;
-      top: -14px;
-      right: -10px;
-      background: #c8a84e;
-      color: #0a0a0a;
-      font-size: 10px;
-      font-weight: 800;
-      letter-spacing: 1px;
-      padding: 6px 12px;
-      border-radius: 999px;
-      box-shadow: 0 8px 20px rgba(200,168,78,0.35);
-      transform: rotate(8deg);
-    }
+    .train-icon svg { width: 24px; height: 24px; stroke: var(--gold); fill: none; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+    .train-card h3 { font-size: 16.5px; font-weight: 700; color: var(--ink); margin-bottom: 8px; }
+    .train-card p { font-size: 13.5px; color: var(--ink-3); line-height: 1.75; }
 
-    /* ===== 2. Target Users ===== */
-    .target {
-      padding: 80px 24px;
-      max-width: 900px;
-      margin: 0 auto;
-    }
-    .target h2 {
-      font-size: 24px;
-      font-weight: 700;
-      text-align: center;
-      margin-bottom: 40px;
-    }
-    .target-grid {
+    /* ===== Showcase (screenshot + text, alternating) ===== */
+    .showcase {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 14px;
-    }
-    .target-item {
-      background: #111;
-      border: 1px solid #1e1e1e;
-      border-radius: 12px;
-      padding: 18px 22px;
-      font-size: 14px;
-      color: #ccc;
-      display: flex;
+      grid-template-columns: 1fr 1fr;
       align-items: center;
-      gap: 12px;
+      gap: 64px;
     }
-    .target-check {
-      width: 22px;
-      height: 22px;
-      border-radius: 11px;
-      background: rgba(200,168,78,0.12);
-      display: flex;
-      align-items: center;
-      justify-content: center;
+    .showcase.reverse .showcase-visual { order: 2; }
+    .showcase-visual { display: flex; justify-content: center; }
+    .showcase-visual .shot { max-width: 290px; }
+    .showcase-text h2 { margin-bottom: 20px; }
+    .showcase-text .body { font-size: 15px; color: var(--ink-2); line-height: 2; margin-bottom: 24px; }
+    .feat-list { list-style: none; display: flex; flex-direction: column; gap: 14px; }
+    .feat-list li { display: flex; gap: 12px; font-size: 14.5px; color: var(--ink); line-height: 1.7; }
+    .feat-check {
       flex-shrink: 0;
+      width: 22px; height: 22px; border-radius: 999px;
+      background: var(--gold-tint);
+      display: flex; align-items: center; justify-content: center;
+      margin-top: 2px;
     }
-    .target-check svg {
-      width: 12px;
-      height: 12px;
-      stroke: #c8a84e;
-      fill: none;
-      stroke-width: 2.5;
-      stroke-linecap: round;
-      stroke-linejoin: round;
-    }
+    .feat-check svg { width: 12px; height: 12px; stroke: var(--gold); fill: none; stroke-width: 2.6; stroke-linecap: round; stroke-linejoin: round; }
+    .feat-list li b { color: var(--gold); font-weight: 700; }
 
-    /* ===== 3. Steps ===== */
-    .steps {
-      background: #111;
-      padding: 80px 24px;
+    /* grade chips echo */
+    .grade-row { display: flex; gap: 10px; margin-bottom: 24px; }
+    .grade-chip {
+      flex: 1; text-align: center;
+      border: 1px solid var(--line); border-radius: 12px;
+      padding: 12px 6px; background: #fff;
     }
-    .steps-inner {
-      max-width: 900px;
-      margin: 0 auto;
-    }
-    .steps h2 {
-      font-size: 24px;
-      font-weight: 700;
-      text-align: center;
-      margin-bottom: 48px;
-    }
-    .steps-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-    }
-    .step-card {
-      text-align: center;
-    }
-    .step-num {
-      width: 44px;
-      height: 44px;
-      border-radius: 22px;
-      background: #c8a84e;
-      color: #0a0a0a;
-      font-size: 18px;
-      font-weight: 700;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 16px;
-    }
-    .step-card h3 {
-      font-size: 17px;
-      font-weight: 700;
-      margin-bottom: 8px;
-    }
-    .step-card p {
-      font-size: 14px;
-      color: #8a8578;
-      line-height: 1.8;
-    }
-    .step-arrow {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #c8a84e;
-      font-size: 24px;
-      padding-top: 20px;
-    }
+    .grade-chip .g { font-family: var(--serif); font-size: 26px; font-weight: 700; line-height: 1; }
+    .grade-chip .l { font-size: 11px; color: var(--ink-3); margin-top: 6px; }
+    .g-c { color: var(--grade-c); }
+    .g-a { color: var(--grade-a); }
+    .g-gold { color: var(--gold); }
 
-    /* ===== 4. Feedback ===== */
-    .feedback {
-      padding: 80px 24px;
-      max-width: 720px;
-      margin: 0 auto;
+    /* ===== Category strip ===== */
+    .cats { text-align: center; }
+    .cats .eyebrow { justify-content: center; }
+    .cat-chip-row { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin: 8px 0 18px; }
+    .cat-chip {
+      font-size: 14px; font-weight: 600; color: var(--ink);
+      background: #fff; border: 1px solid var(--line);
+      padding: 11px 22px; border-radius: 999px;
     }
-    .feedback h2 {
-      font-size: 22px;
-      font-weight: 700;
-      text-align: center;
-      margin-bottom: 40px;
-      line-height: 1.6;
-    }
-    .fb-card {
-      background: #111;
-      border: 1px solid #1e1e1e;
-      border-radius: 16px;
-      padding: 24px;
-      margin-bottom: 16px;
-    }
-    .fb-label {
-      font-size: 11px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: #c8a84e;
-      margin-bottom: 8px;
-    }
-    .fb-text {
-      font-size: 16px;
-      font-weight: 600;
-      line-height: 1.6;
-    }
-    .fb-text-muted { color: #999; }
-    .score-row {
-      display: flex;
-      gap: 10px;
-      margin: 16px 0;
-      flex-wrap: wrap;
-    }
-    .score-pill {
-      background: #0a0a0a;
-      border: 1px solid #2a2a2a;
-      border-radius: 10px;
-      padding: 12px 16px;
-      flex: 1;
-      min-width: 90px;
-      text-align: center;
-    }
-    .score-pill-label { font-size: 11px; color: #8a8578; margin-bottom: 4px; }
-    .score-pill-value { font-size: 22px; font-weight: 700; }
-    .score-s { color: #c8a84e; }
-    .score-a { color: #7ec88a; }
-    .score-b { color: #5ba8d6; }
-    .fb-correction {
-      background: #0a0a0a;
-      border-radius: 10px;
-      padding: 14px 16px;
-      margin-top: 10px;
-    }
-    .fb-correction-label {
-      font-size: 11px;
-      letter-spacing: 1px;
-      color: #c8a84e;
-      margin-bottom: 6px;
-    }
-    .fb-correction-text {
-      font-size: 14px;
-      color: #ccc;
-      line-height: 1.7;
-    }
-    .fb-note {
-      text-align: center;
-      font-size: 14px;
-      color: #8a8578;
-      margin-top: 32px;
-      line-height: 2;
-    }
+    .cat-note { font-size: 13.5px; color: var(--ink-3); }
 
-    /* ===== 5. Comparison ===== */
-    .compare {
-      background: #111;
-      padding: 80px 24px;
-    }
-    .compare-inner {
-      max-width: 720px;
-      margin: 0 auto;
-    }
-    .compare h2 {
-      font-size: 22px;
-      font-weight: 700;
-      text-align: center;
-      margin-bottom: 40px;
-      line-height: 1.6;
-    }
-    .compare-table {
-      width: 100%;
-      border-collapse: collapse;
-      font-size: 14px;
-    }
-    .compare-table th {
-      text-align: left;
-      padding: 12px 16px;
-      font-weight: 700;
-      border-bottom: 1px solid #2a2a2a;
-      color: #f0ede6;
-    }
-    .compare-table th:first-child { color: #8a8578; font-weight: 400; }
-    .compare-table th.highlight { color: #c8a84e; }
-    .compare-table td {
-      padding: 12px 16px;
-      border-bottom: 1px solid #1a1a1a;
-      color: #aaa;
-    }
-    .compare-table td.highlight { color: #f0ede6; }
-    .compare-footer {
-      margin-top: 32px;
-      font-size: 14px;
-      color: #8a8578;
-      line-height: 2;
-      text-align: center;
-    }
-    /* Mobile comparison cards */
-    .compare-cards { display: none; }
-    .compare-card-item {
-      background: #0a0a0a;
-      border: 1px solid #1e1e1e;
-      border-radius: 12px;
-      padding: 16px;
-      margin-bottom: 10px;
-    }
-    .compare-card-label {
-      font-size: 12px;
-      color: #8a8578;
-      margin-bottom: 8px;
-    }
-    .compare-card-row {
-      display: flex;
-      justify-content: space-between;
-      gap: 12px;
-    }
-    .compare-card-col {
-      flex: 1;
-      font-size: 13px;
-      line-height: 1.6;
-    }
-    .compare-card-col strong { color: #c8a84e; display: block; font-size: 11px; margin-bottom: 2px; }
-    .compare-card-col span { color: #ccc; }
-    .compare-card-col.other span { color: #888; }
-
-    /* ===== 6. Retention ===== */
-    .retention {
-      padding: 80px 24px;
-      max-width: 800px;
-      margin: 0 auto;
-      display: flex;
-      align-items: center;
-      gap: 48px;
-    }
-    .retention-text { flex: 1; }
-    .retention-text h2 {
-      font-size: 22px;
-      font-weight: 700;
-      margin-bottom: 24px;
-    }
-    .retention-text p {
-      font-size: 15px;
-      color: #aaa;
-      line-height: 2;
-    }
-    .retention-badges {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      flex-shrink: 0;
-    }
-    .retention-badge {
-      background: #111;
-      border: 1px solid #1e1e1e;
-      border-radius: 12px;
-      padding: 16px 24px;
-      text-align: center;
-    }
-    .retention-badge-num {
-      font-size: 28px;
-      font-weight: 700;
-      color: #c8a84e;
-    }
-    .retention-badge-label {
-      font-size: 12px;
-      color: #8a8578;
-    }
-
-    /* ===== 7. Plans ===== */
-    .plans {
-      background: #111;
-      padding: 80px 24px;
-      text-align: center;
-    }
-    .plans h2 {
-      font-size: 24px;
-      font-weight: 700;
-      margin-bottom: 8px;
-    }
-    .plans-intro {
-      font-size: 14px;
-      color: #8a8578;
-      margin-bottom: 12px;
-    }
-    .plans-flex {
-      font-size: 13px;
-      color: #aaa;
-      margin-bottom: 40px;
-      line-height: 1.8;
-    }
+    /* ===== Plans ===== */
+    .plans-head { text-align: center; margin-bottom: 14px; }
+    .plans-intro { text-align: center; font-size: 14px; color: var(--ink-2); }
+    .plans-flex { text-align: center; font-size: 13px; color: var(--ink-3); margin-bottom: 44px; }
     .plans-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      grid-template-columns: repeat(3, 1fr);
       gap: 20px;
-      max-width: 900px;
-      margin: 0 auto;
+      align-items: stretch;
     }
-    .plan-card {
-      background: #0a0a0a;
-      border: 1px solid #2a2a2a;
-      border-radius: 16px;
-      padding: 32px 28px;
-      text-align: left;
-      display: flex;
-      flex-direction: column;
-    }
-    .plan-card.highlight { border-color: #c8a84e; }
-    .plan-card.founders {
-      border-color: #c8a84e;
-      background: linear-gradient(180deg, rgba(200,168,78,0.10) 0%, #0a0a0a 60%);
+    .plan {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 34px 28px;
+      display: flex; flex-direction: column;
       position: relative;
     }
-    .plan-card.popular { position: relative; }
-    .founders-badge {
-      position: absolute;
-      top: -12px;
-      left: 24px;
-      background: #c8a84e;
-      color: #0a0a0a;
-      font-size: 11px;
-      font-weight: 700;
-      padding: 4px 12px;
-      border-radius: 12px;
-      letter-spacing: 1.5px;
+    .plan.founders {
+      border-color: var(--gold-bright);
+      background: linear-gradient(180deg, rgba(200,168,78,0.10) 0%, #fff 55%);
+      box-shadow: 0 30px 60px -34px rgba(200,168,78,0.5);
     }
-    .popular-badge {
-      position: absolute;
-      top: -12px;
-      right: 24px;
-      background: #1e1e1e;
-      color: #c8a84e;
-      border: 1px solid #c8a84e;
-      font-size: 11px;
-      font-weight: 700;
-      padding: 4px 12px;
-      border-radius: 12px;
+    .plan-tag {
+      position: absolute; top: -13px; left: 26px;
+      background: var(--gold-bright); color: #241d10;
+      font-size: 11px; font-weight: 800; letter-spacing: 1.5px;
+      padding: 5px 14px; border-radius: 999px;
     }
+    .plan-tag.popular {
+      left: auto; right: 26px;
+      background: #fff; color: var(--gold);
+      border: 1px solid var(--gold-bright); letter-spacing: 0.5px;
+    }
+    .plan-name { font-family: var(--serif); font-size: 22px; font-weight: 700; color: var(--ink); font-style: italic; margin-bottom: 6px; }
+    .plan-who { font-size: 13px; color: var(--ink-3); line-height: 1.65; margin-bottom: 18px; min-height: 2.6em; }
+    .plan-price { font-family: var(--serif); font-size: 38px; font-weight: 700; color: var(--ink); line-height: 1; }
+    .plan-price span { font-size: 14px; color: var(--ink-3); font-family: var(--sans); font-weight: 400; }
+    .plan-subprice { font-size: 13px; color: var(--ink-3); margin-top: 6px; }
+    .plan-perpetual { font-size: 12.5px; color: var(--gold); font-weight: 700; margin-top: 12px; }
     .plan-trial {
-      display: inline-block;
-      background: rgba(200,168,78,0.12);
-      border: 1px solid rgba(200,168,78,0.3);
-      color: #c8a84e;
-      font-size: 12px;
-      font-weight: 600;
-      padding: 4px 10px;
-      border-radius: 8px;
-      margin-bottom: 14px;
+      display: inline-block; margin-top: 12px;
+      background: var(--gold-tint); border: 1px solid rgba(156,124,43,0.22);
+      color: var(--gold); font-size: 12px; font-weight: 700;
+      padding: 5px 12px; border-radius: 8px;
     }
-    .plan-perpetual {
-      font-size: 12px;
-      color: #c8a84e;
-      font-weight: 600;
-      margin-bottom: 14px;
+    .plan-feats { list-style: none; margin: 22px 0; display: flex; flex-direction: column; gap: 9px; }
+    .plan-feats li { font-size: 13.5px; color: var(--ink-2); display: flex; gap: 9px; line-height: 1.6; }
+    .plan-feats li::before {
+      content: ''; flex-shrink: 0; width: 16px; height: 16px; margin-top: 3px;
+      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%239C7C2B' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E") center/contain no-repeat;
     }
-    .plan-note {
-      font-size: 11px;
-      color: #666;
-      margin-top: 14px;
-      text-align: center;
-      line-height: 1.6;
-    }
-    .plan-name {
-      font-family: 'Times New Roman', Georgia, serif;
-      font-size: 20px;
-      font-weight: 700;
-      margin-bottom: 4px;
-    }
-    .plan-who {
-      font-size: 13px;
-      color: #8a8578;
-      margin-bottom: 16px;
-      line-height: 1.6;
-    }
-    .plan-price {
-      font-size: 34px;
-      font-weight: 700;
-      color: #c8a84e;
-    }
-    .plan-price span { font-size: 14px; color: #8a8578; font-weight: 400; }
-    .plan-sub-price {
-      font-size: 13px;
-      color: #8a8578;
-      margin-bottom: 4px;
-    }
-    .plan-daily {
-      font-size: 12px;
-      color: #666;
-      margin-bottom: 20px;
-    }
-    .plan-free-price {
-      font-size: 28px;
-      font-weight: 700;
-      color: #f0ede6;
-      margin-bottom: 20px;
-    }
-    .plan-features { list-style: none; }
-    .plan-features li {
-      font-size: 14px;
-      color: #ccc;
-      padding: 5px 0;
-    }
-    .plan-features li::before {
-      content: '';
-      display: inline-block;
-      width: 16px;
-      height: 16px;
-      margin-right: 8px;
-      vertical-align: middle;
-      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23c8a84e' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'%3E%3C/polyline%3E%3C/svg%3E") center/contain no-repeat;
-    }
-    .plan-cta {
-      display: block;
-      text-align: center;
-      margin-top: auto;
-      padding: 12px;
-      border-radius: 10px;
-      font-size: 14px;
-      font-weight: 700;
-      transition: opacity 0.2s;
-    }
-    .plan-cta:hover { opacity: 0.85; text-decoration: none; }
-    .plan-cta-primary {
-      background: #c8a84e;
-      color: #0a0a0a;
-    }
-    .plan-cta-secondary {
-      background: transparent;
-      border: 1px solid #3a3a3a;
-      color: #f0ede6;
-    }
+    .plan-cta { margin-top: auto; width: 100%; }
+    .plan-note { font-size: 11px; color: var(--ink-3); margin-top: 14px; text-align: center; line-height: 1.6; }
 
-    /* ===== 8. FAQ ===== */
-    .faq {
-      max-width: 680px;
-      margin: 0 auto;
-      padding: 80px 24px;
+    /* ===== For you (target) ===== */
+    .target-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+      margin-top: 8px;
     }
-    .faq h2 {
-      font-size: 24px;
-      font-weight: 700;
-      text-align: center;
-      margin-bottom: 40px;
+    .target-item {
+      background: #fff; border: 1px solid var(--line);
+      border-radius: 14px; padding: 20px 24px;
+      font-size: 14.5px; color: var(--ink);
+      display: flex; align-items: center; gap: 14px;
     }
-    .faq-item {
-      border-bottom: 1px solid #1e1e1e;
+    .target-check {
+      flex-shrink: 0; width: 26px; height: 26px; border-radius: 999px;
+      background: var(--gold-tint); display: flex; align-items: center; justify-content: center;
     }
+    .target-check svg { width: 13px; height: 13px; stroke: var(--gold); fill: none; stroke-width: 2.6; stroke-linecap: round; stroke-linejoin: round; }
+
+    /* ===== Comparison ===== */
+    .compare-wrap { max-width: 760px; margin: 0 auto; }
+    .compare-table { width: 100%; border-collapse: collapse; font-size: 14.5px; margin-top: 8px; }
+    .compare-table th {
+      text-align: left; padding: 16px 18px; font-weight: 700;
+      border-bottom: 2px solid var(--line); color: var(--ink);
+    }
+    .compare-table th:first-child { color: var(--ink-3); font-weight: 400; }
+    .compare-table th.hl { color: var(--gold); }
+    .compare-table td { padding: 15px 18px; border-bottom: 1px solid var(--line); color: var(--ink-2); }
+    .compare-table td.hl { color: var(--ink); font-weight: 600; background: rgba(200,168,78,0.05); }
+    .compare-table tr td:first-child { color: var(--ink-3); }
+    .compare-footer { margin-top: 30px; font-size: 14px; color: var(--ink-3); line-height: 1.95; text-align: center; }
+    .compare-cards { display: none; }
+
+    /* ===== Retention ===== */
+    .retention { display: grid; grid-template-columns: 1.2fr 1fr; align-items: center; gap: 56px; }
+    .retention p { font-size: 15px; color: var(--ink-2); line-height: 2.05; margin-top: 8px; }
+    .ret-badges { display: flex; flex-direction: column; gap: 12px; }
+    .ret-badge {
+      background: #fff; border: 1px solid var(--line); border-radius: 16px;
+      padding: 20px 26px; display: flex; align-items: baseline; gap: 14px;
+    }
+    .ret-badge .n { font-family: var(--serif); font-size: 30px; font-weight: 700; color: var(--gold); line-height: 1; }
+    .ret-badge .t { font-size: 13px; color: var(--ink-3); }
+
+    /* ===== FAQ ===== */
+    .faq-wrap { max-width: 720px; margin: 0 auto; }
+    .faq-item { border-bottom: 1px solid var(--line); }
     .faq-q {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 20px 0;
-      cursor: pointer;
-      font-size: 15px;
-      font-weight: 600;
-      color: #f0ede6;
+      display: flex; justify-content: space-between; align-items: center; gap: 16px;
+      padding: 22px 0; cursor: pointer;
+      font-size: 15.5px; font-weight: 700; color: var(--ink);
     }
     .faq-q::after {
-      content: '+';
-      font-size: 20px;
-      color: #c8a84e;
-      flex-shrink: 0;
-      margin-left: 16px;
-      transition: transform 0.2s;
+      content: '+'; font-size: 22px; color: var(--gold); flex-shrink: 0;
+      transition: transform 0.25s ease; line-height: 1;
     }
-    .faq-item.open .faq-q::after {
-      content: '-';
-    }
-    .faq-a {
-      font-size: 14px;
-      color: #8a8578;
-      line-height: 1.9;
-      padding-bottom: 20px;
-      display: none;
-    }
-    .faq-item.open .faq-a {
-      display: block;
-    }
+    .faq-item.open .faq-q::after { transform: rotate(45deg); }
+    .faq-a { font-size: 14px; color: var(--ink-2); line-height: 1.95; padding-bottom: 22px; display: none; }
+    .faq-item.open .faq-a { display: block; }
 
-    /* ===== 9. Closing ===== */
+    /* ===== Closing (dark finale) ===== */
     .closing {
+      background: var(--surface);
+      color: #EDE7DA;
       text-align: center;
-      padding: 80px 24px;
-      background: linear-gradient(180deg, #0a0a0a 0%, #141414 100%);
+      padding: 104px 24px;
+      position: relative;
+      overflow: hidden;
     }
+    .closing::before {
+      content: '';
+      position: absolute; top: -140px; left: 50%; transform: translateX(-50%);
+      width: 680px; height: 420px;
+      background: radial-gradient(closest-side, rgba(200,168,78,0.18), transparent);
+      pointer-events: none;
+    }
+    .closing-inner { position: relative; z-index: 1; max-width: 640px; margin: 0 auto; }
+    .closing .eyebrow { color: var(--gold-bright); justify-content: center; }
+    .closing .eyebrow::before { background: var(--gold-bright); }
     .closing h2 {
-      font-size: 24px;
-      font-weight: 700;
-      margin-bottom: 24px;
-      line-height: 1.6;
+      font-family: var(--mincho); font-size: 32px; font-weight: 600;
+      color: #fff; line-height: 1.6; margin-bottom: 24px; text-wrap: balance;
     }
-    .closing p {
-      font-size: 15px;
-      color: #aaa;
-      line-height: 2;
-      max-width: 560px;
-      margin: 0 auto 40px;
-    }
-    .closing .hero-app-store img { height: 48px; }
-    .closing-note {
-      margin-top: 16px;
-      font-size: 13px;
-      color: #8a8578;
-    }
+    .closing p { font-size: 15px; color: #C9C2B3; line-height: 2.1; margin-bottom: 38px; }
+    .closing .btn-gold { color: #241d10; }
+    .closing-note { margin-top: 18px; font-size: 13px; color: #8f887a; }
 
     /* ===== Footer ===== */
-    .footer {
-      text-align: center;
-      padding: 40px 24px;
-      border-top: 1px solid #1e1e1e;
+    .footer { text-align: center; padding: 48px 24px; border-top: 1px solid var(--line); }
+    .footer-logo { font-family: var(--serif); font-style: italic; font-weight: 700; font-size: 18px; color: var(--ink); margin-bottom: 18px; }
+    .footer-links { display: flex; justify-content: center; gap: 26px; flex-wrap: wrap; margin-bottom: 20px; }
+    .footer-links a { font-size: 13px; color: var(--ink-3); }
+    .footer-links a:hover { color: var(--gold); }
+    .footer-copy { font-size: 12px; color: #B0A99A; }
+
+    /* ===== Reveal animation ===== */
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal.in { opacity: 1; transform: none; }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .reveal { opacity: 1; transform: none; transition: none; }
     }
-    .footer-links {
-      display: flex;
-      justify-content: center;
-      gap: 24px;
-      margin-bottom: 20px;
-      flex-wrap: wrap;
-    }
-    .footer-links a { font-size: 13px; color: #8a8578; }
-    .footer-copy { font-size: 12px; color: #555; }
 
     /* ===== Responsive ===== */
+    @media (max-width: 900px) {
+      .train-grid { grid-template-columns: repeat(2, 1fr); }
+      .plans-grid { grid-template-columns: 1fr; max-width: 440px; margin: 0 auto; }
+    }
     @media (max-width: 768px) {
-      .hero {
-        flex-direction: column;
-        padding: 100px 20px 60px;
-        gap: 40px;
-        text-align: center;
-      }
-      .hero-headline { font-size: 26px; line-height: 1.5; }
-      .hero-visual { flex: none; width: 100%; max-width: 360px; align-self: center; }
-      .hero-stats { gap: 0; }
-      .hero-stat { padding: 12px 8px; }
-      .hero-stat-num { font-size: 17px; }
-      .hero-stat-label { font-size: 9px; }
-      .hero-badges { justify-content: center; }
-      .hero-cta-area { justify-content: center; flex-direction: column; gap: 10px; }
-      .mock-card { transform: rotate(0); }
-      .steps-grid {
-        grid-template-columns: 1fr;
-        gap: 32px;
-      }
-      .step-arrow { display: none; }
-      .score-row { flex-direction: column; }
-      .score-pill { min-width: auto; }
+      .hero { padding: 128px 0 64px; }
+      .hero-inner { grid-template-columns: 1fr; gap: 44px; text-align: center; }
+      .hero h1 { font-size: 31px; line-height: 1.5; }
+      .hero-sub { margin-left: auto; margin-right: auto; }
+      .hero-pills { justify-content: center; }
+      .hero-cta-row { justify-content: center; flex-direction: column; gap: 14px; }
+      .hero-visual { order: -1; }
+      .hero-visual .shot { max-width: 250px; }
+      h2.section-title { font-size: 25px; }
+      .pad { padding: 72px 0; }
+      .showcase { grid-template-columns: 1fr; gap: 40px; text-align: center; }
+      .showcase.reverse .showcase-visual { order: -1; }
+      .showcase-visual { order: -1; }
+      .showcase-visual .shot { max-width: 240px; }
+      .feat-list li { text-align: left; }
+      .retention { grid-template-columns: 1fr; text-align: center; gap: 32px; }
+      .ret-badges { flex-direction: row; }
+      .ret-badge { flex: 1; flex-direction: column; align-items: center; gap: 6px; text-align: center; padding: 16px 10px; }
+      .target-grid { grid-template-columns: 1fr; }
+      .target-item { text-align: left; }
       .compare-table { display: none; }
       .compare-cards { display: block; }
-      .retention {
-        flex-direction: column;
-        text-align: center;
-        gap: 32px;
-      }
-      .retention-badges { flex-direction: row; }
-      .plans-grid { grid-template-columns: 1fr; }
-      .target-grid { grid-template-columns: 1fr; }
+      .closing h2 { font-size: 25px; }
     }
+    @media (max-width: 460px) {
+      .train-grid { grid-template-columns: 1fr; }
+      .hero-stat-num { font-size: 22px; }
+    }
+
+    /* Mobile comparison cards */
+    .cc-item { background: #fff; border: 1px solid var(--line); border-radius: 14px; padding: 16px 18px; margin-bottom: 10px; }
+    .cc-label { font-size: 12px; color: var(--ink-3); margin-bottom: 10px; }
+    .cc-row { display: flex; gap: 14px; }
+    .cc-col { flex: 1; font-size: 13px; line-height: 1.6; }
+    .cc-col strong { display: block; font-size: 11px; margin-bottom: 3px; }
+    .cc-col.us strong { color: var(--gold); }
+    .cc-col.us span { color: var(--ink); font-weight: 600; }
+    .cc-col.them strong { color: var(--ink-3); }
+    .cc-col.them span { color: var(--ink-3); }
   </style>
 
   <!-- ===== JSON-LD Structured Data (AIO / Rich Results) ===== -->
@@ -1138,266 +786,294 @@
 
   <!-- 1. Hero -->
   <section class="hero">
-    <div class="hero-text">
-      <p class="section-label">AI Speaking Practice</p>
-      <h1 class="hero-headline">英語は読めるのに、<br><span class="accent">口から出てこない</span>人へ。</h1>
-      <p class="hero-sub">
-        日本語のお題を見て、英語で話すだけ。<br>
-        AIがその場で伝わりやすさ・文法・自然さを採点し、<br>言い換えまでフィードバックします。
-      </p>
-      <div class="hero-stats">
-        <div class="hero-stat">
-          <div class="hero-stat-num">7<span>日間</span></div>
-          <div class="hero-stat-label">無料トライアル</div>
+    <div class="wrap hero-inner">
+      <div class="hero-text">
+        <span class="eyebrow">Curated Language Mastery</span>
+        <h1>英語は読めるのに、<br><span class="accent">口から出てこない</span>人へ。</h1>
+        <p class="hero-sub">
+          日本語のお題を見て、英語で声に出すだけ。AIがその場で伝わりやすさ・文法・自然さを採点し、より自然な言い換えまで返します。
+        </p>
+        <div class="hero-pills">
+          <span class="hero-pill">瞬間英訳</span>
+          <span class="hero-pill">シャドーイング</span>
+          <span class="hero-pill">英単語・熟語</span>
+          <span class="hero-pill">英語日記</span>
         </div>
-        <div class="hero-stat">
-          <div class="hero-stat-num">5<span>問</span></div>
-          <div class="hero-stat-label">1セッション数分</div>
-        </div>
-        <div class="hero-stat">
-          <div class="hero-stat-num">5<span>段階</span></div>
-          <div class="hero-stat-label">AIが即採点</div>
-        </div>
-      </div>
-      <div class="hero-badges">
-        <span class="hero-badge">瞬間英訳</span>
-        <span class="hero-badge">シャドーイング</span>
-        <span class="hero-badge">英単語練習</span>
-        <span class="hero-badge">英語日記</span>
-      </div>
-      <div class="hero-cta-area">
-        <a href="https://apps.apple.com/app/spinglish/id6761403115" onclick="return gtag_report_conversion('https://apps.apple.com/app/spinglish/id6761403115');" class="hero-app-store"><img src="White_lockup/SVG/Download_on_the_App_Store_Badge_JP_RGB_wht_100317.svg" alt="App Storeからダウンロード"></a>
-        <span class="hero-cta-meta">いつでも解約OK&nbsp;／&nbsp;<strong>初回最大7日間 ¥0</strong></span>
-      </div>
-    </div>
-    <div class="hero-visual">
-      <div class="mock-card">
-        <div class="mock-floating-badge">AI 即採点</div>
-        <div class="mock-prompt-label">お題</div>
-        <div class="mock-prompt">朝のミーティングが急に1時間早まったことを伝える</div>
-        <div class="mock-said-label"><span class="mock-mic"></span>あなたの英語</div>
-        <div class="mock-said">"The morning meeting will be one hour early today."</div>
-        <div class="mock-scores">
-          <div class="mock-score">
-            <div class="mock-score-label">伝わる</div>
-            <div class="mock-score-grade grade-s">S</div>
+        <div class="hero-stats">
+          <div class="hero-stat">
+            <div class="hero-stat-num">7<span>日間</span></div>
+            <div class="hero-stat-label">無料トライアル</div>
           </div>
-          <div class="mock-score">
-            <div class="mock-score-label">文法</div>
-            <div class="mock-score-grade grade-a">A</div>
+          <div class="hero-stat">
+            <div class="hero-stat-num">5<span>問</span></div>
+            <div class="hero-stat-label">1セッション数分</div>
           </div>
-          <div class="mock-score">
-            <div class="mock-score-label">自然さ</div>
-            <div class="mock-score-grade grade-b">B</div>
+          <div class="hero-stat">
+            <div class="hero-stat-num">3<span>軸</span></div>
+            <div class="hero-stat-label">AIが即採点</div>
           </div>
         </div>
-        <div class="mock-fix">
-          <div class="mock-fix-label">&#9733; もっと自然に</div>
-          The morning meeting <s>will be one hour early</s> <b>has been moved up by an hour</b> today.
+        <div class="hero-cta-row">
+          <a href="https://apps.apple.com/app/spinglish/id6761403115" onclick="return gtag_report_conversion('https://apps.apple.com/app/spinglish/id6761403115');" class="appstore"><img src="Black_lockup/SVG/Download_on_the_App_Store_Badge_JP_RGB_blk_100317.svg" alt="App Storeからダウンロード"></a>
+          <span class="hero-cta-meta">いつでも解約OK<br><strong>初回最大7日間 ¥0</strong></span>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="shot">
+          <div class="device"><img src="img/app/speak.png" alt="Spinglishの瞬間英訳。日本語のお題を英語で声に出す画面" width="1206" height="2622"></div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- 2. Plans (CV-focused, near top) -->
-  <section class="plans">
-    <p class="section-label">Plans</p>
-    <h2>料金プラン</h2>
-    <p class="plans-intro">月額プランは初回7日間、週額プランは初回3日間、無料でお試しいただけます。</p>
-    <p class="plans-flex">解約はiPhoneの「設定」→「サブスクリプション」からいつでも可能です。</p>
-    <div class="plans-grid">
-      <div class="plan-card founders">
-        <div class="founders-badge">&#9733; FOUNDERS</div>
-        <div class="plan-name">Founders</div>
-        <div class="plan-who">最初の300人だけの特別プラン<br>Advancedの全機能が永続価格で</div>
-        <div class="plan-price">&#165;700<span>/月（永続）</span></div>
-        <div class="plan-perpetual">価格は契約中ずっと&#165;700/月</div>
-        <ul class="plan-features">
-          <li>Advancedの全機能</li>
-          <li>1日10セッション</li>
-          <li>シャドーイング（AI評価 4回/日）</li>
-          <li>英単語・熟語練習（2,000語以上）</li>
-          <li>英語日記（1日1回）</li>
+  <!-- 2. Four trainings -->
+  <section class="band pad">
+    <div class="wrap">
+      <div class="train-head reveal">
+        <span class="eyebrow center">Four Trainings</span>
+        <h2 class="section-title">「話す・聴く・覚える・書く」を、<br>ひとつのアプリで。</h2>
+        <p class="lead">スピーキングを中心に、英語が身につく4つのトレーニング。</p>
+      </div>
+      <div class="train-grid reveal">
+        <div class="train-card">
+          <div class="train-icon"><svg viewBox="0 0 24 24"><path d="M12 2a3 3 0 0 0-3 3v6a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"/><path d="M19 10v1a7 7 0 0 1-14 0v-1"/><line x1="12" y1="18" x2="12" y2="22"/></svg></div>
+          <h3>瞬間英訳</h3>
+          <p>日本語のお題を、英語で声に出すだけ。タイピング不要で、話す力を鍛える。</p>
+        </div>
+        <div class="train-card">
+          <div class="train-icon"><svg viewBox="0 0 24 24"><path d="M3 14v-2a9 9 0 0 1 18 0v2"/><path d="M3 14a2 2 0 0 1 2-2h1v6H5a2 2 0 0 1-2-2v-2z"/><path d="M21 14a2 2 0 0 0-2-2h-1v6h1a2 2 0 0 0 2-2v-2z"/></svg></div>
+          <h3>シャドーイング</h3>
+          <p>お手本音声に続いて発音。AIが再現度と発音を評価してくれる。</p>
+        </div>
+        <div class="train-card">
+          <div class="train-icon"><svg viewBox="0 0 24 24"><path d="M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2z"/><path d="M4 5v14"/><line x1="9" y1="7" x2="15" y2="7"/></svg></div>
+          <h3>英単語・熟語</h3>
+          <p>品詞・レベル別に2,000語以上。ネイティブ音声つきで、聴いて覚える。</p>
+        </div>
+        <div class="train-card">
+          <div class="train-icon"><svg viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></svg></div>
+          <h3>英語日記</h3>
+          <p>その日の出来事を英語で書く。書いた文章をAIが添削してくれる。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. Showcase: 瞬間英訳 × AI採点 -->
+  <section class="pad">
+    <div class="wrap showcase reverse reveal">
+      <div class="showcase-visual">
+        <div class="shot">
+          <div class="device"><img src="img/app/score.png" alt="AI採点の結果画面。伝わりやすさ・文法・自然さの3軸評価と、模範解答・添削" loading="lazy" width="1206" height="2622"></div>
+        </div>
+      </div>
+      <div class="showcase-text">
+        <span class="eyebrow">Instant AI Feedback</span>
+        <h2 class="section-title">話すたびに、AIが<br>その場で採点する。</h2>
+        <div class="grade-row">
+          <div class="grade-chip"><div class="g g-c">C</div><div class="l">伝わりやすさ</div></div>
+          <div class="grade-chip"><div class="g g-a">A</div><div class="l">文法</div></div>
+          <div class="grade-chip"><div class="g g-c">C</div><div class="l">自然さ</div></div>
+        </div>
+        <p class="body">
+          「伝わりやすさ・文法・自然さ」の3軸で、話した英語を即採点。模範解答とネイティブが使う自然な言い換えまで返すから、どこをどう直せばいいかが一目でわかります。
+        </p>
+        <ul class="feat-list">
+          <li><span class="feat-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>間違えた箇所だけを色分けして表示（<b>watched → toured</b>）</li>
+          <li><span class="feat-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>模範解答はネイティブ音声で発音チェック</li>
+          <li><span class="feat-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>気になる単語はタップですぐ辞書表示</li>
         </ul>
-        <a href="https://apps.apple.com/app/spinglish/id6761403115" onclick="return gtag_report_conversion('https://apps.apple.com/app/spinglish/id6761403115');" class="plan-cta plan-cta-primary">Foundersではじめる</a>
-        <p class="plan-note">※解約すると以後Foundersプランには再加入できません</p>
       </div>
-      <div class="plan-card popular">
-        <div class="popular-badge">人気</div>
-        <div class="plan-name">Standard</div>
-        <div class="plan-who">毎日少しずつ練習して、スピーキング習慣をつけたい人向け</div>
-        <div class="plan-price">&#165;1,000<span>/月</span></div>
-        <div class="plan-sub-price">週額 &#165;300</div>
-        <div class="plan-trial">&#127873; 初回7日間無料（週額は3日間）</div>
-        <ul class="plan-features">
-          <li>1日5セッション</li>
-          <li>全カテゴリ・全レベル</li>
-          <li>お気に入り保存</li>
-          <li>AI採点・添削</li>
-          <li>AIセッションアドバイス</li>
-          <li>シャドーイング（AI評価 2回/日）</li>
-          <li>英語日記（1日1回）</li>
+    </div>
+  </section>
+
+  <!-- 4. Showcase: シャドーイング -->
+  <section class="band pad">
+    <div class="wrap showcase reveal">
+      <div class="showcase-visual">
+        <div class="shot">
+          <div class="device"><img src="img/app/shadow.png" alt="シャドーイングのAI評価結果。お手本と自分の発話を比べ再現度98%と表示" loading="lazy" width="1206" height="2622"></div>
+        </div>
+      </div>
+      <div class="showcase-text">
+        <span class="eyebrow">Shadowing</span>
+        <h2 class="section-title">お手本に続けて話すだけで、<br>発音とリスニングが伸びる。</h2>
+        <p class="body">
+          お手本音声を聴きながら、同じように声に出す。あなたの発話を録音して、AIが「再現度」と発音を評価します。難易度も選べるので、少しずつステップアップできます。
+        </p>
+        <ul class="feat-list">
+          <li><span class="feat-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>お手本と自分の音声を、その場で聴き比べ</li>
+          <li><span class="feat-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>再現度をパーセントで可視化</li>
+          <li><span class="feat-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>発音のアドバイスまでAIがコメント</li>
         </ul>
-        <a href="https://apps.apple.com/app/spinglish/id6761403115" onclick="return gtag_report_conversion('https://apps.apple.com/app/spinglish/id6761403115');" class="plan-cta plan-cta-secondary">無料ではじめる</a>
       </div>
-      <div class="plan-card">
-        <div class="plan-name">Advanced</div>
-        <div class="plan-who">より多く練習して、短期間でしっかり伸ばしたい人向け</div>
-        <div class="plan-price">&#165;1,500<span>/月</span></div>
-        <div class="plan-sub-price">週額 &#165;400</div>
-        <div class="plan-trial">&#127873; 初回7日間無料（週額は3日間）</div>
-        <ul class="plan-features">
-          <li>1日10セッション</li>
-          <li>全カテゴリ・全レベル</li>
-          <li>お気に入り保存</li>
-          <li>AI採点・添削</li>
-          <li>AIセッションアドバイス</li>
-          <li>シャドーイング（AI評価 4回/日）</li>
-          <li>英単語・熟語練習（2,000語以上）</li>
-          <li>英語日記（1日1回）</li>
+    </div>
+  </section>
+
+  <!-- 5. Showcase: 英単語・熟語 + category -->
+  <section class="pad">
+    <div class="wrap showcase reverse reveal">
+      <div class="showcase-visual">
+        <div class="shot">
+          <div class="device"><img src="img/app/dict.png" alt="単語をタップすると意味と品詞が表示され、ネイティブ音声も再生できる" loading="lazy" width="1206" height="2622"></div>
+        </div>
+      </div>
+      <div class="showcase-text">
+        <span class="eyebrow">Vocabulary</span>
+        <h2 class="section-title">2,000語以上を、<br>品詞とレベルで整理して。</h2>
+        <p class="body">
+          名詞・動詞・形容詞から熟語まで、品詞・レベル別にキュレーションした2,000語以上。すべてネイティブ音声つきで、聴きながら覚えられます。覚えていない単語だけを、発話や4択で復習することもできます。
+        </p>
+        <ul class="feat-list">
+          <li><span class="feat-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>熟語・句動詞もカバー</li>
+          <li><span class="feat-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>「覚えた／曖昧／覚えていない」で自分だけの単語帳に</li>
+          <li><span class="feat-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>苦手な単語だけをまとめて復習</li>
         </ul>
-        <a href="https://apps.apple.com/app/spinglish/id6761403115" onclick="return gtag_report_conversion('https://apps.apple.com/app/spinglish/id6761403115');" class="plan-cta plan-cta-secondary">無料ではじめる</a>
       </div>
     </div>
   </section>
 
-  <!-- 3. Target Users -->
-  <section class="target">
-    <p class="section-label" style="text-align:center">For you</p>
-    <h2>こんな人に、Spinglishは向いています。</h2>
-    <div class="target-grid">
-      <div class="target-item">
-        <div class="target-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
-        オンライン英会話やAI英会話が続かなかった
+  <!-- 6. Categories -->
+  <section class="band pad" style="padding-top:0;">
+    <div class="wrap cats reveal">
+      <span class="eyebrow center">Categories &amp; Levels</span>
+      <h2 class="section-title" style="margin-bottom:26px;">実際に使う場面から、選べる。</h2>
+      <div class="cat-chip-row">
+        <span class="cat-chip">日常会話</span>
+        <span class="cat-chip">旅行</span>
+        <span class="cat-chip">ビジネス</span>
+        <span class="cat-chip">技術</span>
+        <span class="cat-chip">ニュース社会</span>
       </div>
-      <div class="target-item">
-        <div class="target-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
-        英語を勉強したのに、とっさに話せない
+      <p class="cat-note">5カテゴリ &times; 5レベル（超初級〜ネイティブ級）</p>
+    </div>
+  </section>
+
+  <!-- 7. Plans -->
+  <section class="pad">
+    <div class="wrap">
+      <div class="plans-head reveal">
+        <span class="eyebrow center">Plans</span>
+        <h2 class="section-title">料金プラン</h2>
       </div>
-      <div class="target-item">
-        <div class="target-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
-        人と話す前に一人で練習したい
-      </div>
-      <div class="target-item">
-        <div class="target-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
-        短時間で毎日続けたい
-      </div>
-      <div class="target-item">
-        <div class="target-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
-        間違いをその場で直したい
-      </div>
-      <div class="target-item">
-        <div class="target-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
-        月数千円の英会話やアプリは高すぎると感じる
+      <p class="plans-intro reveal">月額プランは初回7日間、週額プランは初回3日間、無料でお試しいただけます。</p>
+      <p class="plans-flex reveal">解約はiPhoneの「設定」→「サブスクリプション」からいつでも可能です。</p>
+      <div class="plans-grid reveal">
+        <div class="plan founders">
+          <div class="plan-tag">&#9733; FOUNDERS</div>
+          <div class="plan-name">Founders</div>
+          <div class="plan-who">最初の300人だけの特別プラン。Advancedの全機能が永続価格で。</div>
+          <div class="plan-price">&#165;700<span>/月（永続）</span></div>
+          <div class="plan-perpetual">価格は契約中ずっと&#165;700/月</div>
+          <ul class="plan-feats">
+            <li>Advancedの全機能</li>
+            <li>1日10セッション</li>
+            <li>シャドーイング（AI評価 4回/日）</li>
+            <li>英単語・熟語練習（2,000語以上）</li>
+            <li>英語日記（1日1回）</li>
+          </ul>
+          <a href="https://apps.apple.com/app/spinglish/id6761403115" onclick="return gtag_report_conversion('https://apps.apple.com/app/spinglish/id6761403115');" class="btn btn-gold plan-cta">Foundersではじめる</a>
+          <p class="plan-note">※解約すると以後Foundersプランには再加入できません</p>
+        </div>
+        <div class="plan">
+          <div class="plan-tag popular">人気</div>
+          <div class="plan-name">Standard</div>
+          <div class="plan-who">毎日少しずつ練習して、スピーキング習慣をつけたい人へ。</div>
+          <div class="plan-price">&#165;1,000<span>/月</span></div>
+          <div class="plan-subprice">週額 &#165;300</div>
+          <div class="plan-trial">&#127873; 初回7日間無料（週額は3日間）</div>
+          <ul class="plan-feats">
+            <li>1日5セッション</li>
+            <li>全カテゴリ・全レベル</li>
+            <li>お気に入り保存</li>
+            <li>AI採点・添削</li>
+            <li>AIセッションアドバイス</li>
+            <li>シャドーイング（AI評価 2回/日）</li>
+            <li>英語日記（1日1回）</li>
+          </ul>
+          <a href="https://apps.apple.com/app/spinglish/id6761403115" onclick="return gtag_report_conversion('https://apps.apple.com/app/spinglish/id6761403115');" class="btn btn-ghost plan-cta">無料ではじめる</a>
+        </div>
+        <div class="plan">
+          <div class="plan-name">Advanced</div>
+          <div class="plan-who">より多く練習して、短期間でしっかり伸ばしたい人へ。</div>
+          <div class="plan-price">&#165;1,500<span>/月</span></div>
+          <div class="plan-subprice">週額 &#165;400</div>
+          <div class="plan-trial">&#127873; 初回7日間無料（週額は3日間）</div>
+          <ul class="plan-feats">
+            <li>1日10セッション</li>
+            <li>全カテゴリ・全レベル</li>
+            <li>お気に入り保存</li>
+            <li>AI採点・添削</li>
+            <li>AIセッションアドバイス</li>
+            <li>シャドーイング（AI評価 4回/日）</li>
+            <li>英単語・熟語練習（2,000語以上）</li>
+            <li>英語日記（1日1回）</li>
+          </ul>
+          <a href="https://apps.apple.com/app/spinglish/id6761403115" onclick="return gtag_report_conversion('https://apps.apple.com/app/spinglish/id6761403115');" class="btn btn-ghost plan-cta">無料ではじめる</a>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- 4. Steps -->
-  <section class="steps">
-    <div class="steps-inner">
-      <p class="section-label" style="text-align:center">How it works</p>
-      <h2>使い方は、シンプルです。</h2>
-      <div class="steps-grid">
-        <div class="step-card">
-          <div class="step-num">1</div>
-          <h3>日本語のお題を見る</h3>
-          <p>旅行、仕事、日常会話など、実際に使いやすいテーマから出題。</p>
-        </div>
-        <div class="step-card">
-          <div class="step-num">2</div>
-          <h3>英語で話す</h3>
-          <p>完璧でなくて大丈夫。まずは自分の知っている英語で口に出します。</p>
-        </div>
-        <div class="step-card">
-          <div class="step-num">3</div>
-          <h3>AIがすぐにフィードバック</h3>
-          <p>伝わりやすさ・文法・自然さをチェックし、改善点や言い換えを返します。</p>
-        </div>
+  <!-- 8. For you -->
+  <section class="band pad">
+    <div class="wrap reveal">
+      <span class="eyebrow center">For you</span>
+      <h2 class="section-title" style="text-align:center; margin-bottom:40px;">こんな人に、向いています。</h2>
+      <div class="target-grid">
+        <div class="target-item"><span class="target-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>オンライン英会話やAI英会話が続かなかった</div>
+        <div class="target-item"><span class="target-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>英語を勉強したのに、とっさに話せない</div>
+        <div class="target-item"><span class="target-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>人と話す前に、一人で練習したい</div>
+        <div class="target-item"><span class="target-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>短時間で、毎日続けたい</div>
+        <div class="target-item"><span class="target-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>間違いを、その場で直したい</div>
+        <div class="target-item"><span class="target-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>月数千円の英会話やアプリは高いと感じる</div>
       </div>
     </div>
   </section>
 
-  <!-- 5. Comparison -->
-  <section class="compare">
-    <div class="compare-inner">
-      <p class="section-label" style="text-align:center">Why Spinglish</p>
-      <h2>オンライン英会話の前に、<br>必要な練習があります。</h2>
+  <!-- 9. Comparison -->
+  <section class="pad">
+    <div class="wrap compare-wrap reveal">
+      <span class="eyebrow center">Why Spinglish</span>
+      <h2 class="section-title" style="text-align:center; margin-bottom:36px;">オンライン英会話の前に、<br>必要な練習があります。</h2>
 
-      <!-- Desktop table -->
       <table class="compare-table">
         <thead>
           <tr>
             <th></th>
-            <th class="highlight">Spinglish</th>
+            <th class="hl">Spinglish</th>
             <th>オンライン英会話</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>始めやすさ</td>
-            <td class="highlight">一人で、すぐ始められる</td>
-            <td>予約・講師選びが必要</td>
-          </tr>
-          <tr>
-            <td>会話プレッシャー</td>
-            <td class="highlight">なし</td>
-            <td>沈黙が気まずい</td>
-          </tr>
-          <tr>
-            <td>即フィードバック</td>
-            <td class="highlight">毎回AIが即採点</td>
-            <td>講師による差あり</td>
-          </tr>
-          <tr>
-            <td>1回の所要時間</td>
-            <td class="highlight">数分（5問）</td>
-            <td>25〜50分</td>
-          </tr>
-          <tr>
-            <td>鍛えられる力</td>
-            <td class="highlight">英語を組み立てて口に出す力</td>
-            <td>実践会話力</td>
-          </tr>
+          <tr><td>始めやすさ</td><td class="hl">一人で、すぐ始められる</td><td>予約・講師選びが必要</td></tr>
+          <tr><td>会話プレッシャー</td><td class="hl">なし</td><td>沈黙が気まずい</td></tr>
+          <tr><td>即フィードバック</td><td class="hl">毎回AIが即採点</td><td>講師による差あり</td></tr>
+          <tr><td>1回の所要時間</td><td class="hl">数分（5問）</td><td>25〜50分</td></tr>
+          <tr><td>鍛えられる力</td><td class="hl">英語を組み立てて口に出す力</td><td>実践会話力</td></tr>
         </tbody>
       </table>
 
-      <!-- Mobile cards -->
       <div class="compare-cards">
-        <div class="compare-card-item">
-          <div class="compare-card-label">始めやすさ</div>
-          <div class="compare-card-row">
-            <div class="compare-card-col"><strong>Spinglish</strong><span>一人で、すぐ始められる</span></div>
-            <div class="compare-card-col other"><strong>英会話</strong><span>予約・講師選びが必要</span></div>
-          </div>
+        <div class="cc-item">
+          <div class="cc-label">始めやすさ</div>
+          <div class="cc-row"><div class="cc-col us"><strong>Spinglish</strong><span>一人で、すぐ始められる</span></div><div class="cc-col them"><strong>英会話</strong><span>予約・講師選びが必要</span></div></div>
         </div>
-        <div class="compare-card-item">
-          <div class="compare-card-label">会話プレッシャー</div>
-          <div class="compare-card-row">
-            <div class="compare-card-col"><strong>Spinglish</strong><span>なし</span></div>
-            <div class="compare-card-col other"><strong>英会話</strong><span>沈黙が気まずい</span></div>
-          </div>
+        <div class="cc-item">
+          <div class="cc-label">会話プレッシャー</div>
+          <div class="cc-row"><div class="cc-col us"><strong>Spinglish</strong><span>なし</span></div><div class="cc-col them"><strong>英会話</strong><span>沈黙が気まずい</span></div></div>
         </div>
-        <div class="compare-card-item">
-          <div class="compare-card-label">即フィードバック</div>
-          <div class="compare-card-row">
-            <div class="compare-card-col"><strong>Spinglish</strong><span>毎回AIが即採点</span></div>
-            <div class="compare-card-col other"><strong>英会話</strong><span>講師による差あり</span></div>
-          </div>
+        <div class="cc-item">
+          <div class="cc-label">即フィードバック</div>
+          <div class="cc-row"><div class="cc-col us"><strong>Spinglish</strong><span>毎回AIが即採点</span></div><div class="cc-col them"><strong>英会話</strong><span>講師による差あり</span></div></div>
         </div>
-        <div class="compare-card-item">
-          <div class="compare-card-label">1回の所要時間</div>
-          <div class="compare-card-row">
-            <div class="compare-card-col"><strong>Spinglish</strong><span>数分（5問）</span></div>
-            <div class="compare-card-col other"><strong>英会話</strong><span>25〜50分</span></div>
-          </div>
+        <div class="cc-item">
+          <div class="cc-label">1回の所要時間</div>
+          <div class="cc-row"><div class="cc-col us"><strong>Spinglish</strong><span>数分（5問）</span></div><div class="cc-col them"><strong>英会話</strong><span>25〜50分</span></div></div>
         </div>
-        <div class="compare-card-item">
-          <div class="compare-card-label">鍛えられる力</div>
-          <div class="compare-card-row">
-            <div class="compare-card-col"><strong>Spinglish</strong><span>英語を組み立てて口に出す力</span></div>
-            <div class="compare-card-col other"><strong>英会話</strong><span>実践会話力</span></div>
-          </div>
+        <div class="cc-item">
+          <div class="cc-label">鍛えられる力</div>
+          <div class="cc-row"><div class="cc-col us"><strong>Spinglish</strong><span>英語を組み立てて口に出す力</span></div><div class="cc-col them"><strong>英会話</strong><span>実践会話力</span></div></div>
         </div>
       </div>
 
@@ -1408,96 +1084,84 @@
     </div>
   </section>
 
-  <!-- 7. Retention -->
-  <section class="retention">
-    <div class="retention-text">
-      <p class="section-label">Keep going</p>
-      <h2>1回5問。短いから、続けやすい。</h2>
-      <p>
-        語学学習で難しいのは、始めることより続けること。<br>
-        Spinglishは、忙しい日でも取り組みやすい短時間設計です。<br>
-        毎日少しずつ、英語が口から出る感覚を育てていけます。
-      </p>
-    </div>
-    <div class="retention-badges">
-      <div class="retention-badge">
-        <div class="retention-badge-num">5問</div>
-        <div class="retention-badge-label">1セッション</div>
+  <!-- 10. Retention -->
+  <section class="band pad">
+    <div class="wrap retention reveal">
+      <div class="retention-text">
+        <span class="eyebrow">Keep going</span>
+        <h2 class="section-title">1回5問。<br>短いから、続けやすい。</h2>
+        <p>
+          語学学習で難しいのは、始めることより続けること。Spinglishは、忙しい日でも取り組みやすい短時間設計です。毎日少しずつ、英語が口から出る感覚を育てていけます。
+        </p>
       </div>
-      <div class="retention-badge">
-        <div class="retention-badge-num">数分</div>
-        <div class="retention-badge-label">所要時間</div>
-      </div>
-      <div class="retention-badge">
-        <div class="retention-badge-num">毎日</div>
-        <div class="retention-badge-label">すきま時間OK</div>
+      <div class="ret-badges">
+        <div class="ret-badge"><span class="n">5問</span><span class="t">1セッション</span></div>
+        <div class="ret-badge"><span class="n">数分</span><span class="t">所要時間</span></div>
+        <div class="ret-badge"><span class="n">毎日</span><span class="t">すきま時間OK</span></div>
       </div>
     </div>
   </section>
 
-  <!-- 8. FAQ (Plans is now near top, this section number kept for consistency) -->
-  <section class="faq">
-    <p class="section-label" style="text-align:center">FAQ</p>
-    <h2>よくある質問</h2>
+  <!-- 11. FAQ -->
+  <section class="pad">
+    <div class="wrap faq-wrap reveal">
+      <span class="eyebrow center">FAQ</span>
+      <h2 class="section-title" style="text-align:center; margin-bottom:32px;">よくある質問</h2>
 
-    <div class="faq-item open">
-      <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Q. 英語初心者でも使えますか？</div>
-      <div class="faq-a">はい。完璧な英文を話す必要はありません。まずは自分の知っている単語や表現で話してみることが大切です。Spinglishは、その一歩を踏み出しやすくするためのアプリです。</div>
-    </div>
-
-    <div class="faq-item open">
-      <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Q. 発音に自信がなくても大丈夫ですか？</div>
-      <div class="faq-a">大丈夫です。最初からきれいに話すことより、まず英語を口から出すことを重視しています。話すことに慣れていない方でも取り組みやすい設計です。</div>
-    </div>
-
-    <div class="faq-item">
-      <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Q. 1回どれくらいで終わりますか？</div>
-      <div class="faq-a">1セッションは5問で構成されており、数分で取り組めます。忙しい日でも、すきま時間に練習できます。</div>
-    </div>
-
-    <div class="faq-item">
-      <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Q. オンライン英会話との違いは何ですか？</div>
-      <div class="faq-a">オンライン英会話は、相手との実践会話に強みがあります。Spinglishはその前段階として、自分で英文を作って口から出す練習に特化しています。「いきなり会話はつらい」と感じる方に向いています。</div>
-    </div>
-
-    <div class="faq-item">
-      <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Q. どんなテーマが練習できますか？</div>
-      <div class="faq-a">日常会話・旅行・ビジネス・技術・ニュース社会の5カテゴリで、超初級からネイティブ級まで5段階のレベルを用意しています。</div>
-    </div>
-
-    <div class="faq-item">
-      <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Q. スピーキング以外の練習もできますか？</div>
-      <div class="faq-a">はい。お手本音声に続いて声に出す「シャドーイング」、品詞・レベル別の「英単語・熟語練習（2,000語以上・ネイティブ音声つき）」、その日の出来事を英語で書く「英語日記」を用意しています。瞬間英訳とあわせて、リスニング・発音・語彙・ライティングまでバランスよく鍛えられます。</div>
-    </div>
-
-    <div class="faq-item">
-      <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Q. 無料で試せますか？</div>
-      <div class="faq-a">月額プラン（Foundersを含む）は初回7日間、週額プランは初回3日間、無料でお試しいただけます。期間中はすべての機能を利用でき、自動更新前にいつでも解約できます。</div>
-    </div>
-
-    <div class="faq-item">
-      <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Q. Foundersプランとは何ですか？</div>
-      <div class="faq-a">最初の300人限定の特別プランです。Advancedと同じ全機能を月¥700（永続価格）でずっとご利用いただけます。価格は契約中ずっと変わりません。なお、一度解約すると以後Foundersプランには再加入できませんのでご注意ください。</div>
+      <div class="faq-item open">
+        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">英語初心者でも使えますか？</div>
+        <div class="faq-a">はい。完璧な英文を話す必要はありません。まずは自分の知っている単語や表現で話してみることが大切です。Spinglishは、その一歩を踏み出しやすくするためのアプリです。</div>
+      </div>
+      <div class="faq-item open">
+        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">発音に自信がなくても大丈夫ですか？</div>
+        <div class="faq-a">大丈夫です。最初からきれいに話すことより、まず英語を口から出すことを重視しています。話すことに慣れていない方でも取り組みやすい設計です。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">1回どれくらいで終わりますか？</div>
+        <div class="faq-a">1セッションは5問で構成されており、数分で取り組めます。忙しい日でも、すきま時間に練習できます。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">オンライン英会話との違いは何ですか？</div>
+        <div class="faq-a">オンライン英会話は、相手との実践会話に強みがあります。Spinglishはその前段階として、自分で英文を作って口から出す練習に特化しています。「いきなり会話はつらい」と感じる方に向いています。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">どんなテーマが練習できますか？</div>
+        <div class="faq-a">日常会話・旅行・ビジネス・技術・ニュース社会の5カテゴリで、超初級からネイティブ級まで5段階のレベルを用意しています。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">スピーキング以外の練習もできますか？</div>
+        <div class="faq-a">はい。お手本音声に続いて声に出す「シャドーイング」、品詞・レベル別の「英単語・熟語練習（2,000語以上・ネイティブ音声つき）」、その日の出来事を英語で書く「英語日記」を用意しています。瞬間英訳とあわせて、リスニング・発音・語彙・ライティングまでバランスよく鍛えられます。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">無料で試せますか？</div>
+        <div class="faq-a">月額プラン（Foundersを含む）は初回7日間、週額プランは初回3日間、無料でお試しいただけます。期間中はすべての機能を利用でき、自動更新前にいつでも解約できます。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Foundersプランとは何ですか？</div>
+        <div class="faq-a">最初の300人限定の特別プランです。Advancedと同じ全機能を月¥700（永続価格）でずっとご利用いただけます。価格は契約中ずっと変わりません。なお、一度解約すると以後Foundersプランには再加入できませんのでご注意ください。</div>
+      </div>
     </div>
   </section>
 
-  <!-- 9. Closing CTA -->
+  <!-- 12. Closing -->
   <section class="closing">
-    <h2>英語は、頭の中だけでは<br>話せるようになりません。</h2>
-    <p>
-      知っている英語を、実際に口から出すこと。<br>
-      そして、間違えながら少しずつ直していくこと。<br><br>
-      Spinglishは、その最初の一歩を、続けやすくします。<br><br>
-      オンライン英会話で挫折した人も。<br>
-      英語を勉強してきたのに話せない人も。<br>
-      まずはここから始めてみてください。
-    </p>
-    <a href="https://apps.apple.com/app/spinglish/id6761403115" onclick="return gtag_report_conversion('https://apps.apple.com/app/spinglish/id6761403115');" class="btn-primary" style="font-size:16px;padding:16px 40px;">無料ではじめる</a>
-    <p class="closing-note">App Storeですぐに始められます。</p>
+    <div class="closing-inner reveal">
+      <span class="eyebrow center">Start speaking</span>
+      <h2>英語は、頭の中だけでは<br>話せるようになりません。</h2>
+      <p>
+        知っている英語を、実際に口から出すこと。<br>
+        そして、間違えながら少しずつ直していくこと。<br><br>
+        Spinglishは、その最初の一歩を、続けやすくします。<br>
+        オンライン英会話で挫折した人も、英語を勉強してきたのに話せない人も、まずはここから。
+      </p>
+      <a href="https://apps.apple.com/app/spinglish/id6761403115" onclick="return gtag_report_conversion('https://apps.apple.com/app/spinglish/id6761403115');" class="btn btn-gold" style="font-size:16px; padding:16px 42px;">無料ではじめる</a>
+      <p class="closing-note">App Storeですぐに始められます。&nbsp;/&nbsp;iOS 16.0以降</p>
+    </div>
   </section>
 
   <!-- Footer -->
   <footer class="footer">
+    <div class="footer-logo">Spinglish</div>
     <div class="footer-links">
       <a href="privacy.html">プライバシーポリシー</a>
       <a href="terms.html">利用規約</a>
@@ -1506,6 +1170,23 @@
     </div>
     <div class="footer-copy">&copy; 2026 Spinglish. All rights reserved.</div>
   </footer>
+
+  <script>
+    // Scroll reveal (respects reduced motion)
+    (function () {
+      var els = document.querySelectorAll('.reveal');
+      if (!('IntersectionObserver' in window) || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        els.forEach(function (el) { el.classList.add('in'); });
+        return;
+      }
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+      els.forEach(function (el) { io.observe(el); });
+    })();
+  </script>
 
 </body>
 </html>
