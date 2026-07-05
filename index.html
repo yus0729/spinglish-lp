@@ -200,21 +200,11 @@
     }
     .device img {
       width: 100%;
+      height: auto;
+      aspect-ratio: 1206 / 2622;   /* 端末スクショの縦横比を固定（縦伸び防止）*/
+      object-fit: cover;
       border-radius: 31px;
       display: block;
-    }
-    .device::after {
-      /* notch */
-      content: '';
-      position: absolute;
-      top: 7px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 34%;
-      height: 22px;
-      background: #0a0a0a;
-      border-radius: 0 0 14px 14px;
-      z-index: 2;
     }
 
     /* ===== Header ===== */
@@ -417,6 +407,7 @@
     .grade-chip .l { font-size: 11px; color: var(--ink-3); margin-top: 6px; }
     .g-c { color: var(--grade-c); }
     .g-a { color: var(--grade-a); }
+    .g-b { color: var(--grade-b); }
     .g-gold { color: var(--gold); }
 
     /* ===== Category strip ===== */
@@ -669,7 +660,7 @@
           "瞬間英訳（日本語を英語で即座にスピーキング）",
           "シャドーイング（お手本音声を真似て発音練習）",
           "英単語・熟語練習（品詞・レベル別に2,000語以上、ネイティブ音声つき）",
-          "英語日記（その日の出来事を英語で書く）",
+          "英語日記（その日の出来事を英語で話して記録）",
           "覚えていない単語の復習出題（発話・4択）"
         ],
         "offers": [
@@ -779,7 +770,7 @@
             "name": "スピーキング以外の練習もできますか？",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "はい。お手本音声に続いて声に出す「シャドーイング」、品詞・レベル別の「英単語・熟語練習（2,000語以上・ネイティブ音声つき）」、その日の出来事を英語で書く「英語日記」を用意しています。瞬間英訳とあわせて、リスニング・発音・語彙・ライティングまでバランスよく鍛えられます。"
+              "text": "はい。お手本音声に続いて声に出す「シャドーイング」、品詞・レベル別の「英単語・熟語練習（2,000語以上・ネイティブ音声つき）」、その日の出来事を英語で話す「英語日記」を用意しています。瞬間英訳とあわせて、リスニング・発音・語彙・表現力までバランスよく鍛えられます。"
             }
           },
           {
@@ -863,7 +854,7 @@
     <div class="wrap">
       <div class="train-head reveal">
         <span class="eyebrow center">Four Trainings</span>
-        <h2 class="section-title">「話す・聴く・覚える・書く」を、<br>ひとつのアプリで。</h2>
+        <h2 class="section-title">「話す・聴く・覚える・残す」を、<br>ひとつのアプリで。</h2>
         <p class="lead">スピーキングを中心に、英語が身につく4つのトレーニング。</p>
       </div>
       <div class="train-grid reveal">
@@ -883,9 +874,9 @@
           <p>品詞・レベル別に2,000語以上。ネイティブ音声つきで、聴いて覚える。</p>
         </div>
         <div class="train-card">
-          <div class="train-icon"><svg viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></svg></div>
+          <div class="train-icon"><svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></div>
           <h3>英語日記</h3>
-          <p>その日の出来事を英語で書く。書いた文章をAIが添削してくれる。</p>
+          <p>その日の出来事を英語で話すだけ。話した内容を文字にして、AIが添削してくれる。</p>
         </div>
       </div>
     </div>
@@ -903,15 +894,15 @@
         <span class="eyebrow">Instant AI Feedback</span>
         <h2 class="section-title">話すたびに、AIが<br>その場で採点する。</h2>
         <div class="grade-row">
-          <div class="grade-chip"><div class="g g-c">C</div><div class="l">伝わりやすさ</div></div>
-          <div class="grade-chip"><div class="g g-a">A</div><div class="l">文法</div></div>
-          <div class="grade-chip"><div class="g g-c">C</div><div class="l">自然さ</div></div>
+          <div class="grade-chip"><div class="g g-a">A</div><div class="l">伝わりやすさ</div></div>
+          <div class="grade-chip"><div class="g g-gold">S</div><div class="l">文法</div></div>
+          <div class="grade-chip"><div class="g g-b">B</div><div class="l">自然さ</div></div>
         </div>
         <p class="body">
           「伝わりやすさ・文法・自然さ」の3軸で、話した英語を即採点。模範解答とネイティブが使う自然な言い換えまで返すから、どこをどう直せばいいかが一目でわかります。
         </p>
         <ul class="feat-list">
-          <li><span class="feat-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>間違えた箇所だけを色分けして表示（<b>watched → toured</b>）</li>
+          <li><span class="feat-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span><b>「OK / NG」</b>で伝わるかを一目で判定</li>
           <li><span class="feat-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>模範解答はネイティブ音声で発音チェック</li>
           <li><span class="feat-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>気になる単語はタップですぐ辞書表示</li>
         </ul>
@@ -924,7 +915,7 @@
     <div class="wrap showcase reveal">
       <div class="showcase-visual">
         <div class="shot">
-          <div class="device"><img src="img/app/shadow.png" alt="シャドーイングのAI評価結果。お手本と自分の発話を比べ再現度98%と表示" loading="lazy" width="1206" height="2622"></div>
+          <div class="device"><img src="img/app/shadow.png" alt="シャドーイングの練習画面。お手本の英文を見ながら、続けて声に出す" loading="lazy" width="1206" height="2622"></div>
         </div>
       </div>
       <div class="showcase-text">
@@ -947,7 +938,7 @@
     <div class="wrap showcase reverse reveal">
       <div class="showcase-visual">
         <div class="shot">
-          <div class="device"><img src="img/app/dict.png" alt="単語をタップすると意味と品詞が表示され、ネイティブ音声も再生できる" loading="lazy" width="1206" height="2622"></div>
+          <div class="device"><img src="img/app/dict.png" alt="英単語の4択クイズ。意味に合う単語を選んで覚える" loading="lazy" width="1206" height="2622"></div>
         </div>
       </div>
       <div class="showcase-text">
@@ -1163,7 +1154,7 @@
       </div>
       <div class="faq-item">
         <button type="button" class="faq-q" aria-expanded="false" onclick="this.setAttribute('aria-expanded', this.parentElement.classList.toggle('open'))">スピーキング以外の練習もできますか？</button>
-        <div class="faq-a">はい。お手本音声に続いて声に出す「シャドーイング」、品詞・レベル別の「英単語・熟語練習（2,000語以上・ネイティブ音声つき）」、その日の出来事を英語で書く「英語日記」を用意しています。瞬間英訳とあわせて、リスニング・発音・語彙・ライティングまでバランスよく鍛えられます。</div>
+        <div class="faq-a">はい。お手本音声に続いて声に出す「シャドーイング」、品詞・レベル別の「英単語・熟語練習（2,000語以上・ネイティブ音声つき）」、その日の出来事を英語で話す「英語日記」を用意しています。瞬間英訳とあわせて、リスニング・発音・語彙・表現力までバランスよく鍛えられます。</div>
       </div>
       <div class="faq-item">
         <button type="button" class="faq-q" aria-expanded="false" onclick="this.setAttribute('aria-expanded', this.parentElement.classList.toggle('open'))">無料で試せますか？</button>
