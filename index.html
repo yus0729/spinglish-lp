@@ -30,7 +30,7 @@
   <!-- Apple Smart Banner -->
   <meta name="apple-itunes-app" content="app-id=6761403115">
 
-  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='15' fill='%2314110C'/%3E%3Ctext x='32' y='46' font-family='Georgia,serif' font-style='italic' font-weight='700' font-size='42' fill='%23C8A84E' text-anchor='middle'%3ES%3C/text%3E%3C/svg%3E">
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18096982916"></script>
   <script>
@@ -43,7 +43,10 @@
   <!-- Event snippet for 離脱クリック conversion page -->
   <script>
   function gtag_report_conversion(url) {
+    var fired = false;
     var callback = function () {
+      if (fired) return;
+      fired = true;
       if (typeof(url) != 'undefined') {
         window.location = url;
       }
@@ -52,6 +55,9 @@
         'send_to': 'AW-18096982916/DNqaCIPZn54cEISXqLVD',
         'event_callback': callback
     });
+    // 広告ブロッカー等で gtag.js が読み込まれず event_callback が発火しない場合でも
+    // 確実に App Store へ遷移させるためのフォールバック
+    setTimeout(callback, 800);
     return false;
   }
   </script>
@@ -62,8 +68,8 @@
       --mist: #F4F2EC;          /* alternating warm-neutral surface */
       --ink: #1C1813;           /* headings */
       --ink-2: #574F44;         /* body */
-      --ink-3: #8C8477;         /* muted / captions */
-      --gold: #9C7C2B;          /* accent on light (text/links) */
+      --ink-3: #6C6558;         /* muted / captions (AA on white & mist) */
+      --gold: #7A6220;          /* accent on light (text/links) — AA on white & mist */
       --gold-bright: #C8A84E;   /* app gold — fills, glows, on dark */
       --gold-tint: rgba(156,124,43,0.09);
       --line: #E7E2D6;          /* hairlines */
@@ -90,6 +96,20 @@
     a:hover { text-decoration: underline; }
     img { max-width: 100%; display: block; }
     ::selection { background: rgba(200,168,78,0.28); }
+
+    /* Keyboard focus: visible branded ring on every interactive element */
+    a:focus-visible, button:focus-visible, .btn:focus-visible, .appstore:focus-visible, [tabindex]:focus-visible {
+      outline: 2px solid var(--gold);
+      outline-offset: 3px;
+    }
+    .skip-link { position: absolute; left: -9999px; top: 0; }
+    .skip-link:focus {
+      left: 16px; top: 16px; z-index: 200;
+      background: #fff; color: var(--ink);
+      padding: 10px 16px; border-radius: 8px;
+      box-shadow: 0 6px 20px rgba(28,24,19,0.18);
+    }
+    .faq-q:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
 
     .wrap { max-width: 1080px; margin: 0 auto; padding-left: 24px; padding-right: 24px; }
 
@@ -460,7 +480,7 @@
     .plan-feats li { font-size: 13.5px; color: var(--ink-2); display: flex; gap: 9px; line-height: 1.6; }
     .plan-feats li::before {
       content: ''; flex-shrink: 0; width: 16px; height: 16px; margin-top: 3px;
-      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%239C7C2B' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E") center/contain no-repeat;
+      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%237A6220' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E") center/contain no-repeat;
     }
     .plan-cta { margin-top: auto; width: 100%; }
     .plan-note { font-size: 11px; color: var(--ink-3); margin-top: 14px; text-align: center; line-height: 1.6; }
@@ -515,8 +535,10 @@
     .faq-item { border-bottom: 1px solid var(--line); }
     .faq-q {
       display: flex; justify-content: space-between; align-items: center; gap: 16px;
+      width: 100%; text-align: left;
+      background: transparent; border: 0; appearance: none; -webkit-appearance: none;
       padding: 22px 0; cursor: pointer;
-      font-size: 15.5px; font-weight: 700; color: var(--ink);
+      font-family: inherit; font-size: 15.5px; font-weight: 700; color: var(--ink);
     }
     .faq-q::after {
       content: '+'; font-size: 22px; color: var(--gold); flex-shrink: 0;
@@ -559,7 +581,7 @@
     .footer-links { display: flex; justify-content: center; gap: 26px; flex-wrap: wrap; margin-bottom: 20px; }
     .footer-links a { font-size: 13px; color: var(--ink-3); }
     .footer-links a:hover { color: var(--gold); }
-    .footer-copy { font-size: 12px; color: #B0A99A; }
+    .footer-copy { font-size: 12px; color: #767059; }
 
     /* ===== Reveal animation ===== */
     .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
@@ -603,6 +625,11 @@
       .train-grid { grid-template-columns: 1fr; }
       .hero-stat-num { font-size: 22px; }
     }
+    @media (max-width: 360px) {
+      .site-header { padding: 12px 16px; }
+      .header-logo { font-size: 20px; }
+      .header-cta { white-space: nowrap; font-size: 12px; padding: 8px 14px; }
+    }
 
     /* Mobile comparison cards */
     .cc-item { background: #fff; border: 1px solid var(--line); border-radius: 14px; padding: 16px 18px; margin-bottom: 10px; }
@@ -615,6 +642,8 @@
     .cc-col.them strong { color: var(--ink-3); }
     .cc-col.them span { color: var(--ink-3); }
   </style>
+  <!-- JS無効・IntersectionObserver不発時でも本文が消えないようにするフォールバック -->
+  <noscript><style>.reveal{opacity:1 !important;transform:none !important}</style></noscript>
 
   <!-- ===== JSON-LD Structured Data (AIO / Rich Results) ===== -->
   <script type="application/ld+json">
@@ -641,8 +670,7 @@
           "シャドーイング（お手本音声を真似て発音練習）",
           "英単語・熟語練習（品詞・レベル別に2,000語以上、ネイティブ音声つき）",
           "英語日記（その日の出来事を英語で書く）",
-          "覚えていない単語の復習出題（発話・4択）",
-          "4種類の外観テーマ（背景画像を選べるカスタム対応）"
+          "覚えていない単語の復習出題（発話・4択）"
         ],
         "offers": [
           {
@@ -708,7 +736,7 @@
         "mainEntity": [
           {
             "@type": "Question",
-            "name": "英語初心者でもSpinglishを使えますか？",
+            "name": "英語初心者でも使えますか？",
             "acceptedAnswer": {
               "@type": "Answer",
               "text": "はい。完璧な英文を話す必要はありません。まずは自分の知っている単語や表現で話してみることが大切です。Spinglishは、その一歩を踏み出しやすくするためのアプリです。"
@@ -724,7 +752,7 @@
           },
           {
             "@type": "Question",
-            "name": "1セッションどれくらいで終わりますか？",
+            "name": "1回どれくらいで終わりますか？",
             "acceptedAnswer": {
               "@type": "Answer",
               "text": "1セッションは5問で構成されており、数分で取り組めます。忙しい日でも、すきま時間に練習できます。"
@@ -735,7 +763,7 @@
             "name": "オンライン英会話との違いは何ですか？",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "オンライン英会話は相手との実践会話に強みがあります。Spinglishはその前段階として、自分で英文を作って口から出す練習に特化しています。「いきなり会話はつらい」と感じる方に向いています。"
+              "text": "オンライン英会話は、相手との実践会話に強みがあります。Spinglishはその前段階として、自分で英文を作って口から出す練習に特化しています。「いきなり会話はつらい」と感じる方に向いています。"
             }
           },
           {
@@ -751,7 +779,7 @@
             "name": "スピーキング以外の練習もできますか？",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "はい。お手本音声に続いて声に出すシャドーイング、品詞・レベル別の英単語・熟語練習（2,000語以上・ネイティブ音声つき）、その日の出来事を英語で書く英語日記を用意しています。瞬間英訳とあわせて、リスニング・発音・語彙・ライティングまでバランスよく鍛えられます。"
+              "text": "はい。お手本音声に続いて声に出す「シャドーイング」、品詞・レベル別の「英単語・熟語練習（2,000語以上・ネイティブ音声つき）」、その日の出来事を英語で書く「英語日記」を用意しています。瞬間英訳とあわせて、リスニング・発音・語彙・ライティングまでバランスよく鍛えられます。"
             }
           },
           {
@@ -767,7 +795,7 @@
             "name": "Foundersプランとは何ですか？",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "最初の300人限定の特別プランです。Advancedと同じ全機能を月¥700（永続価格）でずっとご利用いただけます。価格は契約中ずっと変わりません。なお、一度解約すると以後Foundersプランには再加入できません。"
+              "text": "最初の300人限定の特別プランです。Advancedと同じ全機能を月¥700（永続価格）でずっとご利用いただけます。価格は契約中ずっと変わりません。なお、一度解約すると以後Foundersプランには再加入できませんのでご注意ください。"
             }
           }
         ]
@@ -778,11 +806,15 @@
 </head>
 <body>
 
+  <a href="#main" class="skip-link">本文へスキップ</a>
+
   <!-- Header -->
   <header class="site-header">
     <div class="header-logo">Spinglish</div>
     <a href="https://apps.apple.com/app/spinglish/id6761403115" onclick="return gtag_report_conversion('https://apps.apple.com/app/spinglish/id6761403115');" class="header-cta">App Storeでダウンロード</a>
   </header>
+
+  <main id="main">
 
   <!-- 1. Hero -->
   <section class="hero">
@@ -814,13 +846,13 @@
           </div>
         </div>
         <div class="hero-cta-row">
-          <a href="https://apps.apple.com/app/spinglish/id6761403115" onclick="return gtag_report_conversion('https://apps.apple.com/app/spinglish/id6761403115');" class="appstore"><img src="Black_lockup/SVG/Download_on_the_App_Store_Badge_JP_RGB_blk_100317.svg" alt="App Storeからダウンロード"></a>
+          <a href="https://apps.apple.com/app/spinglish/id6761403115" onclick="return gtag_report_conversion('https://apps.apple.com/app/spinglish/id6761403115');" class="appstore"><img src="Black_lockup/SVG/Download_on_the_App_Store_Badge_JP_RGB_blk_100317.svg" alt="App Storeからダウンロード" width="109" height="40"></a>
           <span class="hero-cta-meta">いつでも解約OK<br><strong>初回最大7日間 ¥0</strong></span>
         </div>
       </div>
       <div class="hero-visual">
         <div class="shot">
-          <div class="device"><img src="img/app/speak.png" alt="Spinglishの瞬間英訳。日本語のお題を英語で声に出す画面" width="1206" height="2622"></div>
+          <div class="device"><img src="img/app/speak.png" alt="Spinglishの瞬間英訳。日本語のお題を英語で声に出す画面" width="1206" height="2622" fetchpriority="high"></div>
         </div>
       </div>
     </div>
@@ -929,12 +961,13 @@
           <li><span class="feat-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>「覚えた／曖昧／覚えていない」で自分だけの単語帳に</li>
           <li><span class="feat-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>苦手な単語だけをまとめて復習</li>
         </ul>
+        <p style="font-size:12.5px; color:var(--ink-3); margin-top:16px;">※ 英単語・熟語練習は Advanced・Foundersプランでご利用いただけます。</p>
       </div>
     </div>
   </section>
 
   <!-- 6. Categories -->
-  <section class="band pad" style="padding-top:0;">
+  <section class="band pad" style="padding-top:40px;">
     <div class="wrap cats reveal">
       <span class="eyebrow center">Categories &amp; Levels</span>
       <h2 class="section-title" style="margin-bottom:26px;">実際に使う場面から、選べる。</h2>
@@ -1109,35 +1142,35 @@
       <h2 class="section-title" style="text-align:center; margin-bottom:32px;">よくある質問</h2>
 
       <div class="faq-item open">
-        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">英語初心者でも使えますか？</div>
+        <button type="button" class="faq-q" aria-expanded="true" onclick="this.setAttribute('aria-expanded', this.parentElement.classList.toggle('open'))">英語初心者でも使えますか？</button>
         <div class="faq-a">はい。完璧な英文を話す必要はありません。まずは自分の知っている単語や表現で話してみることが大切です。Spinglishは、その一歩を踏み出しやすくするためのアプリです。</div>
       </div>
       <div class="faq-item open">
-        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">発音に自信がなくても大丈夫ですか？</div>
+        <button type="button" class="faq-q" aria-expanded="true" onclick="this.setAttribute('aria-expanded', this.parentElement.classList.toggle('open'))">発音に自信がなくても大丈夫ですか？</button>
         <div class="faq-a">大丈夫です。最初からきれいに話すことより、まず英語を口から出すことを重視しています。話すことに慣れていない方でも取り組みやすい設計です。</div>
       </div>
       <div class="faq-item">
-        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">1回どれくらいで終わりますか？</div>
+        <button type="button" class="faq-q" aria-expanded="false" onclick="this.setAttribute('aria-expanded', this.parentElement.classList.toggle('open'))">1回どれくらいで終わりますか？</button>
         <div class="faq-a">1セッションは5問で構成されており、数分で取り組めます。忙しい日でも、すきま時間に練習できます。</div>
       </div>
       <div class="faq-item">
-        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">オンライン英会話との違いは何ですか？</div>
+        <button type="button" class="faq-q" aria-expanded="false" onclick="this.setAttribute('aria-expanded', this.parentElement.classList.toggle('open'))">オンライン英会話との違いは何ですか？</button>
         <div class="faq-a">オンライン英会話は、相手との実践会話に強みがあります。Spinglishはその前段階として、自分で英文を作って口から出す練習に特化しています。「いきなり会話はつらい」と感じる方に向いています。</div>
       </div>
       <div class="faq-item">
-        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">どんなテーマが練習できますか？</div>
+        <button type="button" class="faq-q" aria-expanded="false" onclick="this.setAttribute('aria-expanded', this.parentElement.classList.toggle('open'))">どんなテーマが練習できますか？</button>
         <div class="faq-a">日常会話・旅行・ビジネス・技術・ニュース社会の5カテゴリで、超初級からネイティブ級まで5段階のレベルを用意しています。</div>
       </div>
       <div class="faq-item">
-        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">スピーキング以外の練習もできますか？</div>
+        <button type="button" class="faq-q" aria-expanded="false" onclick="this.setAttribute('aria-expanded', this.parentElement.classList.toggle('open'))">スピーキング以外の練習もできますか？</button>
         <div class="faq-a">はい。お手本音声に続いて声に出す「シャドーイング」、品詞・レベル別の「英単語・熟語練習（2,000語以上・ネイティブ音声つき）」、その日の出来事を英語で書く「英語日記」を用意しています。瞬間英訳とあわせて、リスニング・発音・語彙・ライティングまでバランスよく鍛えられます。</div>
       </div>
       <div class="faq-item">
-        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">無料で試せますか？</div>
+        <button type="button" class="faq-q" aria-expanded="false" onclick="this.setAttribute('aria-expanded', this.parentElement.classList.toggle('open'))">無料で試せますか？</button>
         <div class="faq-a">月額プラン（Foundersを含む）は初回7日間、週額プランは初回3日間、無料でお試しいただけます。期間中はすべての機能を利用でき、自動更新前にいつでも解約できます。</div>
       </div>
       <div class="faq-item">
-        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Foundersプランとは何ですか？</div>
+        <button type="button" class="faq-q" aria-expanded="false" onclick="this.setAttribute('aria-expanded', this.parentElement.classList.toggle('open'))">Foundersプランとは何ですか？</button>
         <div class="faq-a">最初の300人限定の特別プランです。Advancedと同じ全機能を月¥700（永続価格）でずっとご利用いただけます。価格は契約中ずっと変わりません。なお、一度解約すると以後Foundersプランには再加入できませんのでご注意ください。</div>
       </div>
     </div>
@@ -1158,6 +1191,8 @@
       <p class="closing-note">App Storeですぐに始められます。&nbsp;/&nbsp;iOS 16.0以降</p>
     </div>
   </section>
+
+  </main>
 
   <!-- Footer -->
   <footer class="footer">
