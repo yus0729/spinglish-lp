@@ -18,54 +18,49 @@
   </script>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --paper: #ffffff;
+      --mist: #F4F2EC;
+      --ink: #1C1813;
+      --ink-2: #574F44;
+      --ink-3: #6C6558;
+      --gold: #7A6220;
+      --line: #E7E2D6;
+      --mincho: 'Hiragino Mincho ProN', 'Yu Mincho', 'YuMincho', serif;
+      --sans: 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Yu Gothic', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --serif: Georgia, 'Times New Roman', serif;
+    }
     body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      background: #0a0a0a;
-      color: #f0ede6;
-      line-height: 1.8;
+      font-family: var(--sans);
+      background: var(--paper);
+      color: var(--ink-2);
+      line-height: 1.9;
+      -webkit-font-smoothing: antialiased;
     }
-    a { color: #c8a84e; }
-    .container {
-      max-width: 720px;
-      margin: 0 auto;
-      padding: 60px 24px 80px;
-    }
-    .back { display: inline-block; margin-bottom: 32px; font-size: 14px; color: #8a8578; }
-    h1 {
-      font-size: 28px;
-      font-weight: 700;
-      margin-bottom: 8px;
-    }
-    .date { font-size: 13px; color: #8a8578; margin-bottom: 40px; }
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-bottom: 32px;
-    }
-    th, td {
-      font-size: 15px;
-      padding: 14px 16px;
-      border-bottom: 1px solid #2a2a2a;
-      text-align: left;
-      vertical-align: top;
-    }
-    th {
-      color: #c8a84e;
-      font-weight: 700;
-      white-space: nowrap;
-      width: 180px;
-    }
-    td {
-      color: #ccc;
-    }
+    a { color: var(--gold); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .topbar { border-bottom: 1px solid var(--line); padding: 16px 24px; }
+    .topbar-inner { max-width: 720px; margin: 0 auto; }
+    .wordmark { font-family: var(--serif); font-style: italic; font-weight: 700; font-size: 20px; color: var(--ink); letter-spacing: 0.5px; }
+    .wordmark:hover { text-decoration: none; }
+    .container { max-width: 720px; margin: 0 auto; padding: 52px 24px 96px; }
+    .back { display: inline-block; margin-bottom: 30px; font-size: 14px; color: var(--ink-3); }
+    .back:hover { color: var(--gold); }
+    h1 { font-family: var(--mincho); font-size: 30px; font-weight: 600; color: var(--ink); margin-bottom: 10px; letter-spacing: 0.01em; }
+    .date { font-size: 13px; color: var(--ink-3); margin-bottom: 40px; }
+    table { width: 100%; border-collapse: collapse; margin-bottom: 32px; }
+    th, td { font-size: 15px; padding: 16px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
+    th { color: var(--ink); font-weight: 700; white-space: nowrap; width: 180px; }
+    td { color: var(--ink-2); }
     @media (max-width: 600px) {
       th, td { display: block; width: 100%; padding: 8px 0; }
       th { border-bottom: none; padding-bottom: 0; }
-      td { border-bottom: 1px solid #2a2a2a; padding-bottom: 14px; margin-bottom: 8px; }
+      td { border-bottom: 1px solid var(--line); padding-bottom: 14px; margin-bottom: 8px; }
     }
   </style>
 </head>
 <body>
+  <div class="topbar"><div class="topbar-inner"><a href="index.html" class="wordmark">Spinglish</a></div></div>
   <div class="container">
     <a href="index.html" class="back">&larr; トップに戻る</a>
     <h1>特定商取引法に基づく表記</h1>
@@ -87,12 +82,12 @@
       <tr>
         <th>販売価格</th>
         <td>
-          Founders: 月額 ¥700（永続価格・最初の300人限定）<br>
-          Standard: 週額 ¥300 / 月額 ¥1,000<br>
-          Advanced: 週額 ¥400 / 月額 ¥1,500<br>
+          ファウンダーズ: 月額 ¥700（永続価格・最初の300人限定）<br>
+          スタンダード: 週額 ¥300 / 月額 ¥1,000<br>
+          アドバンス: 週額 ¥400 / 月額 ¥1,500<br>
           ※ 価格はすべて税込<br>
-          ※ 月額プラン（Foundersを含む）は初回登録時に7日間、週額プランは3日間の無料トライアルあり<br>
-          ※ Foundersプランは一度解約すると以後再加入できません
+          ※ 月額プラン（ファウンダーズを含む）は初回登録時に7日間、週額プランは3日間の無料トライアルあり<br>
+          ※ ファウンダーズプランは一度解約すると以後再加入できません
         </td>
       </tr>
       <tr>

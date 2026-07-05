@@ -18,38 +18,54 @@
   </script>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --paper: #ffffff;
+      --mist: #F4F2EC;
+      --ink: #1C1813;
+      --ink-2: #574F44;
+      --ink-3: #6C6558;
+      --gold: #7A6220;
+      --line: #E7E2D6;
+      --mincho: 'Hiragino Mincho ProN', 'Yu Mincho', 'YuMincho', serif;
+      --sans: 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Yu Gothic', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --serif: Georgia, 'Times New Roman', serif;
+    }
     body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      background: #0a0a0a;
-      color: #f0ede6;
-      line-height: 1.8;
+      font-family: var(--sans);
+      background: var(--paper);
+      color: var(--ink-2);
+      line-height: 1.9;
+      -webkit-font-smoothing: antialiased;
     }
-    a { color: #c8a84e; }
-    .container {
-      max-width: 720px;
-      margin: 0 auto;
-      padding: 60px 24px 80px;
-    }
-    .back { display: inline-block; margin-bottom: 32px; font-size: 14px; color: #8a8578; }
-    h1 {
-      font-size: 28px;
-      font-weight: 700;
-      margin-bottom: 8px;
-    }
-    .date { font-size: 13px; color: #8a8578; margin-bottom: 40px; }
-    h2 {
-      font-size: 18px;
-      font-weight: 700;
-      margin-top: 36px;
-      margin-bottom: 12px;
-      color: #c8a84e;
-    }
-    p, ul { font-size: 15px; color: #ccc; margin-bottom: 16px; }
+    a { color: var(--gold); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .topbar { border-bottom: 1px solid var(--line); padding: 16px 24px; }
+    .topbar-inner { max-width: 720px; margin: 0 auto; }
+    .wordmark { font-family: var(--serif); font-style: italic; font-weight: 700; font-size: 20px; color: var(--ink); letter-spacing: 0.5px; }
+    .wordmark:hover { text-decoration: none; }
+    .container { max-width: 720px; margin: 0 auto; padding: 52px 24px 96px; }
+    .back { display: inline-block; margin-bottom: 30px; font-size: 14px; color: var(--ink-3); }
+    .back:hover { color: var(--gold); }
+    h1 { font-family: var(--mincho); font-size: 30px; font-weight: 600; color: var(--ink); margin-bottom: 10px; letter-spacing: 0.01em; }
+    .date { font-size: 13px; color: var(--ink-3); margin-bottom: 40px; }
+    h2 { font-family: var(--mincho); font-size: 19px; font-weight: 700; color: var(--ink); margin-top: 38px; margin-bottom: 14px; padding-top: 26px; border-top: 1px solid var(--line); }
+    p, ul { font-size: 15px; color: var(--ink-2); margin-bottom: 16px; }
     ul { padding-left: 24px; }
     li { margin-bottom: 8px; }
+    strong { color: var(--ink); font-weight: 700; }
+    table { width: 100%; border-collapse: collapse; margin-bottom: 32px; }
+    th, td { font-size: 15px; padding: 16px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
+    th { color: var(--ink); font-weight: 700; white-space: nowrap; width: 180px; }
+    td { color: var(--ink-2); }
+    @media (max-width: 600px) {
+      th, td { display: block; width: 100%; padding: 8px 0; }
+      th { border-bottom: none; padding-bottom: 0; }
+      td { border-bottom: 1px solid var(--line); padding-bottom: 14px; margin-bottom: 8px; }
+    }
   </style>
 </head>
 <body>
+  <div class="topbar"><div class="topbar-inner"><a href="index.html" class="wordmark">Spinglish</a></div></div>
   <div class="container">
     <a href="index.html" class="back">&larr; トップに戻る</a>
     <h1>利用規約</h1>
@@ -58,7 +74,7 @@
     <p>本利用規約（以下「本規約」）は、Spinglish（以下「本アプリ」）の利用条件を定めるものです。本アプリをご利用いただく前に、本規約をよくお読みください。</p>
 
     <h2>1. サービスの概要</h2>
-    <p>本アプリは、AI技術を活用した英語スピーキング練習サービスです。ユーザーは日本語の文を英語に翻訳して声に出す「瞬間英訳」、お手本音声を聴いて声に出す「シャドーイング」、イラスト付きの「英単語練習」、その日の出来事を英語で書く「英語日記」などの機能を利用し、AIによる採点・添削・評価を受けることができます。</p>
+    <p>本アプリは、AI技術を活用した英語スピーキング練習サービスです。ユーザーは日本語の文を英語に翻訳して声に出す「瞬間英訳」、お手本音声を聴いて声に出す「シャドーイング」、イラスト付きの「英単語練習」、その日の出来事を英語で話す「英語日記」などの機能を利用し、AIによる採点・添削・評価を受けることができます。</p>
     <p>本アプリの利用には、Appleの標準エンドユーザライセンス契約（EULA）が適用されます。詳細は <a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/" target="_blank">Apple Standard EULA</a> をご確認ください。</p>
 
     <h2>2. アカウント</h2>
@@ -70,8 +86,8 @@
 
     <h2>3. サブスクリプション</h2>
     <ul>
-      <li>本アプリは、有料プラン（Founders、Standard、Advanced）を提供しています。</li>
-      <li>月額プラン（Foundersを含む）は初回登録時に7日間、週額プランは3日間の無料トライアルがご利用いただけます（過去にトライアルを利用された方を除く）。</li>
+      <li>本アプリは、有料プラン（ファウンダーズ、スタンダード、アドバンス）を提供しています。</li>
+      <li>月額プラン（ファウンダーズを含む）は初回登録時に7日間、週額プランは3日間の無料トライアルがご利用いただけます（過去にトライアルを利用された方を除く）。</li>
       <li>無料トライアル期間終了の24時間前までに解約されない場合、選択されたプランの料金が自動的に課金されます。</li>
       <li>有料プランは自動更新されるサブスクリプションです。</li>
       <li>購入はApple App Storeを通じて処理されます。</li>
@@ -82,12 +98,12 @@
 
     <h2>4. 料金</h2>
     <ul>
-      <li><strong>Founders:</strong> 月額¥700（永続価格）。Advancedの全機能（1日10セッション、シャドーイングAI評価4回/日、英単語・熟語練習2,000語以上、英語日記1日1回など）が、契約中ずっと月額¥700でご利用いただけます。最初の300人限定の特別プランです。初回登録時に7日間の無料トライアルあり。</li>
-      <li><strong>Standard:</strong> 週額¥300 / 月額¥1,000（1日5セッション、シャドーイングAI評価2回/日、英語日記1日1回）。初回登録時に7日間（週額プランは3日間）の無料トライアルあり。</li>
-      <li><strong>Advanced:</strong> 週額¥400 / 月額¥1,500（1日10セッション、シャドーイングAI評価4回/日、英単語・熟語練習2,000語以上、英語日記1日1回）。初回登録時に7日間（週額プランは3日間）の無料トライアルあり。</li>
+      <li><strong>ファウンダーズ:</strong> 月額¥700（永続価格）。アドバンスの全機能（1日10セッション、シャドーイングAI評価4回/日、英単語・熟語練習2,000語以上、英語日記1日1回など）が、契約中ずっと月額¥700でご利用いただけます。最初の300人限定の特別プランです。初回登録時に7日間の無料トライアルあり。</li>
+      <li><strong>スタンダード:</strong> 週額¥300 / 月額¥1,000（1日5セッション、シャドーイングAI評価2回/日、英語日記1日1回）。初回登録時に7日間（週額プランは3日間）の無料トライアルあり。</li>
+      <li><strong>アドバンス:</strong> 週額¥400 / 月額¥1,500（1日10セッション、シャドーイングAI評価4回/日、英単語・熟語練習2,000語以上、英語日記1日1回）。初回登録時に7日間（週額プランは3日間）の無料トライアルあり。</li>
     </ul>
-    <p>Foundersプランは最初の300人限定の特別プランです。一度解約された場合、以後Foundersプランへの再加入はできません。</p>
-    <p>料金は予告なく変更される場合があります。変更は次の更新期間から適用されます（ただしFoundersプランの永続価格は契約継続中は変更されません）。</p>
+    <p>ファウンダーズプランは最初の300人限定の特別プランです。一度解約された場合、以後ファウンダーズプランへの再加入はできません。</p>
+    <p>料金は予告なく変更される場合があります。変更は次の更新期間から適用されます（ただしファウンダーズプランの永続価格は契約継続中は変更されません）。</p>
 
     <h2>5. 返金</h2>
     <p>サブスクリプションの返金については、Appleの規定に従い、Appleを通じて行われるものとします。本アプリ側での直接の返金には応じかねますので、あらかじめご了承ください。返金のご請求は、App Storeの「購入履歴」または <a href="https://reportaproblem.apple.com/" target="_blank">Appleのサポートページ</a> よりお手続きください。</p>
