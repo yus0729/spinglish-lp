@@ -4,8 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Spinglish - AI英会話スピーキング練習アプリ｜瞬間英訳・シャドーイング</title>
-  <meta name="description" content="Spinglishは「知っている英語を、口から出す」ことに特化したiPhone向け英語学習アプリ。瞬間英訳・シャドーイング・英単語・英語日記を毎日数分のスキマ時間で続けられます。月額¥700のファウンダーズプラン（300人限定・永続価格）あり。">
-  <meta name="keywords" content="英会話アプリ, スピーキング, 瞬間英訳, シャドーイング, AI英会話, 英語学習, iPhone, 英語日記, 英単語">
+  <meta name="description" content="Spinglishは「知っている英語を、口から出す」ことに特化したiPhone向け英語学習アプリ。日常会話からサッカー・野球・金融・柔術・精神世界まで10カテゴリ・10,000問の瞬間英訳を、毎日数分のスキマ時間で。月額¥700のファウンダーズプラン（300人限定・永続価格）あり。">
+  <meta name="keywords" content="英会話アプリ, スピーキング, 瞬間英訳, シャドーイング, AI英会話, 英語学習, iPhone, 英語日記, 英単語, サッカー英語, 野球英語, 金融英語, 柔術">
   <meta name="theme-color" content="#ffffff">
   <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large">
   <link rel="canonical" href="https://spinglish.jp/">
@@ -15,7 +15,7 @@
   <meta property="og:site_name" content="Spinglish">
   <meta property="og:url" content="https://spinglish.jp/">
   <meta property="og:title" content="Spinglish - AI英会話スピーキング練習アプリ">
-  <meta property="og:description" content="知っている英語を、口から出す。瞬間英訳・シャドーイング・英単語・英語日記が毎日数分で続けられるiPhoneアプリ。">
+  <meta property="og:description" content="知っている英語を、口から出す。日常会話からサッカー・野球・金融・柔術・精神世界まで、10カテゴリ・10,000問の瞬間英訳が毎日数分で続けられるiPhoneアプリ。">
   <meta property="og:image" content="https://spinglish.jp/og-image.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
@@ -419,7 +419,13 @@
       background: #fff; border: 1px solid var(--line);
       padding: 11px 22px; border-radius: 999px;
     }
+    .cat-chip.new { border-color: #c9ad62; background: #fdf9ee; }
+    .cat-chip.new::before {
+      content: "NEW"; font-size: 10px; font-weight: 800; letter-spacing: 0.08em;
+      color: #8a6d22; margin-right: 7px; vertical-align: 1px;
+    }
     .cat-note { font-size: 13.5px; color: var(--ink-3); }
+    .cat-lead { font-size: 15px; color: var(--ink-3); max-width: 600px; margin: 0 auto 22px; line-height: 1.85; text-align: center; }
 
     /* ===== Plans ===== */
     .plans-head { text-align: center; margin-bottom: 14px; }
@@ -645,7 +651,7 @@
         "@id": "https://spinglish.jp/#app",
         "name": "Spinglish",
         "alternateName": "スピングリッシュ",
-        "description": "知っている英語を口から出す練習に特化したiPhone向け英語学習アプリ。瞬間英訳・シャドーイング・英単語・英語日記の4機能を毎日数分のスキマ時間で続けられる。",
+        "description": "知っている英語を口から出す練習に特化したiPhone向け英語学習アプリ。日常会話からサッカー・野球・金融・柔術・精神世界まで10カテゴリ・10,000問の瞬間英訳と、シャドーイング・英単語・英語日記を毎日数分のスキマ時間で続けられる。",
         "applicationCategory": "EducationalApplication",
         "applicationSubCategory": "LanguageLearning",
         "operatingSystem": "iOS 16.0+",
@@ -655,9 +661,10 @@
         "image": "https://spinglish.jp/og-image.png",
         "inLanguage": "ja",
         "availableOnDevice": "iPhone",
-        "dateModified": "2026-07-05",
+        "dateModified": "2026-07-13",
         "featureList": [
-          "瞬間英訳（日本語を英語で即座にスピーキング）",
+          "瞬間英訳（日本語を英語で即座にスピーキング。10カテゴリ・10,000問）",
+          "専門カテゴリ（サッカー・野球・金融・柔術・精神世界）",
           "シャドーイング（お手本音声を真似て発音練習）",
           "英単語・熟語練習（品詞・レベル別に2,000語以上、ネイティブ音声つき）",
           "英語日記（その日の出来事を英語で話して記録）",
@@ -719,7 +726,7 @@
         "url": "https://spinglish.jp/",
         "name": "Spinglish",
         "inLanguage": "ja",
-        "dateModified": "2026-07-05",
+        "dateModified": "2026-07-13",
         "publisher": { "@id": "https://spinglish.jp/#org" }
       },
       {
@@ -763,7 +770,7 @@
             "name": "どんなテーマが練習できますか？",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "日常会話・旅行・ビジネス・技術・ニュース社会の5カテゴリで、超初級からネイティブ級まで5段階のレベルを用意しています。"
+              "text": "日常会話・旅行・ビジネス・技術・ニュース社会に加え、サッカー・野球・金融・柔術（ブラジリアン柔術）・精神世界（禅・瞑想・東洋哲学）の10カテゴリ・合計10,000問。それぞれ超初級からネイティブ級まで5段階のレベルを用意しています。趣味や仕事に直結するテーマを選べば、自分が実際に使う英語だけを練習できます。"
             }
           },
           {
@@ -859,8 +866,8 @@
             <div class="hero-stat-label">無料トライアル</div>
           </div>
           <div class="hero-stat">
-            <div class="hero-stat-num">5<span>問</span></div>
-            <div class="hero-stat-label">1セッション数分</div>
+            <div class="hero-stat-num">10,000<span>問</span></div>
+            <div class="hero-stat-label">10カテゴリの出題</div>
           </div>
           <div class="hero-stat">
             <div class="hero-stat-num">3<span>軸</span></div>
@@ -992,15 +999,21 @@
   <section class="band pad" style="padding-top:40px;">
     <div class="wrap cats reveal">
       <span class="eyebrow center">Categories &amp; Levels</span>
-      <h2 class="section-title" style="margin-bottom:26px;">実際に使う場面から、選べる。</h2>
+      <h2 class="section-title" style="margin-bottom:14px;">好きなことを、そのまま英語の教材に。</h2>
+      <p class="cat-lead">サッカー・野球・金融・柔術・精神世界の5カテゴリが新登場。ピッチの声かけ、道場の会話、マーケットの実務英語、禅の言葉まで——趣味や仕事の「自分の言葉」で練習できます。</p>
       <div class="cat-chip-row">
         <span class="cat-chip">日常会話</span>
         <span class="cat-chip">旅行</span>
         <span class="cat-chip">ビジネス</span>
+        <span class="cat-chip new">サッカー</span>
+        <span class="cat-chip new">野球</span>
+        <span class="cat-chip new">金融</span>
+        <span class="cat-chip new">柔術</span>
+        <span class="cat-chip new">精神世界</span>
         <span class="cat-chip">技術</span>
         <span class="cat-chip">ニュース社会</span>
       </div>
-      <p class="cat-note">5カテゴリ &times; 5レベル（超初級〜ネイティブ級）</p>
+      <p class="cat-note">10カテゴリ &times; 5レベル（超初級〜ネイティブ級）・全10,000問、すべてネイティブ音声つき</p>
     </div>
   </section>
 
