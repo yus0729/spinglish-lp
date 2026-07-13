@@ -50,4 +50,20 @@ Allow: /
 User-agent: Meta-ExternalAgent
 Allow: /
 
+User-agent: Meta-ExternalFetcher
+Allow: /
+
+User-agent: Amazonbot
+Allow: /
+
+User-agent: Google-CloudVertexBot
+Allow: /
+
+User-agent: DuckAssistBot
+Allow: /
+
+User-agent: Timpibot
+Allow: /
+
+# AI向け要約: https://spinglish.jp/llms.txt / 全文: https://spinglish.jp/llms-full.txt
 Sitemap: https://spinglish.jp/sitemap.xml
