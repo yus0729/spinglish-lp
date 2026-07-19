@@ -211,8 +211,26 @@
     }
 
     /* ===== Header ===== */
+    .founders-banner {
+      display: block;
+      width: 100%;
+      background: var(--gold-bright);
+      color: #241d10;
+      text-align: center;
+      font-weight: 700;
+      font-size: 14.5px;
+      letter-spacing: 0.03em;
+      line-height: 1.45;
+      padding: 11px 16px;
+    }
+    .founders-banner:hover { text-decoration: none; opacity: 0.94; }
+    .founders-banner .fb-price { font-size: 18px; font-weight: 800; }
+    @media (max-width: 720px) {
+      .founders-banner { font-size: 12.5px; padding: 10px 12px; }
+      .founders-banner .fb-price { font-size: 15px; }
+    }
     .site-header {
-      position: fixed;
+      position: sticky;
       top: 0; left: 0; right: 0;
       z-index: 100;
       display: flex;
@@ -247,7 +265,7 @@
     /* ===== Hero ===== */
     .hero {
       position: relative;
-      padding: 150px 0 90px;
+      padding: 82px 0 90px;
       overflow: hidden;
     }
     .hero::before {
@@ -325,18 +343,6 @@
     .hero-main-cta { font-size: 16px; padding: 16px 38px; }
     .hero-cta-meta { font-size: 12.5px; color: var(--ink-3); line-height: 1.6; }
     .hero-cta-meta strong { color: var(--gold); font-weight: 700; }
-    .hero-badge {
-      display: inline-block;
-      background: var(--gold-bright);
-      color: #241d10;
-      font-size: 13px;
-      font-weight: 700;
-      letter-spacing: 0.02em;
-      padding: 8px 18px;
-      border-radius: 999px;
-      margin-bottom: 14px;
-      box-shadow: 0 8px 22px -8px rgba(200,168,78,0.55);
-    }
     .hero-value-card {
       margin-top: 18px;
       max-width: 480px;
@@ -352,7 +358,6 @@
     .hvc-note { margin-top: 6px; font-size: 10px; color: var(--ink-3); opacity: 0.75; }
     .plans-market-note { font-size: 10px; color: var(--ink-3); opacity: 0.75; }
     @media (max-width: 720px) {
-      .hero-badge { font-size: 12px; padding: 7px 14px; }
       .hero-value-card { margin-left: auto; margin-right: auto; text-align: left; }
     }
 
@@ -670,7 +675,7 @@
       .plans-grid { grid-template-columns: 1fr; max-width: 440px; margin: 0 auto; }
     }
     @media (max-width: 768px) {
-      .hero { padding: 128px 0 64px; }
+      .hero { padding: 56px 0 64px; }
       .hero-inner { grid-template-columns: 1fr; gap: 44px; text-align: center; }
       .hero h1 { font-size: 31px; line-height: 1.5; }
       .hero-sub { margin-left: auto; margin-right: auto; }
@@ -1067,6 +1072,9 @@
 
   <a href="#main" class="skip-link">本文へスキップ</a>
 
+  <!-- Founders announcement banner -->
+  <a href="https://apps.apple.com/app/spinglish/id6761403115" onclick="return gtag_report_conversion('https://apps.apple.com/app/spinglish/id6761403115');" class="founders-banner">先着<strong>300人限定</strong> — ファウンダーズ 月<strong class="fb-price">¥700</strong>のまま永続</a>
+
   <!-- Header -->
   <header class="site-header">
     <div class="header-logo">Spinglish</div>
@@ -1079,7 +1087,6 @@
   <section class="hero">
     <div class="wrap hero-inner">
       <div class="hero-text">
-        <div class="hero-badge">先着300人限定 — ファウンダーズ 月¥700のまま永続</div>
         <span class="eyebrow">Curated Language Mastery</span>
         <h1>英語は読めるのに、<br><span class="accent">口から出てこない</span>人へ。</h1>
         <p class="hero-sub">
