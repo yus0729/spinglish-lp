@@ -2,7 +2,6 @@
 # 全クローラーに公開ページへのアクセスを許可
 User-agent: *
 Allow: /
-Disallow: /design-proposal.html
 
 # AI クローラー (LLM学習・引用) — 明示的に許可
 User-agent: GPTBot
