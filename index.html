@@ -325,7 +325,36 @@
     .hero-main-cta { font-size: 16px; padding: 16px 38px; }
     .hero-cta-meta { font-size: 12.5px; color: var(--ink-3); line-height: 1.6; }
     .hero-cta-meta strong { color: var(--gold); font-weight: 700; }
-    .hero-founders-note { margin-top: 14px; font-size: 12.5px; color: var(--ink-3); }
+    .hero-badge {
+      display: inline-block;
+      background: var(--gold-bright);
+      color: #241d10;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      padding: 8px 18px;
+      border-radius: 999px;
+      margin-bottom: 14px;
+      box-shadow: 0 8px 22px -8px rgba(200,168,78,0.55);
+    }
+    .hero-value-card {
+      margin-top: 18px;
+      max-width: 480px;
+      border: 1.5px solid var(--gold);
+      border-radius: 14px;
+      padding: 14px 18px 12px;
+      background: rgba(200,168,78,0.06);
+    }
+    .hvc-main { font-size: 15px; line-height: 1.7; color: var(--ink); }
+    .hvc-market { color: var(--ink-3); text-decoration: line-through; text-decoration-color: rgba(20,17,12,0.35); }
+    .hvc-price { color: var(--gold); font-size: 21px; font-weight: 800; }
+    .hvc-sub { margin-top: 6px; font-size: 12.5px; color: var(--ink-3); line-height: 1.6; }
+    .hvc-note { margin-top: 6px; font-size: 10px; color: var(--ink-3); opacity: 0.75; }
+    .plans-market-note { font-size: 10px; color: var(--ink-3); opacity: 0.75; }
+    @media (max-width: 720px) {
+      .hero-badge { font-size: 12px; padding: 7px 14px; }
+      .hero-value-card { margin-left: auto; margin-right: auto; text-align: left; }
+    }
 
     /* ===== Mobile sticky CTA bar ===== */
     .sticky-cta {
@@ -1050,6 +1079,7 @@
   <section class="hero">
     <div class="wrap hero-inner">
       <div class="hero-text">
+        <div class="hero-badge">先着300人限定 — ファウンダーズ 月¥700のまま永続</div>
         <span class="eyebrow">Curated Language Mastery</span>
         <h1>英語は読めるのに、<br><span class="accent">口から出てこない</span>人へ。</h1>
         <p class="hero-sub">
@@ -1080,7 +1110,11 @@
           <a href="https://apps.apple.com/app/spinglish/id6761403115" onclick="return gtag_report_conversion('https://apps.apple.com/app/spinglish/id6761403115');" class="appstore"><img src="Black_lockup/SVG/Download_on_the_App_Store_Badge_JP_RGB_blk_100317.svg" alt="App Storeからダウンロード" width="109" height="40"></a>
           <span class="hero-cta-meta">いつでも解約OK<br><strong>初回最大7日間 ¥0</strong></span>
         </div>
-        <p class="hero-founders-note">ファウンダーズプラン（月¥700のまま永続）は先着300人限定</p>
+        <div class="hero-value-card">
+          <p class="hvc-main">主要AI英会話アプリの相場は <span class="hvc-market">月¥1,800〜¥3,980</span><br>Spinglishは <strong class="hvc-price">月¥700</strong> のまま、ずっと。</p>
+          <p class="hvc-sub">瞬間英訳・シャドーイング・英単語・英語日記の全機能つき。先着300人のファウンダーズ枠のみ。</p>
+          <p class="hvc-note">※主要AI英会話アプリ3社の公開価格（2026年7月時点・税込）に基づく</p>
+        </div>
       </div>
       <div class="hero-visual">
         <div class="shot">
@@ -1244,8 +1278,9 @@
         <span class="eyebrow center">Plans</span>
         <h2 class="section-title">料金プラン</h2>
       </div>
+      <p class="plans-intro reveal">主要AI英会話アプリの相場は月¥1,800〜¥3,980<span class="plans-note-ref">※</span>。Spinglishはその1/3以下の月¥700（ファウンダーズ・先着300人）から、全機能を使えます。</p>
       <p class="plans-intro reveal">月額プランは初回7日間、週額プランは初回3日間、無料でお試しいただけます。</p>
-      <p class="plans-flex reveal">解約はiPhoneの「設定」→「サブスクリプション」からいつでも可能です。</p>
+      <p class="plans-flex reveal">解約はiPhoneの「設定」→「サブスクリプション」からいつでも可能です。<br><span class="plans-market-note">※主要AI英会話アプリ3社の公開価格（2026年7月時点・税込）に基づく</span></p>
       <div class="plans-grid reveal">
         <div class="plan founders">
           <div class="plan-tag">&#9733; ファウンダーズ</div>
