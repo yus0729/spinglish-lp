@@ -322,8 +322,36 @@
     .hero-stat-num span { font-size: 13px; color: var(--gold); font-family: var(--sans); font-weight: 700; }
     .hero-stat-label { font-size: 11px; color: var(--ink-3); letter-spacing: 0.4px; margin-top: 4px; }
     .hero-cta-row { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
+    .hero-main-cta { font-size: 16px; padding: 16px 38px; }
     .hero-cta-meta { font-size: 12.5px; color: var(--ink-3); line-height: 1.6; }
     .hero-cta-meta strong { color: var(--gold); font-weight: 700; }
+    .hero-founders-note { margin-top: 14px; font-size: 12.5px; color: var(--ink-3); }
+
+    /* ===== Mobile sticky CTA bar ===== */
+    .sticky-cta {
+      display: none;
+      position: fixed;
+      left: 0; right: 0; bottom: 0;
+      z-index: 90;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 10px 16px calc(10px + env(safe-area-inset-bottom));
+      background: rgba(255,255,255,0.96);
+      backdrop-filter: blur(8px);
+      border-top: 1px solid rgba(20,17,12,0.08);
+      box-shadow: 0 -8px 24px rgba(20,17,12,0.08);
+      transform: translateY(110%);
+      transition: transform 0.3s ease;
+    }
+    .sticky-cta.visible { transform: translateY(0); }
+    .sticky-cta-text { font-size: 11.5px; color: var(--ink-3); line-height: 1.5; }
+    .sticky-cta-text strong { color: var(--gold); font-weight: 700; }
+    .sticky-cta .btn-gold { padding: 12px 22px; font-size: 14px; white-space: nowrap; flex-shrink: 0; }
+    @media (max-width: 720px) {
+      .sticky-cta { display: flex; }
+      body.has-sticky-cta { padding-bottom: 74px; }
+    }
     .hero-visual { display: flex; justify-content: center; }
     .hero-visual .shot { max-width: 300px; }
 
@@ -1048,13 +1076,15 @@
           </div>
         </div>
         <div class="hero-cta-row">
+          <a href="https://apps.apple.com/app/spinglish/id6761403115" onclick="return gtag_report_conversion('https://apps.apple.com/app/spinglish/id6761403115');" class="btn btn-gold hero-main-cta">無料で7日間試す</a>
           <a href="https://apps.apple.com/app/spinglish/id6761403115" onclick="return gtag_report_conversion('https://apps.apple.com/app/spinglish/id6761403115');" class="appstore"><img src="Black_lockup/SVG/Download_on_the_App_Store_Badge_JP_RGB_blk_100317.svg" alt="App Storeからダウンロード" width="109" height="40"></a>
           <span class="hero-cta-meta">いつでも解約OK<br><strong>初回最大7日間 ¥0</strong></span>
         </div>
+        <p class="hero-founders-note">ファウンダーズプラン（月¥700のまま永続）は先着300人限定</p>
       </div>
       <div class="hero-visual">
         <div class="shot">
-          <div class="device"><img src="img/app/speak.png" alt="Spinglishの瞬間英訳。日本語のお題を英語で声に出す画面" width="1206" height="2622" fetchpriority="high"></div>
+          <div class="device"><img src="img/app/speak.webp" alt="Spinglishの瞬間英訳。日本語のお題を英語で声に出す画面" width="800" height="1739" fetchpriority="high" decoding="async"></div>
         </div>
       </div>
     </div>
@@ -1098,7 +1128,7 @@
     <div class="wrap showcase reverse reveal">
       <div class="showcase-visual">
         <div class="shot">
-          <div class="device"><img src="img/app/score.png" alt="AI採点の結果画面。伝わりやすさ・文法・自然さの3軸評価と、模範解答・添削" loading="lazy" width="1206" height="2622"></div>
+          <div class="device"><img src="img/app/score.webp" alt="AI採点の結果画面。伝わりやすさ・文法・自然さの3軸評価と、模範解答・添削" loading="lazy" width="800" height="1739" decoding="async"></div>
         </div>
       </div>
       <div class="showcase-text">
@@ -1126,7 +1156,7 @@
     <div class="wrap showcase reveal">
       <div class="showcase-visual">
         <div class="shot">
-          <div class="device"><img src="img/app/shadow.png" alt="シャドーイングの練習画面。お手本の英文を見ながら、続けて声に出す" loading="lazy" width="1206" height="2622"></div>
+          <div class="device"><img src="img/app/shadow.webp" alt="シャドーイングの練習画面。お手本の英文を見ながら、続けて声に出す" loading="lazy" width="800" height="1739" decoding="async"></div>
         </div>
       </div>
       <div class="showcase-text">
@@ -1149,7 +1179,7 @@
     <div class="wrap showcase reverse reveal">
       <div class="showcase-visual">
         <div class="shot">
-          <div class="device"><img src="img/app/dict.png" alt="英単語の4択クイズ。意味に合う単語を選んで覚える" loading="lazy" width="1206" height="2622"></div>
+          <div class="device"><img src="img/app/dict.webp" alt="英単語の4択クイズ。意味に合う単語を選んで覚える" loading="lazy" width="800" height="1739" decoding="async"></div>
         </div>
       </div>
       <div class="showcase-text">
@@ -1509,6 +1539,29 @@
         });
       }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
       els.forEach(function (el) { io.observe(el); });
+    })();
+  </script>
+
+  <!-- Mobile sticky CTA bar -->
+  <div class="sticky-cta" id="stickyCta" aria-hidden="true">
+    <span class="sticky-cta-text">先着300人・<strong>月¥700のまま永続</strong><br>初回最大7日間 ¥0</span>
+    <a href="https://apps.apple.com/app/spinglish/id6761403115" onclick="return gtag_report_conversion('https://apps.apple.com/app/spinglish/id6761403115');" class="btn btn-gold">無料で7日間試す</a>
+  </div>
+  <script>
+    (function () {
+      var bar = document.getElementById('stickyCta');
+      var ticking = false;
+      function update() {
+        ticking = false;
+        var show = window.scrollY > 600;
+        bar.classList.toggle('visible', show);
+        bar.setAttribute('aria-hidden', String(!show));
+        document.body.classList.toggle('has-sticky-cta', show);
+      }
+      window.addEventListener('scroll', function () {
+        if (!ticking) { ticking = true; requestAnimationFrame(update); }
+      }, { passive: true });
+      update();
     })();
   </script>
 
