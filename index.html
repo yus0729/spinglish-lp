@@ -81,6 +81,7 @@
       --hairline: #D8D2C8;       /* rules */
       --fog: #E8E4DD;            /* subtle surfaces */
       --gold: #7A6220;           /* brand accent (sparingly, AA on paper) */
+      --gold-bright: #C8A84E;    /* accent on ink-dark surfaces */
       --ok: #2E6B47;             /* S/A grades */
       --warn: #A9463C;           /* C/D grades */
       --display: 'Didot', 'Bodoni Moda', 'Playfair Display', Georgia, 'Hiragino Mincho ProN', serif;
@@ -221,9 +222,36 @@
       text-align: center;
     }
 
+    /* ===== Founders announcement banner ===== */
+    .founders-banner {
+      display: block;
+      width: 100%;
+      background: var(--ink);
+      color: var(--paper-bright);
+      text-align: center;
+      font-weight: 600;
+      font-size: 13.5px;
+      letter-spacing: 0.05em;
+      line-height: 1.5;
+      padding: 11px 16px;
+    }
+    .founders-banner strong { font-weight: 700; }
+    .founders-banner:hover { text-decoration: none; opacity: 0.92; }
+    .founders-banner .fb-price {
+      font-family: var(--display);
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--gold-bright);
+      letter-spacing: 0.02em;
+    }
+    @media (max-width: 720px) {
+      .founders-banner { font-size: 12px; padding: 10px 12px; }
+      .founders-banner .fb-price { font-size: 15px; }
+    }
+
     /* ===== Header ===== */
     .site-header {
-      position: fixed;
+      position: sticky;
       top: 0; left: 0; right: 0;
       z-index: 100;
       display: flex;
@@ -258,7 +286,7 @@
     .header-cta:hover { opacity: 0.86; text-decoration: none; }
 
     /* ===== Hero（一面＝マストヘッド構成） ===== */
-    .hero { position: relative; padding: 96px 0 96px; }
+    .hero { position: relative; padding: 44px 0 96px; }
     .masthead { padding-top: 20px; }
     .masthead-meta {
       display: flex;
@@ -342,8 +370,48 @@
     }
     .stat-label-ja { font-family: var(--mincho); font-size: 11.5px; color: var(--muted); letter-spacing: 0.06em; margin-top: 3px; }
     .hero-cta-row { display: flex; align-items: center; gap: 22px; flex-wrap: wrap; }
+    .hero-main-cta { font-size: 15px; padding: 18px 42px; }
     .hero-cta-meta { font-size: 12.5px; color: var(--muted); line-height: 1.7; }
     .hero-cta-meta strong { color: var(--ink); font-weight: 700; }
+    .hero-value-card {
+      margin-top: 22px;
+      max-width: 480px;
+      border: 1px solid var(--ink);
+      background: var(--paper-bright);
+      padding: 16px 20px 14px;
+    }
+    .hvc-main { font-size: 14.5px; line-height: 1.85; color: var(--ink); }
+    .hvc-market { color: var(--muted); text-decoration: line-through; text-decoration-color: rgba(10,10,10,0.4); }
+    .hvc-price { color: var(--gold); font-family: var(--display); font-size: 22px; font-weight: 700; }
+    .hvc-sub { margin-top: 6px; font-size: 12.5px; color: var(--muted); line-height: 1.7; }
+    .hvc-note { margin-top: 6px; font-size: 10px; color: var(--muted); opacity: 0.8; }
+    .plans-market-note { font-size: 10px; color: var(--muted); opacity: 0.8; }
+
+    /* ===== Mobile sticky CTA bar ===== */
+    .sticky-cta {
+      display: none;
+      position: fixed;
+      left: 0; right: 0; bottom: 0;
+      z-index: 90;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 10px 16px calc(10px + env(safe-area-inset-bottom));
+      background: rgba(251,250,246,0.96);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border-top: 1px solid var(--hairline);
+      transform: translateY(110%);
+      transition: transform 0.3s ease;
+    }
+    .sticky-cta.visible { transform: translateY(0); }
+    .sticky-cta-text { font-size: 11.5px; color: var(--muted); line-height: 1.55; }
+    .sticky-cta-text strong { color: var(--gold); font-weight: 700; }
+    .sticky-cta .btn-ink { padding: 13px 24px; font-size: 13px; white-space: nowrap; flex-shrink: 0; }
+    @media (max-width: 720px) {
+      .sticky-cta { display: flex; }
+      body.has-sticky-cta { padding-bottom: 74px; }
+    }
     .hero-visual { display: flex; flex-direction: column; align-items: center; margin-top: -46px; }
     .hero-visual .shot { max-width: 300px; }
 
@@ -643,6 +711,7 @@
       html { scroll-behavior: auto; }
       .reveal { opacity: 1; transform: none; transition: none; }
       .header-logo { transition: none; }
+      .sticky-cta { transition: none; }
     }
 
     /* ===== Responsive ===== */
@@ -655,7 +724,7 @@
       .ret-stats .stat { flex: 1; }
     }
     @media (max-width: 768px) {
-      .hero { padding: 84px 0 64px; }
+      .hero { padding: 36px 0 64px; }
       .hero-grid { grid-template-columns: 1fr; gap: 52px; padding-top: 48px; }
       .hero-visual { order: -1; margin-top: 0; }
       .hero-visual .shot { max-width: 246px; }
@@ -1053,6 +1122,9 @@
 
   <a href="#main" class="skip-link">本文へスキップ</a>
 
+  <!-- Founders announcement banner -->
+  <a href="https://apps.apple.com/app/spinglish/id6761403115" onclick="return gtag_report_conversion('https://apps.apple.com/app/spinglish/id6761403115');" class="founders-banner">先着<strong>300人限定</strong> — ファウンダーズ 月<strong class="fb-price">&#165;700</strong>のまま永続</a>
+
   <!-- Header -->
   <header class="site-header at-top" id="siteHeader">
     <div class="header-logo">Spinglish</div>
@@ -1096,8 +1168,14 @@
             </div>
           </div>
           <div class="hero-cta-row">
+            <a href="https://apps.apple.com/app/spinglish/id6761403115" onclick="return gtag_report_conversion('https://apps.apple.com/app/spinglish/id6761403115');" class="btn btn-ink hero-main-cta">無料で7日間試す</a>
             <a href="https://apps.apple.com/app/spinglish/id6761403115" onclick="return gtag_report_conversion('https://apps.apple.com/app/spinglish/id6761403115');" class="appstore"><img src="Black_lockup/SVG/Download_on_the_App_Store_Badge_JP_RGB_blk_100317.svg" alt="App Storeからダウンロード" width="109" height="40"></a>
             <span class="hero-cta-meta">いつでも解約OK<br><strong>初回最大7日間 ¥0</strong></span>
+          </div>
+          <div class="hero-value-card">
+            <p class="hvc-main">主要AI英会話アプリの相場は <span class="hvc-market">月&#165;1,800〜&#165;3,980</span><br>Spinglishは <strong class="hvc-price">月&#165;700</strong> のまま、ずっと。</p>
+            <p class="hvc-sub">瞬間英訳・シャドーイング・英単語・英語日記の全機能つき。先着300人のファウンダーズ枠のみ。</p>
+            <p class="hvc-note">※主要AI英会話アプリ3社の公開価格（2026年7月時点・税込）に基づく</p>
           </div>
         </div>
         <div class="hero-visual">
@@ -1326,8 +1404,9 @@
         <div class="eyebrow">No.07 — Plans</div>
         <h2 class="section-title">料金プラン</h2>
       </div>
+      <p class="plans-intro reveal">主要AI英会話アプリの相場は月&#165;1,800〜&#165;3,980<span class="plans-note-ref">※</span>。Spinglishはその1/3以下の月&#165;700（ファウンダーズ・先着300人）から、全機能を使えます。</p>
       <p class="plans-intro reveal">月額プランは初回7日間、週額プランは初回3日間、無料でお試しいただけます。</p>
-      <p class="plans-flex reveal">解約はiPhoneの「設定」→「サブスクリプション」からいつでも可能です。</p>
+      <p class="plans-flex reveal">解約はiPhoneの「設定」→「サブスクリプション」からいつでも可能です。<br><span class="plans-market-note">※主要AI英会話アプリ3社の公開価格（2026年7月時点・税込）に基づく</span></p>
       <div class="plans-grid reveal">
         <div class="plan founders">
           <div class="plan-tag">&#9733; Founders</div>
@@ -1653,6 +1732,29 @@
         else { header.classList.add('at-top'); }
       }
       window.addEventListener('scroll', update, { passive: true });
+      update();
+    })();
+  </script>
+
+  <!-- Mobile sticky CTA bar -->
+  <div class="sticky-cta" id="stickyCta" aria-hidden="true">
+    <span class="sticky-cta-text">先着300人・<strong>月&#165;700のまま永続</strong><br>初回最大7日間 &#165;0</span>
+    <a href="https://apps.apple.com/app/spinglish/id6761403115" onclick="return gtag_report_conversion('https://apps.apple.com/app/spinglish/id6761403115');" class="btn btn-ink">無料で7日間試す</a>
+  </div>
+  <script>
+    (function () {
+      var bar = document.getElementById('stickyCta');
+      var ticking = false;
+      function update() {
+        ticking = false;
+        var show = window.scrollY > 600;
+        bar.classList.toggle('visible', show);
+        bar.setAttribute('aria-hidden', String(!show));
+        document.body.classList.toggle('has-sticky-cta', show);
+      }
+      window.addEventListener('scroll', function () {
+        if (!ticking) { ticking = true; requestAnimationFrame(update); }
+      }, { passive: true });
       update();
     })();
   </script>
