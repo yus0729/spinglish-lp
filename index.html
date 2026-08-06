@@ -6,7 +6,7 @@
   <title>Spinglish - AI英会話スピーキング練習アプリ｜瞬間英訳・シャドーイング</title>
   <meta name="description" content="Spinglishは「知っている英語を、口から出す」ことに特化したiPhone向け英語学習アプリ。日常会話からサッカー・野球・金融・柔術・精神世界まで10カテゴリ・10,000問以上の瞬間英訳を、毎日数分のスキマ時間で。月額¥700のファウンダーズプラン（300人限定・永続価格）あり。">
   <meta name="keywords" content="英会話アプリ, スピーキング, 瞬間英訳, シャドーイング, AI英会話, 英語学習, iPhone, 英語日記, 英単語, サッカー英語, 野球英語, 金融英語, 柔術">
-  <meta name="theme-color" content="#ffffff">
+  <meta name="theme-color" content="#F3F0E9">
   <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large">
   <meta name="author" content="鈴木 優">
   <link rel="canonical" href="https://spinglish.jp/">
@@ -33,7 +33,13 @@
   <!-- Apple Smart Banner -->
   <meta name="apple-itunes-app" content="app-id=6761403115">
 
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='15' fill='%2314110C'/%3E%3Ctext x='32' y='46' font-family='Georgia,serif' font-style='italic' font-weight='700' font-size='42' fill='%23C8A84E' text-anchor='middle'%3ES%3C/text%3E%3C/svg%3E">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23F3F0E9'/%3E%3Crect x='2' y='2' width='60' height='60' fill='none' stroke='%230A0A0A' stroke-width='2'/%3E%3Ctext x='32' y='45' font-family='Didot,Georgia,serif' font-weight='700' font-size='38' fill='%230A0A0A' text-anchor='middle'%3ES%3C/text%3E%3C/svg%3E">
+
+  <!-- Fonts: Didot系（Bodoni Moda）＋ しっぽり明朝（アプリと同じ書体系統） -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;0,6..96,700;1,6..96,400&family=Shippori+Mincho:wght@400;500;600;700&display=swap" rel="stylesheet">
+
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18096982916"></script>
   <script>
@@ -65,149 +71,154 @@
   }
   </script>
   <style>
-    /* ===== Design tokens ===== */
+    /* ===== Editorial design tokens（アプリのStylish/Editorialと同系） ===== */
     :root {
-      --paper: #ffffff;
-      --mist: #F4F2EC;          /* alternating warm-neutral surface */
-      --ink: #1C1813;           /* headings */
-      --ink-2: #574F44;         /* body */
-      --ink-3: #6C6558;         /* muted / captions (AA on white & mist) */
-      --gold: #7A6220;          /* accent on light (text/links) — AA on white & mist */
-      --gold-bright: #C8A84E;   /* app gold — fills, glows, on dark */
-      --gold-tint: rgba(156,124,43,0.09);
-      --line: #E7E2D6;          /* hairlines */
-      --surface: #14110C;       /* dark blocks (matches app) */
-      --grade-a: #3E8E4F;
-      --grade-b: #3E7CA6;
-      --grade-c: #C2603E;
-      --serif: Georgia, 'Times New Roman', serif;
-      --mincho: 'Hiragino Mincho ProN', 'Yu Mincho', 'YuMincho', 'HGS明朝E', serif;
-      --sans: 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Yu Gothic', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --paper: #F3F0E9;          /* primary background */
+      --paper-bright: #FBFAF6;   /* light sections / plates */
+      --ink: #0A0A0A;            /* headings & primary actions */
+      --graphite: #343330;       /* body text */
+      --muted: #77736C;          /* metadata / captions */
+      --hairline: #D8D2C8;       /* rules */
+      --fog: #E8E4DD;            /* subtle surfaces */
+      --gold: #7A6220;           /* brand accent (sparingly, AA on paper) */
+      --ok: #2E6B47;             /* S/A grades */
+      --warn: #A9463C;           /* C/D grades */
+      --display: 'Didot', 'Bodoni Moda', 'Playfair Display', Georgia, 'Hiragino Mincho ProN', serif;
+      --mincho: 'Shippori Mincho', 'Hiragino Mincho ProN', 'Yu Mincho', 'YuMincho', serif;
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
     html { scroll-behavior: smooth; }
     body {
-      font-family: var(--sans);
+      font-family: var(--mincho);
       background: var(--paper);
-      color: var(--ink-2);
-      line-height: 1.85;
+      color: var(--graphite);
+      line-height: 1.9;
       -webkit-font-smoothing: antialiased;
       text-rendering: optimizeLegibility;
     }
-    a { color: var(--gold); text-decoration: none; }
-    a:hover { text-decoration: underline; }
+    a { color: var(--ink); text-decoration: none; }
+    a:hover { text-decoration: underline; text-underline-offset: 3px; }
     img { max-width: 100%; display: block; }
-    ::selection { background: rgba(200,168,78,0.28); }
+    ::selection { background: var(--ink); color: var(--paper-bright); }
 
-    /* Keyboard focus: visible branded ring on every interactive element */
+    /* Keyboard focus: visible ink ring on every interactive element */
     a:focus-visible, button:focus-visible, .btn:focus-visible, .appstore:focus-visible, [tabindex]:focus-visible {
-      outline: 2px solid var(--gold);
+      outline: 2px solid var(--ink);
       outline-offset: 3px;
     }
     .skip-link { position: absolute; left: -9999px; top: 0; }
     .skip-link:focus {
       left: 16px; top: 16px; z-index: 200;
-      background: #fff; color: var(--ink);
-      padding: 10px 16px; border-radius: 8px;
-      box-shadow: 0 6px 20px rgba(28,24,19,0.18);
+      background: var(--paper-bright); color: var(--ink);
+      padding: 10px 16px; border: 1px solid var(--ink);
     }
-    .faq-q:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .faq-q:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
 
-    .wrap { max-width: 1080px; margin: 0 auto; padding-left: 24px; padding-right: 24px; }
+    .wrap { max-width: 1120px; margin: 0 auto; padding-left: 24px; padding-right: 24px; }
 
-    /* ===== Eyebrow / labels ===== */
-    .eyebrow {
+    /* ===== Metadata / eyebrow（誌面のクレジット風） ===== */
+    .meta-label {
+      font-family: var(--display);
       font-size: 11px;
-      letter-spacing: 3.5px;
+      letter-spacing: 0.24em;
       text-transform: uppercase;
-      color: var(--gold);
-      font-weight: 700;
-      display: inline-flex;
+      color: var(--muted);
+      font-weight: 500;
+    }
+    .eyebrow {
+      display: flex;
       align-items: center;
-      gap: 10px;
-      margin-bottom: 18px;
+      gap: 18px;
+      font-family: var(--display);
+      font-size: 11px;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-weight: 500;
+      margin-bottom: 22px;
     }
-    .eyebrow::before {
-      content: '';
-      width: 26px;
-      height: 1px;
-      background: var(--gold);
-      opacity: 0.5;
-    }
-    .eyebrow.center { justify-content: center; }
+    .eyebrow::after { content: ''; flex: 1; height: 1px; background: var(--hairline); }
 
     h2.section-title {
       font-family: var(--mincho);
-      font-size: 32px;
+      font-size: clamp(26px, 3.4vw, 38px);
       font-weight: 600;
       color: var(--ink);
-      line-height: 1.55;
+      line-height: 1.5;
       letter-spacing: 0.01em;
       text-wrap: balance;
     }
+    .sec-head { margin-bottom: 52px; max-width: 760px; }
+    .sec-head .lead { margin-top: 16px; font-size: 15px; color: var(--graphite); }
 
-    /* ===== Buttons ===== */
+    /* ===== Buttons（インクの矩形。角丸・影・グラデなし） ===== */
     .btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
       gap: 8px;
-      font-family: var(--sans);
-      font-weight: 700;
-      border-radius: 999px;
-      transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+      font-family: var(--mincho);
+      font-weight: 600;
+      border-radius: 0;
+      letter-spacing: 0.12em;
+      transition: opacity 0.2s ease, background 0.2s ease, color 0.2s ease;
       cursor: pointer;
     }
     .btn:hover { text-decoration: none; }
-    .btn-gold {
-      background: var(--gold-bright);
-      color: #241d10;
-      padding: 15px 34px;
-      font-size: 15px;
-      box-shadow: 0 12px 30px -8px rgba(200,168,78,0.55);
+    .btn-ink {
+      background: var(--ink);
+      color: var(--paper-bright);
+      padding: 17px 40px;
+      font-size: 14px;
     }
-    .btn-gold:hover { transform: translateY(-2px); box-shadow: 0 18px 38px -10px rgba(200,168,78,0.62); }
-    .btn-ghost {
+    .btn-ink:hover { opacity: 0.86; }
+    .btn-line {
       background: transparent;
       color: var(--ink);
-      border: 1px solid var(--line);
-      padding: 14px 30px;
+      border: 1px solid var(--ink);
+      padding: 16px 40px;
+      font-size: 14px;
+    }
+    .btn-line:hover { background: var(--ink); color: var(--paper-bright); }
+    .btn-paper {
+      background: var(--paper-bright);
+      color: var(--ink);
+      padding: 17px 44px;
       font-size: 15px;
     }
-    .btn-ghost:hover { border-color: var(--gold); color: var(--gold); transform: translateY(-2px); }
+    .btn-paper:hover { opacity: 0.9; }
 
-    .appstore { display: inline-block; transition: transform 0.2s, opacity 0.2s; }
+    .appstore { display: inline-block; transition: opacity 0.2s; }
     .appstore img { height: 52px; width: auto; }
-    .appstore:hover { transform: translateY(-2px); opacity: 0.92; text-decoration: none; }
+    .appstore:hover { opacity: 0.85; text-decoration: none; }
 
-    /* ===== Device / screenshot ===== */
+    /* ===== Device（誌面の切り抜きのように、影なしでフラットに） ===== */
     .shot { position: relative; display: inline-block; }
-    .shot::before {
-      content: '';
-      position: absolute;
-      inset: -12% -14%;
-      background: radial-gradient(55% 45% at 50% 32%, rgba(200,168,78,0.30), rgba(200,168,78,0) 70%);
-      filter: blur(34px);
-      z-index: 0;
-      pointer-events: none;
-    }
     .device {
       position: relative;
-      z-index: 1;
       width: 100%;
-      border-radius: 38px;
-      background: #0a0a0a;
-      padding: 7px;
-      box-shadow: 0 44px 90px -30px rgba(28,24,19,0.42), 0 6px 18px -8px rgba(28,24,19,0.22), 0 0 0 1px rgba(28,24,19,0.05);
+      border-radius: 44px;
+      background: #0b0b0b;
+      padding: 10px;
+      box-shadow: 0 0 0 1px rgba(10,10,10,0.12);
     }
     .device img {
       width: 100%;
       height: auto;
-      aspect-ratio: 1206 / 2622;   /* 端末スクショの縦横比を固定（縦伸び防止）*/
+      aspect-ratio: 840 / 1826;   /* 端末スクショの縦横比を固定（縦伸び防止）*/
       object-fit: cover;
-      border-radius: 31px;
+      border-radius: 34px;
       display: block;
+    }
+    .fig-caption {
+      margin-top: 14px;
+      font-family: var(--display);
+      font-size: 10px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-align: center;
     }
 
     /* ===== Header ===== */
@@ -219,443 +230,473 @@
       align-items: center;
       justify-content: space-between;
       padding: 14px 24px;
-      background: rgba(255,255,255,0.82);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
-      border-bottom: 1px solid rgba(28,24,19,0.06);
+      background: rgba(243,240,233,0.88);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--hairline);
     }
     .header-logo {
-      font-family: var(--serif);
-      font-size: 22px;
+      font-family: var(--display);
+      font-size: 18px;
       font-weight: 700;
-      font-style: italic;
+      letter-spacing: 0.14em;
       color: var(--ink);
-      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      transition: opacity 0.3s ease;
     }
+    .site-header.at-top .header-logo { opacity: 0; }
     .header-cta {
-      background: var(--gold-bright);
-      color: #241d10;
-      font-size: 13px;
-      font-weight: 700;
-      padding: 9px 20px;
-      border-radius: 999px;
-      transition: transform 0.2s, box-shadow 0.2s;
-      box-shadow: 0 8px 20px -8px rgba(200,168,78,0.5);
+      background: var(--ink);
+      color: var(--paper-bright);
+      font-family: var(--mincho);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      padding: 10px 20px;
+      transition: opacity 0.2s;
     }
-    .header-cta:hover { transform: translateY(-1px); text-decoration: none; }
+    .header-cta:hover { opacity: 0.86; text-decoration: none; }
 
-    /* ===== Hero ===== */
-    .hero {
-      position: relative;
-      padding: 150px 0 90px;
-      overflow: hidden;
+    /* ===== Hero（一面＝マストヘッド構成） ===== */
+    .hero { position: relative; padding: 96px 0 96px; }
+    .masthead { padding-top: 20px; }
+    .masthead-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 16px;
+      padding-bottom: 14px;
     }
-    .hero::before {
-      content: '';
-      position: absolute;
-      top: -120px; right: -160px;
-      width: 620px; height: 620px;
-      background: radial-gradient(circle, rgba(200,168,78,0.14) 0%, rgba(200,168,78,0) 66%);
-      pointer-events: none;
+    .masthead-title {
+      font-family: var(--display);
+      font-size: clamp(52px, 11.5vw, 148px);
+      font-weight: 700;
+      letter-spacing: 0.015em;
+      line-height: 0.95;
+      color: var(--ink);
+      text-align: center;
+      border-top: 1px solid var(--ink);
+      border-bottom: 2px solid var(--ink);
+      padding: 26px 0 22px;
+      text-transform: uppercase;
     }
-    .hero-inner {
-      position: relative;
-      z-index: 1;
+    .hero-grid {
       display: grid;
-      grid-template-columns: 1.05fr 0.95fr;
+      grid-template-columns: 7fr 5fr;
       align-items: center;
-      gap: 60px;
+      gap: 64px;
+      padding-top: 72px;
     }
     .hero h1 {
       font-family: var(--mincho);
-      font-size: 46px;
+      font-size: clamp(30px, 4.4vw, 48px);
       font-weight: 600;
-      line-height: 1.42;
+      line-height: 1.48;
       color: var(--ink);
       letter-spacing: 0.01em;
-      margin-bottom: 24px;
+      margin-bottom: 26px;
       text-wrap: balance;
     }
     .hero h1 .accent {
-      color: var(--gold);
-      position: relative;
       white-space: nowrap;
-    }
-    .hero h1 .accent::after {
-      content: '';
-      position: absolute;
-      left: 0; right: 0; bottom: 0.06em;
-      height: 0.36em;
-      background: rgba(200,168,78,0.20);
-      z-index: -1;
+      border-bottom: 3px solid var(--ink);
+      padding-bottom: 2px;
     }
     .hero-sub {
       font-size: 16px;
-      color: var(--ink-2);
+      color: var(--graphite);
       line-height: 2.05;
-      margin-bottom: 30px;
+      margin-bottom: 22px;
       max-width: 30em;
     }
+    .hero-line {
+      font-size: 12.5px;
+      letter-spacing: 0.14em;
+      color: var(--muted);
+      margin-bottom: 40px;
+    }
     .hero-stats {
-      display: flex;
-      border: 1px solid var(--line);
-      border-radius: 16px;
-      overflow: hidden;
-      margin-bottom: 30px;
-      background: #fff;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+      margin-bottom: 44px;
+      max-width: 480px;
     }
-    .hero-stat {
-      flex: 1;
-      padding: 16px 10px;
-      text-align: center;
-      border-right: 1px solid var(--line);
-    }
-    .hero-stat:last-child { border-right: none; }
-    .hero-stat-num {
-      font-family: var(--serif);
-      font-size: 26px;
-      font-weight: 700;
+    .stat { border-top: 1px solid var(--ink); padding-top: 12px; }
+    .stat-num {
+      font-family: var(--display);
+      font-size: clamp(26px, 2.8vw, 36px);
+      font-weight: 500;
       color: var(--ink);
       line-height: 1.1;
       font-variant-numeric: tabular-nums;
     }
-    .hero-stat-num span { font-size: 13px; color: var(--gold); font-family: var(--sans); font-weight: 700; }
-    .hero-stat-label { font-size: 11px; color: var(--ink-3); letter-spacing: 0.4px; margin-top: 4px; }
-    .hero-cta-row { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
-    .hero-cta-meta { font-size: 12.5px; color: var(--ink-3); line-height: 1.6; }
-    .hero-cta-meta strong { color: var(--gold); font-weight: 700; }
-    .hero-visual { display: flex; justify-content: center; }
-    .hero-visual .shot { max-width: 300px; }
-
-    /* Marquee-ish training pills under hero */
-    .hero-pills { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 26px; }
-    .hero-pill {
-      font-size: 12.5px;
-      font-weight: 600;
-      color: var(--ink-2);
-      background: var(--gold-tint);
-      border: 1px solid rgba(156,124,43,0.18);
-      padding: 6px 14px;
-      border-radius: 999px;
+    .stat-num span { font-size: 13px; font-family: var(--mincho); color: var(--muted); font-weight: 500; margin-left: 2px; }
+    .stat-label {
+      margin-top: 8px;
+      font-family: var(--display);
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
     }
+    .stat-label-ja { font-family: var(--mincho); font-size: 11.5px; color: var(--muted); letter-spacing: 0.06em; margin-top: 3px; }
+    .hero-cta-row { display: flex; align-items: center; gap: 22px; flex-wrap: wrap; }
+    .hero-cta-meta { font-size: 12.5px; color: var(--muted); line-height: 1.7; }
+    .hero-cta-meta strong { color: var(--ink); font-weight: 700; }
+    .hero-visual { display: flex; flex-direction: column; align-items: center; margin-top: -46px; }
+    .hero-visual .shot { max-width: 300px; }
 
     /* ===== Section base ===== */
     section { position: relative; }
-    .band { background: var(--mist); }
-    .pad { padding: 96px 0; }
+    .band { background: var(--paper-bright); border-top: 1px solid var(--hairline); border-bottom: 1px solid var(--hairline); }
+    .pad { padding: 108px 0; }
 
-    /* ===== Trainings (4) ===== */
-    .train-head { text-align: center; margin-bottom: 52px; }
-    .train-head p.lead { margin-top: 14px; font-size: 15px; color: var(--ink-2); }
-    .train-grid {
+    /* ===== Split（非対称の見開き） ===== */
+    .split {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 18px;
-    }
-    .train-card {
-      background: #fff;
-      border: 1px solid var(--line);
-      border-radius: 18px;
-      padding: 28px 22px;
-      transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
-    }
-    .train-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 22px 44px -24px rgba(28,24,19,0.28);
-      border-color: rgba(156,124,43,0.35);
-    }
-    .train-icon {
-      width: 46px; height: 46px;
-      border-radius: 13px;
-      background: var(--gold-tint);
-      display: flex; align-items: center; justify-content: center;
-      margin-bottom: 18px;
-    }
-    .train-icon svg { width: 24px; height: 24px; stroke: var(--gold); fill: none; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
-    .train-card h3 { font-size: 16.5px; font-weight: 700; color: var(--ink); margin-bottom: 8px; }
-    .train-card p { font-size: 13.5px; color: var(--ink-3); line-height: 1.75; }
-
-    /* ===== Showcase (screenshot + text, alternating) ===== */
-    .showcase {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 7fr 5fr;
       align-items: center;
-      gap: 64px;
+      gap: 72px;
     }
-    .showcase.reverse .showcase-visual { order: 2; }
-    .showcase-visual { display: flex; justify-content: center; }
-    .showcase-visual .shot { max-width: 290px; }
-    .showcase-text h2 { margin-bottom: 20px; }
-    .showcase-text .body { font-size: 15px; color: var(--ink-2); line-height: 2; margin-bottom: 24px; }
-    .feat-list { list-style: none; display: flex; flex-direction: column; gap: 14px; }
-    .feat-list li { display: flex; gap: 12px; font-size: 14.5px; color: var(--ink); line-height: 1.7; }
-    .feat-check {
-      flex-shrink: 0;
-      width: 22px; height: 22px; border-radius: 999px;
-      background: var(--gold-tint);
-      display: flex; align-items: center; justify-content: center;
-      margin-top: 2px;
-    }
-    .feat-check svg { width: 12px; height: 12px; stroke: var(--gold); fill: none; stroke-width: 2.6; stroke-linecap: round; stroke-linejoin: round; }
-    .feat-list li b { color: var(--gold); font-weight: 700; }
+    .split.visual-left { grid-template-columns: 5fr 7fr; }
+    .split-visual { display: flex; flex-direction: column; align-items: center; }
+    .split-visual .shot { max-width: 296px; }
+    .split-text h2 { margin-bottom: 22px; }
+    .split-text .body { font-size: 15px; color: var(--graphite); line-height: 2.05; margin-bottom: 26px; }
 
-    /* grade chips echo */
-    .grade-row { display: flex; gap: 10px; margin-bottom: 24px; }
-    .grade-chip {
-      flex: 1; text-align: center;
-      border: 1px solid var(--line); border-radius: 12px;
-      padding: 12px 6px; background: #fff;
+    /* ===== Index rows（誌面の目次風） ===== */
+    .index-list { border-top: 1px solid var(--ink); }
+    .index-row {
+      display: grid;
+      grid-template-columns: 56px 1fr;
+      gap: 20px;
+      padding: 24px 0 22px;
+      border-bottom: 1px solid var(--hairline);
     }
-    .grade-chip .g { font-family: var(--serif); font-size: 26px; font-weight: 700; line-height: 1; }
-    .grade-chip .l { font-size: 11px; color: var(--ink-3); margin-top: 6px; }
-    .g-c { color: var(--grade-c); }
-    .g-a { color: var(--grade-a); }
-    .g-b { color: var(--grade-b); }
+    .index-num {
+      font-family: var(--display);
+      font-size: 13px;
+      letter-spacing: 0.18em;
+      color: var(--muted);
+      padding-top: 7px;
+    }
+    .index-row h3 {
+      font-family: var(--mincho);
+      font-size: 19px;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 7px;
+      letter-spacing: 0.02em;
+    }
+    .index-row p { font-size: 14px; color: var(--muted); line-height: 1.85; }
+
+    /* ===== Feature list（罫線のリスト） ===== */
+    .feat-list { list-style: none; border-top: 1px solid var(--hairline); }
+    .feat-list li {
+      display: flex;
+      gap: 14px;
+      padding: 13px 2px;
+      border-bottom: 1px solid var(--hairline);
+      font-size: 14.5px;
+      color: var(--graphite);
+      line-height: 1.8;
+    }
+    .feat-list li::before { content: '—'; color: var(--muted); flex-shrink: 0; }
+    .feat-list li b { color: var(--ink); font-weight: 700; }
+
+    /* ===== Grade strip（S/A/Bの評点） ===== */
+    .grade-strip {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-bottom: 28px;
+      max-width: 420px;
+    }
+    .grade { border-top: 1px solid var(--ink); padding-top: 10px; }
+    .grade .g {
+      font-family: var(--display);
+      font-size: 40px;
+      font-weight: 500;
+      line-height: 1;
+    }
+    .grade .l { font-size: 11.5px; color: var(--muted); margin-top: 8px; letter-spacing: 0.06em; }
+    .g-ok { color: var(--ok); }
     .g-gold { color: var(--gold); }
+    .g-warn { color: var(--warn); }
 
-    /* ===== Category strip ===== */
-    .cats { text-align: center; }
-    .cats .eyebrow { justify-content: center; }
-    .cat-chip-row { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin: 8px 0 18px; }
+    /* ===== Shadowing（文字だけの見開き） ===== */
+    .quote-word {
+      font-family: var(--display);
+      font-style: italic;
+      font-weight: 400;
+      font-size: clamp(56px, 8vw, 104px);
+      line-height: 1;
+      color: var(--ink);
+      letter-spacing: 0.01em;
+    }
+    .quote-word-sub {
+      margin-top: 18px;
+      font-family: var(--display);
+      font-size: 11px;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    /* ===== Categories ===== */
+    .ce-list { border-top: 1px solid var(--ink); }
+    .ce { padding: 18px 0 16px; border-bottom: 1px solid var(--hairline); }
+    .ce-tag {
+      display: inline-block;
+      font-family: var(--display);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 8px;
+    }
+    .ce-ja { font-size: 15px; font-weight: 700; color: var(--ink); line-height: 1.75; margin: 0 0 4px; }
+    .ce-en { font-family: var(--display); font-style: italic; font-size: 15px; color: var(--graphite); line-height: 1.6; margin: 0; }
+    .cat-chip-row { display: flex; flex-wrap: wrap; gap: 10px; margin: 48px 0 18px; }
     .cat-chip {
-      font-size: 14px; font-weight: 600; color: var(--ink);
-      background: #fff; border: 1px solid var(--line);
-      padding: 11px 22px; border-radius: 999px;
+      font-size: 13.5px;
+      font-weight: 600;
+      color: var(--ink);
+      background: transparent;
+      border: 1px solid var(--hairline);
+      padding: 10px 20px;
     }
-    .cat-chip.new { border-color: #c9ad62; background: #fdf9ee; }
+    .cat-chip.new { border-color: var(--ink); }
     .cat-chip.new::before {
-      content: "NEW"; font-size: 10px; font-weight: 800; letter-spacing: 0.08em;
-      color: #8a6d22; margin-right: 7px; vertical-align: 1px;
+      content: "NEW";
+      font-family: var(--display);
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      color: var(--gold);
+      margin-right: 8px;
+      vertical-align: 2px;
     }
-    .cat-note { font-size: 13.5px; color: var(--ink-3); }
-    .cat-lead { font-size: 15px; color: var(--ink-3); max-width: 620px; margin: 0 auto 26px; line-height: 1.85; text-align: center; }
-    .cat-example-grid {
-      display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px;
-      max-width: 880px; margin: 0 auto 28px; text-align: left;
-    }
-    @media (max-width: 760px) { .cat-example-grid { grid-template-columns: 1fr; } }
-    .cat-example {
-      background: #fff; border: 1px solid var(--line); border-radius: 14px;
-      padding: 18px 18px 16px;
-    }
-    .cat-example .ce-tag {
-      display: inline-block; font-size: 11px; font-weight: 800; letter-spacing: 0.06em;
-      color: #8a6d22; background: #fdf9ee; border: 1px solid #c9ad62;
-      padding: 3px 10px; border-radius: 999px; margin-bottom: 10px;
-    }
-    .cat-example .ce-ja { font-size: 14.5px; font-weight: 700; color: var(--ink); line-height: 1.7; margin: 0 0 6px; }
-    .cat-example .ce-en { font-size: 13.5px; color: var(--ink-3); line-height: 1.65; margin: 0; font-style: italic; }
+    .cat-note { font-size: 13px; color: var(--muted); }
+
+    /* ===== Design duo（ライト／ダークの2冊） ===== */
+    .duo { display: flex; gap: 26px; justify-content: center; align-items: flex-start; }
+    .duo .shot { max-width: 250px; flex: 1; }
+    .duo .shot:nth-child(2) { margin-top: 56px; }
 
     /* ===== Plans ===== */
-    .plans-head { text-align: center; margin-bottom: 14px; }
-    .plans-intro { text-align: center; font-size: 14px; color: var(--ink-2); }
-    .plans-flex { text-align: center; font-size: 13px; color: var(--ink-3); margin-bottom: 44px; }
+    .plans-head { margin-bottom: 16px; }
+    .plans-intro { font-size: 14px; color: var(--graphite); }
+    .plans-flex { font-size: 13px; color: var(--muted); margin-bottom: 48px; }
     .plans-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
+      gap: 22px;
       align-items: stretch;
     }
     .plan {
-      background: #fff;
-      border: 1px solid var(--line);
-      border-radius: 20px;
-      padding: 34px 28px;
+      background: var(--paper-bright);
+      border: 1px solid var(--hairline);
+      padding: 38px 30px 30px;
       display: flex; flex-direction: column;
       position: relative;
     }
-    .plan.founders {
-      border-color: var(--gold-bright);
-      background: linear-gradient(180deg, rgba(200,168,78,0.10) 0%, #fff 55%);
-      box-shadow: 0 30px 60px -34px rgba(200,168,78,0.5);
-    }
+    .plan.founders { border: 2px solid var(--ink); }
     .plan-tag {
       position: absolute; top: -13px; left: 26px;
-      background: var(--gold-bright); color: #241d10;
-      font-size: 11px; font-weight: 800; letter-spacing: 1.5px;
-      padding: 5px 14px; border-radius: 999px;
+      background: var(--ink); color: var(--paper-bright);
+      font-family: var(--display);
+      font-size: 10px; font-weight: 700; letter-spacing: 0.18em;
+      text-transform: uppercase;
+      padding: 6px 14px;
     }
     .plan-tag.popular {
       left: auto; right: 26px;
-      background: #fff; color: var(--gold);
-      border: 1px solid var(--gold-bright); letter-spacing: 0.5px;
+      background: var(--paper-bright); color: var(--ink);
+      border: 1px solid var(--ink);
+      letter-spacing: 0.1em;
     }
-    .plan-name { font-family: var(--mincho); font-size: 21px; font-weight: 700; color: var(--ink); margin-bottom: 6px; }
-    .plan-who { font-size: 13px; color: var(--ink-3); line-height: 1.65; margin-bottom: 18px; min-height: 2.6em; }
-    .plan-price { font-family: var(--serif); font-size: 38px; font-weight: 700; color: var(--ink); line-height: 1; }
-    .plan-price span { font-size: 14px; color: var(--ink-3); font-family: var(--sans); font-weight: 400; }
-    .plan-subprice { font-size: 13px; color: var(--ink-3); margin-top: 6px; }
+    .plan-name { font-family: var(--mincho); font-size: 21px; font-weight: 700; color: var(--ink); margin-bottom: 8px; }
+    .plan-who { font-size: 13px; color: var(--muted); line-height: 1.7; margin-bottom: 20px; min-height: 2.6em; }
+    .plan-price { font-family: var(--display); font-size: 40px; font-weight: 500; color: var(--ink); line-height: 1; font-variant-numeric: tabular-nums; }
+    .plan-price span { font-size: 13px; color: var(--muted); font-family: var(--mincho); font-weight: 400; letter-spacing: 0.04em; }
+    .plan-subprice { font-size: 13px; color: var(--muted); margin-top: 8px; }
     .plan-perpetual { font-size: 12.5px; color: var(--gold); font-weight: 700; margin-top: 12px; }
-    .plan-trial {
-      display: inline-block; margin-top: 12px;
-      background: var(--gold-tint); border: 1px solid rgba(156,124,43,0.22);
-      color: var(--gold); font-size: 12px; font-weight: 700;
-      padding: 5px 12px; border-radius: 8px;
+    .plan-trial { font-size: 12.5px; color: var(--gold); font-weight: 700; margin-top: 10px; }
+    .plan-feats { list-style: none; margin: 24px 0; border-top: 1px solid var(--hairline); }
+    .plan-feats li {
+      font-size: 13.5px; color: var(--graphite);
+      display: flex; gap: 10px; line-height: 1.7;
+      padding: 9px 0;
+      border-bottom: 1px solid var(--fog);
     }
-    .plan-feats { list-style: none; margin: 22px 0; display: flex; flex-direction: column; gap: 9px; }
-    .plan-feats li { font-size: 13.5px; color: var(--ink-2); display: flex; gap: 9px; line-height: 1.6; }
-    .plan-feats li::before {
-      content: ''; flex-shrink: 0; width: 16px; height: 16px; margin-top: 3px;
-      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%237A6220' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E") center/contain no-repeat;
-    }
+    .plan-feats li::before { content: '—'; color: var(--muted); flex-shrink: 0; }
     .plan-cta { margin-top: auto; width: 100%; }
-    .plan-note { font-size: 11px; color: var(--ink-3); margin-top: 14px; text-align: center; line-height: 1.6; }
+    .plan-note { font-size: 11.5px; color: var(--muted); margin-top: 14px; text-align: center; line-height: 1.6; }
 
-    /* ===== For you (target) ===== */
+    /* ===== For you ===== */
     .target-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 14px;
-      margin-top: 8px;
+      column-gap: 56px;
+      border-top: 1px solid var(--ink);
     }
     .target-item {
-      background: #fff; border: 1px solid var(--line);
-      border-radius: 14px; padding: 20px 24px;
-      font-size: 14.5px; color: var(--ink);
-      display: flex; align-items: center; gap: 14px;
+      border-bottom: 1px solid var(--hairline);
+      padding: 19px 4px;
+      font-size: 14.5px;
+      color: var(--ink);
+      display: flex; align-items: baseline; gap: 14px;
+      line-height: 1.8;
     }
-    .target-check {
-      flex-shrink: 0; width: 26px; height: 26px; border-radius: 999px;
-      background: var(--gold-tint); display: flex; align-items: center; justify-content: center;
-    }
-    .target-check svg { width: 13px; height: 13px; stroke: var(--gold); fill: none; stroke-width: 2.6; stroke-linecap: round; stroke-linejoin: round; }
+    .target-item::before { content: '✓'; color: var(--ink); font-weight: 700; flex-shrink: 0; }
 
     /* ===== Comparison ===== */
-    .compare-wrap { max-width: 760px; margin: 0 auto; }
+    .compare-wrap { max-width: 820px; }
     .compare-table { width: 100%; border-collapse: collapse; font-size: 14.5px; margin-top: 8px; }
     .compare-table th {
       text-align: left; padding: 16px 18px; font-weight: 700;
-      border-bottom: 2px solid var(--line); color: var(--ink);
+      border-bottom: 2px solid var(--ink); color: var(--ink);
+      font-family: var(--mincho);
     }
-    .compare-table th:first-child { color: var(--ink-3); font-weight: 400; }
-    .compare-table th.hl { color: var(--gold); }
-    .compare-table td { padding: 15px 18px; border-bottom: 1px solid var(--line); color: var(--ink-2); }
-    .compare-table td.hl { color: var(--ink); font-weight: 600; background: rgba(200,168,78,0.05); }
-    .compare-table tr td:first-child { color: var(--ink-3); }
-    .compare-footer { margin-top: 30px; font-size: 14px; color: var(--ink-3); line-height: 1.95; text-align: center; }
+    .compare-table th:first-child { color: var(--muted); font-weight: 400; }
+    .compare-table th.hl { color: var(--ink); }
+    .compare-table td { padding: 15px 18px; border-bottom: 1px solid var(--hairline); color: var(--graphite); }
+    .compare-table td.hl { color: var(--ink); font-weight: 600; }
+    .compare-table tr td:first-child { color: var(--muted); }
+    .compare-footer { margin-top: 32px; font-size: 14px; color: var(--muted); line-height: 2; }
     .compare-cards { display: none; }
 
     /* ===== Retention ===== */
-    .retention { display: grid; grid-template-columns: 1.2fr 1fr; align-items: center; gap: 56px; }
-    .retention p { font-size: 15px; color: var(--ink-2); line-height: 2.05; margin-top: 8px; }
-    .ret-badges { display: flex; flex-direction: column; gap: 12px; }
-    .ret-badge {
-      background: #fff; border: 1px solid var(--line); border-radius: 16px;
-      padding: 20px 26px; display: flex; align-items: baseline; gap: 14px;
-    }
-    .ret-badge .n { font-family: var(--serif); font-size: 30px; font-weight: 700; color: var(--gold); line-height: 1; }
-    .ret-badge .t { font-size: 13px; color: var(--ink-3); }
+    .retention { display: grid; grid-template-columns: 7fr 5fr; align-items: center; gap: 72px; }
+    .retention p { font-size: 15px; color: var(--graphite); line-height: 2.05; margin-top: 8px; }
+    .ret-stats { display: flex; flex-direction: column; gap: 34px; }
+    .ret-stats .stat-num { font-size: clamp(30px, 3.2vw, 42px); }
 
     /* ===== FAQ ===== */
-    .faq-wrap { max-width: 720px; margin: 0 auto; }
-    .faq-item { border-bottom: 1px solid var(--line); }
+    .faq-wrap { max-width: 760px; }
+    .faq-item { border-bottom: 1px solid var(--hairline); }
     .faq-q {
       display: flex; justify-content: space-between; align-items: center; gap: 16px;
       width: 100%; text-align: left;
       background: transparent; border: 0; appearance: none; -webkit-appearance: none;
       padding: 22px 0; cursor: pointer;
-      font-family: inherit; font-size: 15.5px; font-weight: 700; color: var(--ink);
+      font-family: var(--mincho); font-size: 15.5px; font-weight: 700; color: var(--ink);
+      line-height: 1.7;
     }
     .faq-q::after {
-      content: '+'; font-size: 22px; color: var(--gold); flex-shrink: 0;
+      content: '+';
+      font-family: var(--display);
+      font-size: 22px; color: var(--muted); flex-shrink: 0;
       transition: transform 0.25s ease; line-height: 1;
     }
     .faq-item.open .faq-q::after { transform: rotate(45deg); }
-    .faq-a { font-size: 14px; color: var(--ink-2); line-height: 1.95; padding-bottom: 22px; display: none; }
+    .faq-a { font-size: 14px; color: var(--graphite); line-height: 1.95; padding-bottom: 22px; display: none; }
     .faq-item.open .faq-a { display: block; }
 
-    /* ===== Closing (dark finale) ===== */
+    /* ===== Closing（夜版の紙面） ===== */
     .closing {
-      background: var(--surface);
-      color: #EDE7DA;
-      text-align: center;
-      padding: 104px 24px;
-      position: relative;
-      overflow: hidden;
+      background: var(--ink);
+      color: #EDE9DE;
+      padding: 120px 24px 110px;
     }
-    .closing::before {
-      content: '';
-      position: absolute; top: -140px; left: 50%; transform: translateX(-50%);
-      width: 680px; height: 420px;
-      background: radial-gradient(closest-side, rgba(200,168,78,0.18), transparent);
-      pointer-events: none;
+    .closing-inner { max-width: 680px; margin: 0 auto; text-align: center; }
+    .closing .closing-eyebrow {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 18px;
+      font-family: var(--display);
+      font-size: 11px;
+      letter-spacing: 0.26em;
+      text-transform: uppercase;
+      color: rgba(237,233,222,0.6);
+      margin-bottom: 30px;
     }
-    .closing-inner { position: relative; z-index: 1; max-width: 640px; margin: 0 auto; }
-    .closing .eyebrow { color: var(--gold-bright); justify-content: center; }
-    .closing .eyebrow::before { background: var(--gold-bright); }
+    .closing .closing-eyebrow::before,
+    .closing .closing-eyebrow::after { content: ''; width: 44px; height: 1px; background: rgba(237,233,222,0.3); }
     .closing h2 {
-      font-family: var(--mincho); font-size: 32px; font-weight: 600;
-      color: #fff; line-height: 1.6; margin-bottom: 24px; text-wrap: balance;
+      font-family: var(--mincho); font-size: clamp(26px, 3.4vw, 36px); font-weight: 600;
+      color: #FBFAF6; line-height: 1.62; margin-bottom: 26px; text-wrap: balance;
     }
-    .closing p { font-size: 15px; color: #C9C2B3; line-height: 2.1; margin-bottom: 38px; }
-    .closing .btn-gold { color: #241d10; }
-    .closing-note { margin-top: 18px; font-size: 13px; color: #8f887a; }
+    .closing p { font-size: 15px; color: #CBC5B8; line-height: 2.15; margin-bottom: 42px; }
+    .closing-note { margin-top: 20px; font-size: 12.5px; color: #918A7C; }
 
     /* ===== Footer ===== */
-    .footer { text-align: center; padding: 48px 24px; border-top: 1px solid var(--line); }
-    .footer-logo { font-family: var(--serif); font-style: italic; font-weight: 700; font-size: 18px; color: var(--ink); margin-bottom: 18px; }
-    .footer-links { display: flex; justify-content: center; gap: 26px; flex-wrap: wrap; margin-bottom: 20px; }
-    .footer-links a { font-size: 13px; color: var(--ink-3); }
-    .footer-links a:hover { color: var(--gold); }
-    .footer-copy { font-size: 12px; color: #767059; }
+    .footer { text-align: center; padding: 56px 24px; border-top: 1px solid var(--hairline); }
+    .footer-logo {
+      font-family: var(--display); font-weight: 700; font-size: 17px;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--ink); margin-bottom: 22px;
+    }
+    .footer-links { display: flex; justify-content: center; gap: 28px; flex-wrap: wrap; margin-bottom: 22px; }
+    .footer-links a { font-size: 13px; color: var(--muted); }
+    .footer-links a:hover { color: var(--ink); }
+    .footer-copy { font-size: 12px; color: var(--muted); }
 
-    /* ===== Reveal animation ===== */
-    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    /* ===== Reveal animation（抑制的に） ===== */
+    .reveal { opacity: 0; transform: translateY(14px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
     .reveal.in { opacity: 1; transform: none; }
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
       .reveal { opacity: 1; transform: none; transition: none; }
+      .header-logo { transition: none; }
     }
 
     /* ===== Responsive ===== */
-    @media (max-width: 900px) {
-      .train-grid { grid-template-columns: repeat(2, 1fr); }
-      .plans-grid { grid-template-columns: 1fr; max-width: 440px; margin: 0 auto; }
+    @media (max-width: 960px) {
+      .split, .split.visual-left { grid-template-columns: 1fr; gap: 48px; }
+      .split-visual { order: -1; }
+      .plans-grid { grid-template-columns: 1fr; max-width: 460px; }
+      .retention { grid-template-columns: 1fr; gap: 44px; }
+      .ret-stats { flex-direction: row; gap: 28px; }
+      .ret-stats .stat { flex: 1; }
     }
     @media (max-width: 768px) {
-      .hero { padding: 128px 0 64px; }
-      .hero-inner { grid-template-columns: 1fr; gap: 44px; text-align: center; }
-      .hero h1 { font-size: 31px; line-height: 1.5; }
-      .hero-sub { margin-left: auto; margin-right: auto; }
-      .hero-pills { justify-content: center; }
-      .hero-cta-row { justify-content: center; flex-direction: column; gap: 14px; }
-      .hero-visual .shot { max-width: 250px; }
-      h2.section-title { font-size: 25px; }
-      .pad { padding: 72px 0; }
-      .showcase { grid-template-columns: 1fr; gap: 40px; text-align: center; }
-      .showcase.reverse .showcase-visual { order: -1; }
-      .showcase-visual { order: -1; }
-      .showcase-visual .shot { max-width: 240px; }
-      .feat-list li { text-align: left; }
-      .retention { grid-template-columns: 1fr; text-align: center; gap: 32px; }
-      .ret-badges { flex-direction: row; }
-      .ret-badge { flex: 1; flex-direction: column; align-items: center; gap: 6px; text-align: center; padding: 16px 10px; }
+      .hero { padding: 84px 0 64px; }
+      .hero-grid { grid-template-columns: 1fr; gap: 52px; padding-top: 48px; }
+      .hero-visual { order: -1; margin-top: 0; }
+      .hero-visual .shot { max-width: 246px; }
+      .masthead-meta { justify-content: center; }
+      .masthead-meta .meta-right { display: none; }
+      h2.section-title { font-size: 24px; }
+      .pad { padding: 76px 0; }
+      .sec-head { margin-bottom: 40px; }
+      .split-visual .shot { max-width: 240px; }
+      .duo .shot { max-width: 41vw; }
+      .duo .shot:nth-child(2) { margin-top: 32px; }
       .target-grid { grid-template-columns: 1fr; }
-      .target-item { text-align: left; }
       .compare-table { display: none; }
       .compare-cards { display: block; }
-      .closing h2 { font-size: 25px; }
+      .hero-stats { gap: 18px; }
+      .grade-strip { gap: 16px; }
     }
-    @media (max-width: 460px) {
-      .train-grid { grid-template-columns: 1fr; }
-      .hero-stat-num { font-size: 22px; }
+    @media (max-width: 400px) {
+      .stat-num { font-size: 24px; }
+      .hero-cta-row { flex-direction: column; align-items: flex-start; gap: 14px; }
     }
     @media (max-width: 360px) {
       .site-header { padding: 12px 16px; }
-      .header-logo { font-size: 20px; }
-      .header-cta { white-space: nowrap; font-size: 12px; padding: 8px 14px; }
+      .header-logo { font-size: 15px; }
+      .header-cta { white-space: nowrap; font-size: 11px; padding: 9px 14px; }
     }
 
     /* Mobile comparison cards */
-    .cc-item { background: #fff; border: 1px solid var(--line); border-radius: 14px; padding: 16px 18px; margin-bottom: 10px; }
-    .cc-label { font-size: 12px; color: var(--ink-3); margin-bottom: 10px; }
-    .cc-row { display: flex; gap: 14px; }
-    .cc-col { flex: 1; font-size: 13px; line-height: 1.6; }
-    .cc-col strong { display: block; font-size: 11px; margin-bottom: 3px; }
-    .cc-col.us strong { color: var(--gold); }
+    .cc-item { background: var(--paper-bright); border: 1px solid var(--hairline); padding: 16px 18px; margin-bottom: 10px; }
+    .cc-label {
+      font-family: var(--display);
+      font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--muted); margin-bottom: 10px;
+    }
+    .cc-row { display: flex; gap: 16px; }
+    .cc-col { flex: 1; font-size: 13px; line-height: 1.65; }
+    .cc-col strong { display: block; font-size: 11px; margin-bottom: 3px; letter-spacing: 0.04em; }
+    .cc-col.us strong { color: var(--ink); }
     .cc-col.us span { color: var(--ink); font-weight: 600; }
-    .cc-col.them strong { color: var(--ink-3); }
-    .cc-col.them span { color: var(--ink-3); }
+    .cc-col.them strong { color: var(--muted); }
+    .cc-col.them span { color: var(--muted); }
   </style>
   <!-- JS無効・IntersectionObserver不発時でも本文が消えないようにするフォールバック -->
   <noscript><style>.reveal{opacity:1 !important;transform:none !important}</style></noscript>
@@ -680,16 +721,17 @@
         "image": "https://spinglish.jp/og-image.png",
         "inLanguage": "ja",
         "availableOnDevice": "iPhone",
-        "dateModified": "2026-07-13",
-        "softwareVersion": "1.2.0",
+        "dateModified": "2026-08-06",
+        "softwareVersion": "1.3.1",
         "author": { "@id": "https://spinglish.jp/#org" },
         "creator": { "@id": "https://spinglish.jp/#org" },
         "keywords": "英会話アプリ, スピーキング, 瞬間英訳, 瞬間英作文, シャドーイング, AI英会話, 英語学習, 英語日記, 英単語, 発音練習",
         "screenshot": [
-          "https://spinglish.jp/img/app/speak.png",
+          "https://spinglish.jp/img/app/home.jpg",
+          "https://spinglish.jp/img/app/speak.jpg",
           "https://spinglish.jp/img/app/score.png",
-          "https://spinglish.jp/img/app/shadow.png",
-          "https://spinglish.jp/img/app/dict.png"
+          "https://spinglish.jp/img/app/vocab.jpg",
+          "https://spinglish.jp/img/app/categories.jpg"
         ],
         "featureList": [
           "瞬間英訳（日本語を英語で即座にスピーキング。10カテゴリ・10,000問以上）",
@@ -697,7 +739,8 @@
           "シャドーイング（お手本音声を真似て発音練習）",
           "英単語・熟語練習（品詞・レベル別に2,000語以上、ネイティブ音声つき）",
           "英語日記（その日の出来事を英語で話して記録）",
-          "覚えていない単語の復習出題（発話・4択）"
+          "覚えていない単語の復習出題（発話・4択）",
+          "海外ファッション誌風の「Editorial」デザインをはじめ、全10種類のデザイン切替"
         ],
         "offers": {
           "@type": "AggregateOffer",
@@ -787,7 +830,7 @@
         "name": "Spinglish",
         "description": "知っている英語を口から出す練習に特化したiPhone向け英語学習アプリ Spinglish の公式サイト。瞬間英訳・シャドーイング・英単語・英語日記を毎日数分のスキマ時間で。",
         "inLanguage": "ja",
-        "dateModified": "2026-07-13",
+        "dateModified": "2026-08-06",
         "about": { "@id": "https://spinglish.jp/#app" },
         "publisher": { "@id": "https://spinglish.jp/#org" }
       },
@@ -801,8 +844,8 @@
         "isPartOf": { "@id": "https://spinglish.jp/#site" },
         "about": { "@id": "https://spinglish.jp/#app" },
         "primaryImageOfPage": "https://spinglish.jp/og-image.png",
-        "lastReviewed": "2026-07-13",
-        "dateModified": "2026-07-13",
+        "lastReviewed": "2026-08-06",
+        "dateModified": "2026-08-06",
         "speakable": {
           "@type": "SpeakableSpecification",
           "cssSelector": [".hero-text h1", ".hero-sub"]
@@ -1011,214 +1054,283 @@
   <a href="#main" class="skip-link">本文へスキップ</a>
 
   <!-- Header -->
-  <header class="site-header">
+  <header class="site-header at-top" id="siteHeader">
     <div class="header-logo">Spinglish</div>
     <a href="https://apps.apple.com/app/spinglish/id6761403115" onclick="return gtag_report_conversion('https://apps.apple.com/app/spinglish/id6761403115');" class="header-cta">App Storeでダウンロード</a>
   </header>
 
   <main id="main">
 
-  <!-- 1. Hero -->
+  <!-- 1. Hero（一面） -->
   <section class="hero">
-    <div class="wrap hero-inner">
-      <div class="hero-text">
-        <span class="eyebrow">Curated Language Mastery</span>
-        <h1>英語は読めるのに、<br><span class="accent">口から出てこない</span>人へ。</h1>
-        <p class="hero-sub">
-          日本語のお題を見て、英語で声に出すだけ。AIがその場で伝わりやすさ・文法・自然さを採点し、より自然な言い換えまで返します。
-        </p>
-        <div class="hero-pills">
-          <span class="hero-pill">瞬間英訳</span>
-          <span class="hero-pill">シャドーイング</span>
-          <span class="hero-pill">英単語・熟語</span>
-          <span class="hero-pill">英語日記</span>
+    <div class="wrap">
+      <div class="masthead">
+        <div class="masthead-meta">
+          <span class="meta-label">10 Categories — 10,000+ Drills</span>
+          <span class="meta-label meta-right">Speaking Practice, Daily</span>
         </div>
-        <div class="hero-stats">
-          <div class="hero-stat">
-            <div class="hero-stat-num">7<span>日間</span></div>
-            <div class="hero-stat-label">無料トライアル</div>
-          </div>
-          <div class="hero-stat">
-            <div class="hero-stat-num">10,000+<span>問</span></div>
-            <div class="hero-stat-label">10カテゴリの出題</div>
-          </div>
-          <div class="hero-stat">
-            <div class="hero-stat-num">3<span>軸</span></div>
-            <div class="hero-stat-label">AIが即採点</div>
-          </div>
-        </div>
-        <div class="hero-cta-row">
-          <a href="https://apps.apple.com/app/spinglish/id6761403115" onclick="return gtag_report_conversion('https://apps.apple.com/app/spinglish/id6761403115');" class="appstore"><img src="Black_lockup/SVG/Download_on_the_App_Store_Badge_JP_RGB_blk_100317.svg" alt="App Storeからダウンロード" width="109" height="40"></a>
-          <span class="hero-cta-meta">いつでも解約OK<br><strong>初回最大7日間 ¥0</strong></span>
-        </div>
+        <div class="masthead-title" aria-hidden="true">Spinglish</div>
       </div>
-      <div class="hero-visual">
-        <div class="shot">
-          <div class="device"><img src="img/app/speak.png" alt="Spinglishの瞬間英訳。日本語のお題を英語で声に出す画面" width="1206" height="2622" fetchpriority="high"></div>
+      <div class="hero-grid">
+        <div class="hero-text">
+          <h1>英語は読めるのに、<br><span class="accent">口から出てこない</span>人へ。</h1>
+          <p class="hero-sub">
+            日本語のお題を見て、英語で声に出すだけ。AIがその場で伝わりやすさ・文法・自然さを採点し、より自然な言い換えまで返します。
+          </p>
+          <p class="hero-line">瞬間英訳 ／ シャドーイング ／ 英単語・熟語 ／ 英語日記</p>
+          <div class="hero-stats">
+            <div class="stat">
+              <div class="stat-num">7<span>日間</span></div>
+              <div class="stat-label">Free Trial</div>
+              <div class="stat-label-ja">無料トライアル</div>
+            </div>
+            <div class="stat">
+              <div class="stat-num">10,000<span>問+</span></div>
+              <div class="stat-label">Drills</div>
+              <div class="stat-label-ja">10カテゴリの出題</div>
+            </div>
+            <div class="stat">
+              <div class="stat-num">3<span>軸</span></div>
+              <div class="stat-label">AI Scoring</div>
+              <div class="stat-label-ja">AIが即採点</div>
+            </div>
+          </div>
+          <div class="hero-cta-row">
+            <a href="https://apps.apple.com/app/spinglish/id6761403115" onclick="return gtag_report_conversion('https://apps.apple.com/app/spinglish/id6761403115');" class="appstore"><img src="Black_lockup/SVG/Download_on_the_App_Store_Badge_JP_RGB_blk_100317.svg" alt="App Storeからダウンロード" width="109" height="40"></a>
+            <span class="hero-cta-meta">いつでも解約OK<br><strong>初回最大7日間 ¥0</strong></span>
+          </div>
+        </div>
+        <div class="hero-visual">
+          <div class="shot">
+            <div class="device"><img src="img/app/home.jpg" alt="Spinglishのホーム画面。海外ファッション誌のような紙面デザインに、本日のセッションと学習記録が並ぶ" width="840" height="1826" fetchpriority="high"></div>
+          </div>
+          <p class="fig-caption">Home — Daily Edition</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- 2. Four trainings -->
+  <!-- 2. Four trainings（目次） -->
   <section class="band pad">
     <div class="wrap">
-      <div class="train-head reveal">
-        <span class="eyebrow center">Four Trainings</span>
+      <div class="sec-head reveal">
+        <div class="eyebrow">No.01 — Four Trainings</div>
         <h2 class="section-title">「話す・聴く・覚える・残す」を、<br>ひとつのアプリで。</h2>
         <p class="lead">スピーキングを中心に、英語が身につく4つのトレーニング。</p>
       </div>
-      <div class="train-grid reveal">
-        <div class="train-card">
-          <div class="train-icon"><svg viewBox="0 0 24 24"><path d="M12 2a3 3 0 0 0-3 3v6a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"/><path d="M19 10v1a7 7 0 0 1-14 0v-1"/><line x1="12" y1="18" x2="12" y2="22"/></svg></div>
-          <h3>瞬間英訳</h3>
-          <p>日本語のお題を、英語で声に出すだけ。タイピング不要で、話す力を鍛える。</p>
+      <div class="split reveal">
+        <div class="split-text">
+          <div class="index-list">
+            <div class="index-row">
+              <div class="index-num">#01</div>
+              <div>
+                <h3>瞬間英訳</h3>
+                <p>日本語のお題を、英語で声に出すだけ。タイピング不要で、話す力を鍛える。</p>
+              </div>
+            </div>
+            <div class="index-row">
+              <div class="index-num">#02</div>
+              <div>
+                <h3>シャドーイング</h3>
+                <p>お手本音声に続いて発音。AIが再現度と発音を評価してくれる。</p>
+              </div>
+            </div>
+            <div class="index-row">
+              <div class="index-num">#03</div>
+              <div>
+                <h3>英単語・熟語</h3>
+                <p>品詞・レベル別に2,000語以上。ネイティブ音声つきで、聴いて覚える。</p>
+              </div>
+            </div>
+            <div class="index-row">
+              <div class="index-num">#04</div>
+              <div>
+                <h3>英語日記</h3>
+                <p>その日の出来事を英語で話すだけ。話した内容を文字にして、AIが添削してくれる。</p>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="train-card">
-          <div class="train-icon"><svg viewBox="0 0 24 24"><path d="M3 14v-2a9 9 0 0 1 18 0v2"/><path d="M3 14a2 2 0 0 1 2-2h1v6H5a2 2 0 0 1-2-2v-2z"/><path d="M21 14a2 2 0 0 0-2-2h-1v6h1a2 2 0 0 0 2-2v-2z"/></svg></div>
-          <h3>シャドーイング</h3>
-          <p>お手本音声に続いて発音。AIが再現度と発音を評価してくれる。</p>
-        </div>
-        <div class="train-card">
-          <div class="train-icon"><svg viewBox="0 0 24 24"><path d="M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2z"/><path d="M4 5v14"/><line x1="9" y1="7" x2="15" y2="7"/></svg></div>
-          <h3>英単語・熟語</h3>
-          <p>品詞・レベル別に2,000語以上。ネイティブ音声つきで、聴いて覚える。</p>
-        </div>
-        <div class="train-card">
-          <div class="train-icon"><svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></div>
-          <h3>英語日記</h3>
-          <p>その日の出来事を英語で話すだけ。話した内容を文字にして、AIが添削してくれる。</p>
+        <div class="split-visual">
+          <div class="shot">
+            <div class="device"><img src="img/app/speak.jpg" alt="Speakタブ。Today's Session・瞬間英訳・シャドーイング・英語日記が誌面の目次のように並ぶ" loading="lazy" width="840" height="1826"></div>
+          </div>
+          <p class="fig-caption">Speak — Index</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- 3. Showcase: 瞬間英訳 × AI採点 -->
+  <!-- 3. AI採点 -->
   <section class="pad">
-    <div class="wrap showcase reverse reveal">
-      <div class="showcase-visual">
+    <div class="wrap split visual-left reveal">
+      <div class="split-visual">
         <div class="shot">
-          <div class="device"><img src="img/app/score.png" alt="AI採点の結果画面。伝わりやすさ・文法・自然さの3軸評価と、模範解答・添削" loading="lazy" width="1206" height="2622"></div>
+          <div class="device"><img src="img/app/score.png" alt="AI採点の結果画面。OK判定と、伝わりやすさ・文法・自然さのS/A評価、模範解答と添削" loading="lazy" width="840" height="1826"></div>
         </div>
+        <p class="fig-caption">Instant Scoring</p>
       </div>
-      <div class="showcase-text">
-        <span class="eyebrow">Instant AI Feedback</span>
+      <div class="split-text">
+        <div class="eyebrow">No.02 — Instant AI Feedback</div>
         <h2 class="section-title">話すたびに、AIが<br>その場で採点する。</h2>
-        <div class="grade-row">
-          <div class="grade-chip"><div class="g g-a">A</div><div class="l">伝わりやすさ</div></div>
-          <div class="grade-chip"><div class="g g-gold">S</div><div class="l">文法</div></div>
-          <div class="grade-chip"><div class="g g-b">B</div><div class="l">自然さ</div></div>
+        <div class="grade-strip">
+          <div class="grade"><div class="g g-ok">A</div><div class="l">伝わりやすさ</div></div>
+          <div class="grade"><div class="g g-ok">S</div><div class="l">文法</div></div>
+          <div class="grade"><div class="g g-gold">B</div><div class="l">自然さ</div></div>
         </div>
         <p class="body">
           「伝わりやすさ・文法・自然さ」の3軸で、話した英語を即採点。模範解答とネイティブが使う自然な言い換えまで返すから、どこをどう直せばいいかが一目でわかります。
         </p>
         <ul class="feat-list">
-          <li><span class="feat-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span><b>「OK / NG」</b>で伝わるかを一目で判定</li>
-          <li><span class="feat-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>模範解答はネイティブ音声で発音チェック</li>
-          <li><span class="feat-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>気になる単語はタップですぐ辞書表示</li>
+          <li><b>「OK / NG」</b>で伝わるかを一目で判定</li>
+          <li>模範解答はネイティブ音声で発音チェック</li>
+          <li>気になる単語はタップですぐ辞書表示</li>
         </ul>
       </div>
     </div>
   </section>
 
-  <!-- 4. Showcase: シャドーイング -->
+  <!-- 4. シャドーイング（文字の見開き） -->
   <section class="band pad">
-    <div class="wrap showcase reveal">
-      <div class="showcase-visual">
-        <div class="shot">
-          <div class="device"><img src="img/app/shadow.png" alt="シャドーイングの練習画面。お手本の英文を見ながら、続けて声に出す" loading="lazy" width="1206" height="2622"></div>
-        </div>
+    <div class="wrap split visual-left reveal">
+      <div class="split-text">
+        <div class="eyebrow">No.03 — Shadowing</div>
+        <p class="quote-word">Shadowing.</p>
+        <p class="quote-word-sub">Listen — Repeat — Compare</p>
       </div>
-      <div class="showcase-text">
-        <span class="eyebrow">Shadowing</span>
+      <div class="split-text">
         <h2 class="section-title">お手本に続けて話すだけで、<br>発音とリスニングが伸びる。</h2>
-        <p class="body">
+        <p class="body" style="margin-top:22px;">
           お手本音声を聴きながら、同じように声に出す。あなたの発話を録音して、AIが「再現度」と発音を評価します。難易度も選べるので、少しずつステップアップできます。
         </p>
         <ul class="feat-list">
-          <li><span class="feat-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>お手本と自分の音声を、その場で聴き比べ</li>
-          <li><span class="feat-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>再現度をパーセントで可視化</li>
-          <li><span class="feat-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>発音のアドバイスまでAIがコメント</li>
+          <li>お手本と自分の音声を、その場で聴き比べ</li>
+          <li>再現度をパーセントで可視化</li>
+          <li>発音のアドバイスまでAIがコメント</li>
         </ul>
       </div>
     </div>
   </section>
 
-  <!-- 5. Showcase: 英単語・熟語 + category -->
+  <!-- 5. 英単語・熟語 -->
   <section class="pad">
-    <div class="wrap showcase reverse reveal">
-      <div class="showcase-visual">
-        <div class="shot">
-          <div class="device"><img src="img/app/dict.png" alt="英単語の4択クイズ。意味に合う単語を選んで覚える" loading="lazy" width="1206" height="2622"></div>
-        </div>
-      </div>
-      <div class="showcase-text">
-        <span class="eyebrow">Vocabulary</span>
+    <div class="wrap split reveal">
+      <div class="split-text">
+        <div class="eyebrow">No.04 — Vocabulary</div>
         <h2 class="section-title">2,000語以上を、<br>品詞とレベルで整理して。</h2>
-        <p class="body">
+        <p class="body" style="margin-top:22px;">
           名詞・動詞・形容詞から熟語まで、品詞・レベル別にキュレーションした2,000語以上。すべてネイティブ音声つきで、聴きながら覚えられます。覚えていない単語だけを、発話や4択で復習することもできます。
         </p>
         <ul class="feat-list">
-          <li><span class="feat-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>熟語・句動詞もカバー</li>
-          <li><span class="feat-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>「覚えた／曖昧／覚えていない」で自分だけの単語帳に</li>
-          <li><span class="feat-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>苦手な単語だけをまとめて復習</li>
+          <li>熟語・句動詞もカバー</li>
+          <li>「覚えた／曖昧／覚えていない」で自分だけの単語帳に</li>
+          <li>苦手な単語だけをまとめて復習</li>
         </ul>
-        <p style="font-size:12.5px; color:var(--ink-3); margin-top:16px;">※ 英単語・熟語練習は アドバンス・ファウンダーズプランでご利用いただけます。</p>
+        <p style="font-size:12.5px; color:var(--muted); margin-top:16px;">※ 英単語・熟語練習は アドバンス・ファウンダーズプランでご利用いただけます。</p>
+      </div>
+      <div class="split-visual">
+        <div class="shot">
+          <div class="device"><img src="img/app/vocab.jpg" alt="Vocabタブ。単語帳と、名詞・動詞・形容詞の学習セクションが誌面のように並ぶ" loading="lazy" width="840" height="1826"></div>
+        </div>
+        <p class="fig-caption">Vocab — Wordbook</p>
       </div>
     </div>
   </section>
 
   <!-- 6. Categories -->
-  <section class="band pad" style="padding-top:40px;">
-    <div class="wrap cats reveal">
-      <span class="eyebrow center">Categories &amp; Levels</span>
-      <h2 class="section-title" style="margin-bottom:14px;">好きなことを、そのまま英語の教材に。</h2>
-      <p class="cat-lead">サッカーの声かけを、柔術の道場の会話を、禅の言葉を英語で練習できるアプリ——探しても見つからなかったので、作りました。サッカー・野球・金融・柔術・精神世界の新5カテゴリ、各1,000問がすべて完全新作です。</p>
-      <div class="cat-example-grid">
-        <div class="cat-example">
-          <span class="ce-tag">サッカー・Lv.1</span>
-          <p class="ce-ja">僕、フリーだよ！</p>
-          <p class="ce-en">I'm open!</p>
+  <section class="band pad">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div class="eyebrow">No.05 — Categories &amp; Levels</div>
+        <h2 class="section-title">好きなことを、そのまま英語の教材に。</h2>
+        <p class="lead">サッカーの声かけを、柔術の道場の会話を、禅の言葉を英語で練習できるアプリ——探しても見つからなかったので、作りました。サッカー・野球・金融・柔術・精神世界の新5カテゴリ、各1,000問がすべて完全新作です。</p>
+      </div>
+      <div class="split reveal">
+        <div class="split-text">
+          <div class="ce-list">
+            <div class="ce">
+              <span class="ce-tag">Soccer — Lv.1</span>
+              <p class="ce-ja">僕、フリーだよ！</p>
+              <p class="ce-en">I'm open!</p>
+            </div>
+            <div class="ce">
+              <span class="ce-tag">Jiu-Jitsu — Lv.5</span>
+              <p class="ce-ja">万が一絞めが深く入ったら、意地を張らずにすぐタップしてね。</p>
+              <p class="ce-en">Should the choke sink in deep, don't be stubborn — just tap right away.</p>
+            </div>
+            <div class="ce">
+              <span class="ce-tag">Spirituality — Lv.4</span>
+              <p class="ce-ja">呼吸に戻る回数が増えるほど、注意力は強くなっていくんです。</p>
+              <p class="ce-en">The more often you come back to your breath, the stronger your attention becomes.</p>
+            </div>
+          </div>
         </div>
-        <div class="cat-example">
-          <span class="ce-tag">柔術・Lv.5</span>
-          <p class="ce-ja">万が一絞めが深く入ったら、意地を張らずにすぐタップしてね。</p>
-          <p class="ce-en">Should the choke sink in deep, don't be stubborn — just tap right away.</p>
-        </div>
-        <div class="cat-example">
-          <span class="ce-tag">精神世界・Lv.4</span>
-          <p class="ce-ja">呼吸に戻る回数が増えるほど、注意力は強くなっていくんです。</p>
-          <p class="ce-en">The more often you come back to your breath, the stronger your attention becomes.</p>
+        <div class="split-visual">
+          <div class="shot">
+            <div class="device"><img src="img/app/categories.jpg" alt="瞬間英訳のカテゴリ一覧。サッカー・野球・金融・柔術が写真つきの誌面レイアウトで並ぶ" loading="lazy" width="840" height="1826"></div>
+          </div>
+          <p class="fig-caption">Categories</p>
         </div>
       </div>
-      <div class="cat-chip-row">
-        <span class="cat-chip">日常会話</span>
-        <span class="cat-chip">旅行</span>
-        <span class="cat-chip">ビジネス</span>
-        <span class="cat-chip new">サッカー</span>
-        <span class="cat-chip new">野球</span>
-        <span class="cat-chip new">金融</span>
-        <span class="cat-chip new">柔術</span>
-        <span class="cat-chip new">精神世界</span>
-        <span class="cat-chip">技術</span>
-        <span class="cat-chip">ニュース社会</span>
+      <div class="reveal">
+        <div class="cat-chip-row">
+          <span class="cat-chip">日常会話</span>
+          <span class="cat-chip">旅行</span>
+          <span class="cat-chip">ビジネス</span>
+          <span class="cat-chip new">サッカー</span>
+          <span class="cat-chip new">野球</span>
+          <span class="cat-chip new">金融</span>
+          <span class="cat-chip new">柔術</span>
+          <span class="cat-chip new">精神世界</span>
+          <span class="cat-chip">技術</span>
+          <span class="cat-chip">ニュース社会</span>
+        </div>
+        <p class="cat-note">10カテゴリ &times; 5レベル（超初級〜ネイティブ級）・全10,000問以上、すべてネイティブ音声つき</p>
       </div>
-      <p class="cat-note">10カテゴリ &times; 5レベル（超初級〜ネイティブ級）・全10,000問以上、すべてネイティブ音声つき</p>
     </div>
   </section>
 
-  <!-- 7. Plans -->
+  <!-- 7. Design -->
   <section class="pad">
+    <div class="wrap split reveal">
+      <div class="split-text">
+        <div class="eyebrow">No.06 — The Design</div>
+        <h2 class="section-title">毎日開く紙面だから、<br>デザインまでこだわった。</h2>
+        <p class="body" style="margin-top:22px;">
+          海外ファッション誌の誌面のような「Editorial」デザインを新搭載。白背景×カラー写真のライト、紙色×モノクロ写真のマイルド、夜の誌面のダークの3バリエーションに加え、クラシックな黒×金など全10種類のデザインから、気分に合わせていつでも切り替えられます。
+        </p>
+        <ul class="feat-list">
+          <li>毎日変わる、雑誌の表紙のようなホーム画面</li>
+          <li>学習時間・連続日数も誌面の組みで美しく記録</li>
+          <li>デザインはMy Pageからいつでも変更OK</li>
+        </ul>
+      </div>
+      <div class="split-visual">
+        <div class="duo">
+          <div class="shot">
+            <div class="device"><img src="img/app/home.jpg" alt="Editorialデザイン（ライト）のホーム画面" loading="lazy" width="840" height="1826"></div>
+          </div>
+          <div class="shot">
+            <div class="device"><img src="img/app/home-dark.jpg" alt="Editorialデザイン（ダーク）のホーム画面。夜の誌面のような黒基調" loading="lazy" width="840" height="1826"></div>
+          </div>
+        </div>
+        <p class="fig-caption">Morning — Evening Edition</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. Plans -->
+  <section class="band pad">
     <div class="wrap">
-      <div class="plans-head reveal">
-        <span class="eyebrow center">Plans</span>
+      <div class="sec-head reveal" style="margin-bottom:16px;">
+        <div class="eyebrow">No.07 — Plans</div>
         <h2 class="section-title">料金プラン</h2>
       </div>
       <p class="plans-intro reveal">月額プランは初回7日間、週額プランは初回3日間、無料でお試しいただけます。</p>
       <p class="plans-flex reveal">解約はiPhoneの「設定」→「サブスクリプション」からいつでも可能です。</p>
       <div class="plans-grid reveal">
         <div class="plan founders">
-          <div class="plan-tag">&#9733; ファウンダーズ</div>
+          <div class="plan-tag">&#9733; Founders</div>
           <div class="plan-name">ファウンダーズ</div>
           <div class="plan-who">最初の300人だけの特別プラン。アドバンスの全機能が永続価格で。</div>
           <div class="plan-price">&#165;700<span>/月（永続）</span></div>
@@ -1230,7 +1342,7 @@
             <li>英単語・熟語練習（2,000語以上）</li>
             <li>英語日記（1日1回）</li>
           </ul>
-          <a href="https://apps.apple.com/app/spinglish/id6761403115" onclick="return gtag_report_conversion('https://apps.apple.com/app/spinglish/id6761403115');" class="btn btn-gold plan-cta">ファウンダーズではじめる</a>
+          <a href="https://apps.apple.com/app/spinglish/id6761403115" onclick="return gtag_report_conversion('https://apps.apple.com/app/spinglish/id6761403115');" class="btn btn-ink plan-cta">ファウンダーズではじめる</a>
           <p class="plan-note">※解約すると以後ファウンダーズプランには再加入できません</p>
         </div>
         <div class="plan">
@@ -1239,7 +1351,7 @@
           <div class="plan-who">毎日少しずつ練習して、スピーキング習慣をつけたい人へ。</div>
           <div class="plan-price">&#165;1,000<span>/月</span></div>
           <div class="plan-subprice">週額 &#165;300</div>
-          <div class="plan-trial">&#127873; 初回7日間無料（週額は3日間）</div>
+          <div class="plan-trial">初回7日間無料（週額は3日間）</div>
           <ul class="plan-feats">
             <li>1日5セッション</li>
             <li>全カテゴリ・全レベル</li>
@@ -1249,14 +1361,14 @@
             <li>シャドーイング（AI評価 2回/日）</li>
             <li>英語日記（1日1回）</li>
           </ul>
-          <a href="https://apps.apple.com/app/spinglish/id6761403115" onclick="return gtag_report_conversion('https://apps.apple.com/app/spinglish/id6761403115');" class="btn btn-ghost plan-cta">無料ではじめる</a>
+          <a href="https://apps.apple.com/app/spinglish/id6761403115" onclick="return gtag_report_conversion('https://apps.apple.com/app/spinglish/id6761403115');" class="btn btn-line plan-cta">無料ではじめる</a>
         </div>
         <div class="plan">
           <div class="plan-name">アドバンス</div>
           <div class="plan-who">より多く練習して、短期間でしっかり伸ばしたい人へ。</div>
           <div class="plan-price">&#165;1,500<span>/月</span></div>
           <div class="plan-subprice">週額 &#165;400</div>
-          <div class="plan-trial">&#127873; 初回7日間無料（週額は3日間）</div>
+          <div class="plan-trial">初回7日間無料（週額は3日間）</div>
           <ul class="plan-feats">
             <li>1日10セッション</li>
             <li>全カテゴリ・全レベル</li>
@@ -1267,104 +1379,124 @@
             <li>英単語・熟語練習（2,000語以上）</li>
             <li>英語日記（1日1回）</li>
           </ul>
-          <a href="https://apps.apple.com/app/spinglish/id6761403115" onclick="return gtag_report_conversion('https://apps.apple.com/app/spinglish/id6761403115');" class="btn btn-ghost plan-cta">無料ではじめる</a>
+          <a href="https://apps.apple.com/app/spinglish/id6761403115" onclick="return gtag_report_conversion('https://apps.apple.com/app/spinglish/id6761403115');" class="btn btn-line plan-cta">無料ではじめる</a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- 8. For you -->
+  <!-- 9. For you -->
+  <section class="pad">
+    <div class="wrap reveal">
+      <div class="sec-head">
+        <div class="eyebrow">No.08 — For You</div>
+        <h2 class="section-title">こんな人に、向いています。</h2>
+      </div>
+      <div class="target-grid">
+        <div class="target-item">オンライン英会話やAI英会話が続かなかった</div>
+        <div class="target-item">英語を勉強したのに、とっさに話せない</div>
+        <div class="target-item">人と話す前に、一人で練習したい</div>
+        <div class="target-item">短時間で、毎日続けたい</div>
+        <div class="target-item">間違いを、その場で直したい</div>
+        <div class="target-item">月数千円の英会話やアプリは高いと感じる</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 10. Comparison -->
   <section class="band pad">
     <div class="wrap reveal">
-      <span class="eyebrow center">For you</span>
-      <h2 class="section-title" style="text-align:center; margin-bottom:40px;">こんな人に、向いています。</h2>
-      <div class="target-grid">
-        <div class="target-item"><span class="target-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>オンライン英会話やAI英会話が続かなかった</div>
-        <div class="target-item"><span class="target-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>英語を勉強したのに、とっさに話せない</div>
-        <div class="target-item"><span class="target-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>人と話す前に、一人で練習したい</div>
-        <div class="target-item"><span class="target-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>短時間で、毎日続けたい</div>
-        <div class="target-item"><span class="target-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>間違いを、その場で直したい</div>
-        <div class="target-item"><span class="target-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>月数千円の英会話やアプリは高いと感じる</div>
+      <div class="sec-head">
+        <div class="eyebrow">No.09 — Why Spinglish</div>
+        <h2 class="section-title">オンライン英会話の前に、<br>必要な練習があります。</h2>
+      </div>
+      <div class="compare-wrap">
+        <table class="compare-table">
+          <thead>
+            <tr>
+              <th></th>
+              <th class="hl">Spinglish</th>
+              <th>オンライン英会話</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>始めやすさ</td><td class="hl">一人で、すぐ始められる</td><td>予約・講師選びが必要</td></tr>
+            <tr><td>会話プレッシャー</td><td class="hl">なし</td><td>沈黙が気まずい</td></tr>
+            <tr><td>即フィードバック</td><td class="hl">毎回AIが即採点</td><td>講師による差あり</td></tr>
+            <tr><td>1回の所要時間</td><td class="hl">数分（5問）</td><td>25〜50分</td></tr>
+            <tr><td>鍛えられる力</td><td class="hl">英語を組み立てて口に出す力</td><td>実践会話力</td></tr>
+          </tbody>
+        </table>
+
+        <div class="compare-cards">
+          <div class="cc-item">
+            <div class="cc-label">始めやすさ</div>
+            <div class="cc-row"><div class="cc-col us"><strong>Spinglish</strong><span>一人で、すぐ始められる</span></div><div class="cc-col them"><strong>英会話</strong><span>予約・講師選びが必要</span></div></div>
+          </div>
+          <div class="cc-item">
+            <div class="cc-label">会話プレッシャー</div>
+            <div class="cc-row"><div class="cc-col us"><strong>Spinglish</strong><span>なし</span></div><div class="cc-col them"><strong>英会話</strong><span>沈黙が気まずい</span></div></div>
+          </div>
+          <div class="cc-item">
+            <div class="cc-label">即フィードバック</div>
+            <div class="cc-row"><div class="cc-col us"><strong>Spinglish</strong><span>毎回AIが即採点</span></div><div class="cc-col them"><strong>英会話</strong><span>講師による差あり</span></div></div>
+          </div>
+          <div class="cc-item">
+            <div class="cc-label">1回の所要時間</div>
+            <div class="cc-row"><div class="cc-col us"><strong>Spinglish</strong><span>数分（5問）</span></div><div class="cc-col them"><strong>英会話</strong><span>25〜50分</span></div></div>
+          </div>
+          <div class="cc-item">
+            <div class="cc-label">鍛えられる力</div>
+            <div class="cc-row"><div class="cc-col us"><strong>Spinglish</strong><span>英語を組み立てて口に出す力</span></div><div class="cc-col them"><strong>英会話</strong><span>実践会話力</span></div></div>
+          </div>
+        </div>
+
+        <p class="compare-footer">
+          Spinglishは、人と話す実践の代わりではありません。<br>
+          その前段階で必要な、「英語を自分で作って口に出す力」を鍛えるためのアプリです。
+        </p>
       </div>
     </div>
   </section>
 
-  <!-- 9. Comparison -->
+  <!-- 11. Retention -->
   <section class="pad">
-    <div class="wrap compare-wrap reveal">
-      <span class="eyebrow center">Why Spinglish</span>
-      <h2 class="section-title" style="text-align:center; margin-bottom:36px;">オンライン英会話の前に、<br>必要な練習があります。</h2>
-
-      <table class="compare-table">
-        <thead>
-          <tr>
-            <th></th>
-            <th class="hl">Spinglish</th>
-            <th>オンライン英会話</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr><td>始めやすさ</td><td class="hl">一人で、すぐ始められる</td><td>予約・講師選びが必要</td></tr>
-          <tr><td>会話プレッシャー</td><td class="hl">なし</td><td>沈黙が気まずい</td></tr>
-          <tr><td>即フィードバック</td><td class="hl">毎回AIが即採点</td><td>講師による差あり</td></tr>
-          <tr><td>1回の所要時間</td><td class="hl">数分（5問）</td><td>25〜50分</td></tr>
-          <tr><td>鍛えられる力</td><td class="hl">英語を組み立てて口に出す力</td><td>実践会話力</td></tr>
-        </tbody>
-      </table>
-
-      <div class="compare-cards">
-        <div class="cc-item">
-          <div class="cc-label">始めやすさ</div>
-          <div class="cc-row"><div class="cc-col us"><strong>Spinglish</strong><span>一人で、すぐ始められる</span></div><div class="cc-col them"><strong>英会話</strong><span>予約・講師選びが必要</span></div></div>
-        </div>
-        <div class="cc-item">
-          <div class="cc-label">会話プレッシャー</div>
-          <div class="cc-row"><div class="cc-col us"><strong>Spinglish</strong><span>なし</span></div><div class="cc-col them"><strong>英会話</strong><span>沈黙が気まずい</span></div></div>
-        </div>
-        <div class="cc-item">
-          <div class="cc-label">即フィードバック</div>
-          <div class="cc-row"><div class="cc-col us"><strong>Spinglish</strong><span>毎回AIが即採点</span></div><div class="cc-col them"><strong>英会話</strong><span>講師による差あり</span></div></div>
-        </div>
-        <div class="cc-item">
-          <div class="cc-label">1回の所要時間</div>
-          <div class="cc-row"><div class="cc-col us"><strong>Spinglish</strong><span>数分（5問）</span></div><div class="cc-col them"><strong>英会話</strong><span>25〜50分</span></div></div>
-        </div>
-        <div class="cc-item">
-          <div class="cc-label">鍛えられる力</div>
-          <div class="cc-row"><div class="cc-col us"><strong>Spinglish</strong><span>英語を組み立てて口に出す力</span></div><div class="cc-col them"><strong>英会話</strong><span>実践会話力</span></div></div>
-        </div>
-      </div>
-
-      <p class="compare-footer">
-        Spinglishは、人と話す実践の代わりではありません。<br>
-        その前段階で必要な、「英語を自分で作って口に出す力」を鍛えるためのアプリです。
-      </p>
-    </div>
-  </section>
-
-  <!-- 10. Retention -->
-  <section class="band pad">
     <div class="wrap retention reveal">
       <div class="retention-text">
-        <span class="eyebrow">Keep going</span>
+        <div class="eyebrow">No.10 — Keep Going</div>
         <h2 class="section-title">1回5問。<br>短いから、続けやすい。</h2>
         <p>
           語学学習で難しいのは、始めることより続けること。Spinglishは、忙しい日でも取り組みやすい短時間設計です。毎日少しずつ、英語が口から出る感覚を育てていけます。
         </p>
       </div>
-      <div class="ret-badges">
-        <div class="ret-badge"><span class="n">5問</span><span class="t">1セッション</span></div>
-        <div class="ret-badge"><span class="n">数分</span><span class="t">所要時間</span></div>
-        <div class="ret-badge"><span class="n">毎日</span><span class="t">すきま時間OK</span></div>
+      <div class="ret-stats">
+        <div class="stat">
+          <div class="stat-num">5<span>問</span></div>
+          <div class="stat-label">Per Session</div>
+          <div class="stat-label-ja">1セッション</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">数分</div>
+          <div class="stat-label">A Few Minutes</div>
+          <div class="stat-label-ja">所要時間</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">毎日</div>
+          <div class="stat-label">Daily</div>
+          <div class="stat-label-ja">すきま時間OK</div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- 11. FAQ -->
-  <section class="pad">
-    <div class="wrap faq-wrap reveal">
-      <span class="eyebrow center">FAQ</span>
-      <h2 class="section-title" style="text-align:center; margin-bottom:32px;">よくある質問</h2>
+  <!-- 12. FAQ -->
+  <section class="band pad">
+    <div class="wrap reveal">
+      <div class="sec-head" style="margin-bottom:24px;">
+        <div class="eyebrow">No.11 — FAQ</div>
+        <h2 class="section-title">よくある質問</h2>
+      </div>
+      <div class="faq-wrap">
 
       <div class="faq-item open">
         <button type="button" class="faq-q" aria-expanded="true" onclick="this.setAttribute('aria-expanded', this.parentElement.classList.toggle('open'))">英語初心者でも使えますか？</button>
@@ -1462,13 +1594,14 @@
         <button type="button" class="faq-q" aria-expanded="false" onclick="this.setAttribute('aria-expanded', this.parentElement.classList.toggle('open'))">他の英会話アプリとどう違いますか？</button>
         <div class="faq-a">Spinglishは「会話」ではなく、知っている英語を"口から出す"ソロ練習に特化しています。日本語のお題を英語で声に出す瞬間英訳を中心に、AIが伝わりやすさ・文法・自然さの3軸で採点・添削。オンライン英会話の前段階の自主練として、講師なしで毎日数分から続けられます。</div>
       </div>
+      </div>
     </div>
   </section>
 
-  <!-- 12. Closing -->
+  <!-- 13. Closing（夜版） -->
   <section class="closing">
     <div class="closing-inner reveal">
-      <span class="eyebrow center">Start speaking</span>
+      <div class="closing-eyebrow">Evening Edition — Start Speaking</div>
       <h2>英語は、頭の中だけでは<br>話せるようになりません。</h2>
       <p>
         知っている英語を、実際に口から出すこと。<br>
@@ -1476,7 +1609,7 @@
         Spinglishは、その最初の一歩を、続けやすくします。<br>
         オンライン英会話で挫折した人も、英語を勉強してきたのに話せない人も、まずはここから。
       </p>
-      <a href="https://apps.apple.com/app/spinglish/id6761403115" onclick="return gtag_report_conversion('https://apps.apple.com/app/spinglish/id6761403115');" class="btn btn-gold" style="font-size:16px; padding:16px 42px;">無料ではじめる</a>
+      <a href="https://apps.apple.com/app/spinglish/id6761403115" onclick="return gtag_report_conversion('https://apps.apple.com/app/spinglish/id6761403115');" class="btn btn-paper">無料ではじめる</a>
       <p class="closing-note">App Storeですぐに始められます。&nbsp;/&nbsp;iOS 16.0以降</p>
     </div>
   </section>
@@ -1509,6 +1642,18 @@
         });
       }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
       els.forEach(function (el) { io.observe(el); });
+    })();
+
+    // Header wordmark: hide while the masthead is visible, show after scroll
+    (function () {
+      var header = document.getElementById('siteHeader');
+      if (!header) return;
+      function update() {
+        if (window.scrollY > 140) { header.classList.remove('at-top'); }
+        else { header.classList.add('at-top'); }
+      }
+      window.addEventListener('scroll', update, { passive: true });
+      update();
     })();
   </script>
 
