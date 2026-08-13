@@ -61,6 +61,7 @@ Spinglishは全体3,000名の定員制。すべての練習でAI採点・音声�
 
 - ホーム: https://spinglish.jp/
 - スピーキング独学ガイド（練習法の解説記事）: https://spinglish.jp/speaking-guide.html
+- シャドーイングのやり方（効果・手順・教材の選び方）: https://spinglish.jp/shadowing-guide.html
 - AI向け詳細情報（全文）: https://spinglish.jp/llms-full.txt
 - App Store: https://apps.apple.com/app/spinglish/id6761403115
 - プライバシーポリシー: https://spinglish.jp/privacy.html
