@@ -147,6 +147,7 @@ A. Spinglishは「会話」ではなく、知っている英語を口から出�
 ## 主要URL
 
 - ホーム: https://spinglish.jp/
+- スピーキング独学ガイド（練習法の解説記事）: https://spinglish.jp/speaking-guide.html
 - App Store: https://apps.apple.com/app/spinglish/id6761403115
 - プライバシーポリシー: https://spinglish.jp/privacy.html
 - 利用規約: https://spinglish.jp/terms.html
