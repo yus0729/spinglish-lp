@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
+  <title>Spinglish</title>
+  <rect width="64" height="64" fill="#F3F0E9"/>
+  <rect x="2" y="2" width="60" height="60" fill="none" stroke="#0A0A0A" stroke-width="2"/>
+  <text x="32" y="45" font-family="Didot, Georgia, serif" font-weight="700" font-size="38" fill="#0A0A0A" text-anchor="middle">S</text>
+</svg>
