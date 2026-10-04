@@ -4,7 +4,7 @@
   const page = document.body.dataset.page || 'home';
   const track = (event, properties = {}) => {
     window.dataLayer = window.dataLayer || [];
-    window.dataLayer.push({ event, page, lp_version: 'editorial-20261002', ...properties });
+    window.dataLayer.push({ event, page, lp_version: 'visual-20261004', ...properties });
   };
   track('lp_view');
 
@@ -113,6 +113,14 @@
     }
     button.addEventListener('click', () => {
       lastDialogOpener = button;
+      if (dialog.id === 'screen-dialog') {
+        const image = dialog.querySelector('img');
+        const source = button.querySelector('img');
+        image.src = button.dataset.screen || 'assets/app-score.png';
+        image.alt = source?.alt || '瞬間英訳のAI採点・添削画面';
+        document.getElementById('screen-title').textContent = button.dataset.screenTitle || '瞬間英訳のAI採点画面';
+        dialog.scrollTop = 0;
+      }
       dialog.showModal();
       document.body.classList.add('dialog-open');
       track(dialog.id === 'qr-dialog' ? 'qr_open' : 'app_screenshot_open');
