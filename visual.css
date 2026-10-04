@@ -37,6 +37,7 @@ body[data-page='home'] { --muted: #656562; --graphite: #30302e; }
 .story-caption { margin-top: 24px; }
 .story-caption h4 { font: 600 19px/1.6 var(--serif); margin: 0 0 8px; }
 .story-caption p { font-size: 13px; line-height: 1.85; }
+.story-caption .score-link { font-size: 12px; margin-top: 4px; }
 .story-meta { display: block; color: var(--muted); font: 10px/1.8 var(--sans); margin-top: 12px; }
 .more-trainings { display: grid; grid-template-columns: 1fr 1fr; border-block: 1px solid var(--line); margin-top: 36px; padding-block: 23px; gap: 30px; }
 .more-trainings article { display: flex; gap: 17px; align-items: center; }
@@ -44,6 +45,8 @@ body[data-page='home'] { --muted: #656562; --graphite: #30302e; }
 .more-trainings p { font-size: 13px; margin-top: 3px; }
 .vocab-detail { display: grid; grid-template-columns: 1fr 1fr; gap: 70px; align-items: center; margin-top: 64px; padding-inline: 7%; }
 .vocab-copy h3 { font: 600 29px/1.6 var(--serif); margin: 15px 0 23px; }
+.vocab-context { font-size: 13px; line-height: 1.85; margin: -8px 0 20px; }
+.vocab-context strong { font-weight: 600; }
 .mode-list { list-style: none; margin: 0 0 20px; padding: 0; }
 .mode-list li { display: flex; gap: 20px; padding-block: 14px; border-bottom: 1px solid var(--line); }
 .mode-list span { font: 13px/2 var(--display); color: var(--muted); }

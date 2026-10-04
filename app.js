@@ -4,7 +4,7 @@
   const page = document.body.dataset.page || 'home';
   const track = (event, properties = {}) => {
     window.dataLayer = window.dataLayer || [];
-    window.dataLayer.push({ event, page, lp_version: 'visual-20261004', ...properties });
+    window.dataLayer.push({ event, page, lp_version: 'visual-20261005', ...properties });
   };
   track('lp_view');
 
@@ -119,6 +119,8 @@
         image.src = button.dataset.screen || 'assets/app-score.png';
         image.alt = source?.alt || '瞬間英訳のAI採点・添削画面';
         document.getElementById('screen-title').textContent = button.dataset.screenTitle || '瞬間英訳のAI採点画面';
+        const note = document.getElementById('screen-note');
+        if (note) note.textContent = button.dataset.screenNote || '実際のアプリ画面の一例です。';
         dialog.scrollTop = 0;
       }
       dialog.showModal();
