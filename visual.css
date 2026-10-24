@@ -43,6 +43,12 @@ body[data-page='home'] { --muted: #656562; --graphite: #30302e; }
 .more-trainings article { display: flex; gap: 17px; align-items: center; }
 .more-trainings h3 { font-size: 17px; font-weight: 600; }
 .more-trainings p { font-size: 13px; margin-top: 3px; }
+/* How to Use（3ステップ）: more-trainings と同じ番号付きの欄を3列で */
+.howto-teaser { padding-top: 0; }
+.howto-steps { list-style: none; margin: 0 0 26px; padding: 23px 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; border-block: 1px solid var(--line); }
+.howto-steps li { display: flex; gap: 17px; align-items: flex-start; }
+.howto-steps h3 { font-size: 17px; font-weight: 600; }
+.howto-steps p { font-size: 13px; margin-top: 3px; }
 .vocab-detail { display: grid; grid-template-columns: 1fr 1fr; gap: 70px; align-items: center; margin-top: 64px; padding-inline: 7%; }
 .vocab-copy h3 { font: 600 29px/1.6 var(--serif); margin: 15px 0 23px; }
 .vocab-context { font-size: 13px; line-height: 1.85; margin: -8px 0 20px; }
@@ -134,6 +140,9 @@ body[data-page='home'] { --muted: #656562; --graphite: #30302e; }
   .story-caption p { font-size: 12px; }
   .story-meta { font-size: 9px; }
   .more-trainings { grid-template-columns: 1fr; gap: 20px; padding-block: 22px; margin-top: 30px; }
+  .howto-steps { grid-template-columns: 1fr; gap: 20px; padding-block: 22px; }
+  .howto-steps h3 { font-size: 16px; }
+  .howto-steps p { font-size: 12px; }
   .more-trainings h3 { font-size: 16px; }
   .more-trainings p { font-size: 12px; }
   .vocab-detail { grid-template-columns: 1fr; gap: 25px; margin-top: 42px; padding-inline: 0; }
