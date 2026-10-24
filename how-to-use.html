@@ -66,6 +66,7 @@
     .shot { flex: 0 1 230px; margin: 0; }
     .shot img { border: 1px solid #dfdfdc; border-radius: 22px; padding: 5px; background: white; box-shadow: 0 12px 30px #00000009; }
     .shot figcaption { font-size: 12px; line-height: 1.7; color: var(--muted); margin-top: 10px; }
+    .shot.wide { flex-basis: 320px; }
     .plan-table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 18px 0 8px; }
     .plan-table th, .plan-table td { border-bottom: 1px solid var(--line); padding: 10px 8px; text-align: left; vertical-align: top; }
     .plan-table thead th { border-bottom: 1px solid var(--ink); font-weight: 600; }
@@ -78,7 +79,7 @@
     @media (max-width: 760px) {
       .toc ol { columns: 1; }
       .shots { gap: 14px; }
-      .shot { flex: 1 1 calc(50% - 7px); }
+      .shot, .shot.wide { flex: 1 1 calc(50% - 7px); }
       .steps > li { padding-left: 38px; }
     }
   </style>
@@ -253,10 +254,10 @@
       <li>Spinglishを開いた状態でコントロールセンターを開き、「テキストサイズ」を押します。</li>
       <li>下の切り替えを「Spinglishのみ」にして、上下に動かして調整します。</li>
     </ol>
-    <div class="tips"><p>レイアウトが崩れないよう、アプリの文字は標準の約1.35倍までの拡大です。大きな見出しや数字は、もとの大きさのままです。標準より小さくしても、アプリの文字は小さくなりません。使っている途中で大きさを変えると、新しい大きさで画面が作り直され、開いているタブの最初の画面に戻ります。</p></div>
+    <div class="tips"><p>レイアウトが崩れないよう、アプリの文字は標準の約1.35倍までの拡大です。「My Page」のような大きな見出しや、ホームの記録の大きな数字は、もとの大きさのままです。標準より小さくしても、アプリの文字は小さくなりません。使っている途中で大きさを変えると、新しい大きさで画面が作り直され、開いているタブの最初の画面に戻ります。</p></div>
     <div class="shots">
-      <figure class="shot"><img src="assets/howto-textsize-standard-20261023.jpg" width="840" height="1825" loading="lazy" decoding="async" alt="標準の文字サイズのホーム画面。"><figcaption>標準の文字サイズ</figcaption></figure>
-      <figure class="shot"><img src="assets/howto-textsize-max-20261023.jpg" width="840" height="1825" loading="lazy" decoding="async" alt="いちばん大きい文字サイズのホーム画面。説明文やラベルが大きくなっています。"><figcaption>いちばん大きい文字サイズ</figcaption></figure>
+      <figure class="shot wide"><img src="assets/howto-textsize-standard-20261024.jpg" width="840" height="827" loading="lazy" decoding="async" alt="標準の文字サイズのMy Page。"><figcaption>標準の文字サイズ</figcaption></figure>
+      <figure class="shot wide"><img src="assets/howto-textsize-max-20261024.jpg" width="840" height="827" loading="lazy" decoding="async" alt="いちばん大きい文字サイズのMy Page。見出しの「My Page」はそのままで、項目名や設定の文字が大きくなっています。"><figcaption>いちばん大きい文字サイズ（「My Page」の見出しはそのまま、項目の文字が大きくなります）</figcaption></figure>
     </div>
 
     <h2 id="feedback"><span class="num">11</span>改善要望を送る</h2>
